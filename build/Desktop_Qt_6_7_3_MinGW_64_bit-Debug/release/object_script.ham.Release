@@ -1,0 +1,11 @@
+release/classcontrol.o
+release/hamsystem.o
+release/main.o
+release/mainwindow.o
+release/mylistwidget.o
+release/taskitem.o
+release/taskscontrol.o
+release/qrc_img.o
+release/moc_mainwindow.o
+release/moc_mylistwidget.o
+release/moc_taskitem.o

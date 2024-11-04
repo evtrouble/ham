@@ -1,0 +1,11 @@
+debug/classcontrol.o
+debug/hamsystem.o
+debug/main.o
+debug/mainwindow.o
+debug/mylistwidget.o
+debug/taskitem.o
+debug/taskscontrol.o
+debug/qrc_img.o
+debug/moc_mainwindow.o
+debug/moc_mylistwidget.o
+debug/moc_taskitem.o
