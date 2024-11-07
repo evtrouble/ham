@@ -2,10 +2,14 @@ debug/classcontrol.o
 debug/hamsystem.o
 debug/main.o
 debug/mainwindow.o
-debug/mylistwidget.o
+debug/netdataaccess.o
+debug/taskdisplay.o
+debug/taskeditor.o
 debug/taskitem.o
 debug/taskscontrol.o
 debug/qrc_img.o
 debug/moc_mainwindow.o
-debug/moc_mylistwidget.o
+debug/moc_netdataaccess.o
+debug/moc_taskdisplay.o
+debug/moc_taskeditor.o
 debug/moc_taskitem.o

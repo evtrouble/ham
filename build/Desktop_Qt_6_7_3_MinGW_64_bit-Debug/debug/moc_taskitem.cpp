@@ -38,7 +38,8 @@ struct qt_meta_stringdata_CLASSTaskItemENDCLASS_t {};
 constexpr auto qt_meta_stringdata_CLASSTaskItemENDCLASS = QtMocHelpers::stringData(
     "TaskItem",
     "remove",
-    ""
+    "",
+    "QListWidgetItem*"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -62,7 +63,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSTaskItemENDCLASS[] = {
        1,    1,   20,    2, 0x06,    1 /* Public */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void, 0x80000000 | 3,    2,
 
        0        // eod
 };
@@ -78,7 +79,7 @@ Q_CONSTINIT const QMetaObject TaskItem::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<TaskItem, std::true_type>,
         // method 'remove'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>
+        QtPrivate::TypeAndForceComplete<QListWidgetItem *, std::false_type>
     >,
     nullptr
 } };
@@ -89,13 +90,13 @@ void TaskItem::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         auto *_t = static_cast<TaskItem *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->remove((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 0: _t->remove((*reinterpret_cast< std::add_pointer_t<QListWidgetItem*>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (TaskItem::*)(int );
+            using _t = void (TaskItem::*)(QListWidgetItem * );
             if (_t _q_method = &TaskItem::remove; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
@@ -135,7 +136,7 @@ int TaskItem::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void TaskItem::remove(int _t1)
+void TaskItem::remove(QListWidgetItem * _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

@@ -1,6 +1,6 @@
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets core
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets core network
 CONFIG += c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -12,7 +12,9 @@ SOURCES += \
     hamsystem.cpp \
     main.cpp \
     mainwindow.cpp \
-    mylistwidget.cpp \
+    netdataaccess.cpp \
+    taskdisplay.cpp \
+    taskeditor.cpp \
     taskitem.cpp \
     taskscontrol.cpp
 
@@ -20,7 +22,9 @@ HEADERS += \
     classcontrol.h \
     hamsystem.h \
     mainwindow.h \
-    mylistwidget.h \
+    netdataaccess.h \
+    taskdisplay.h \
+    taskeditor.h \
     taskitem.h \
     taskscontrol.h
 

@@ -10,9 +10,14 @@ void HamSystem::navConnect(int id)
     QToolButton* btn_changed = btns.at(id);
     QToolButton::connect(btn_changed, &QToolButton::clicked, ui->stackedWidget, [=](){
         //切换页面
-        btns.at(ui->stackedWidget->currentIndex())->setStyleSheet("color:white; background-color: transparent; border: 0;");
+        btns.at(ui->stackedWidget->currentIndex())->setPalette(ui->centralwidget->palette().color(QPalette::Window));
 
-        btn_changed->setStyleSheet("color:orange; background-color: transparent; border: 0;");
+        QColor color;
+        color.setRgb(0xff, 0xa5, 0x00);
+        QPalette pal = btn_changed->palette();
+        pal.setColor(QPalette::ButtonText, color);
+        btn_changed->setPalette(pal);
+
         ui->stackedWidget->setCurrentIndex(id);
     });
 }
@@ -38,9 +43,13 @@ HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui)
     for (int id = 0; id < btns.size(); id++)
     {
         btns.at(id)->setFixedSize(50, 50);
-        btns.at(id)->setStyleSheet("background-color: transparent; border: 0;");
         navConnect(id);
     }
-    ui->homeButton->setStyleSheet("color:orange; background-color: transparent; border: 0;");
+    QColor color;
+    color.setRgb(0xff, 0xa5, 0x00);
+    QPalette pal = ui->homeButton->palette();
+    pal.setColor(QPalette::ButtonText,color);
+    ui->homeButton->setPalette(pal);
+
     ui->stackedWidget->setCurrentIndex(0);
 }
