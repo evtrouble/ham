@@ -168,16 +168,25 @@ void TaskDisplay::clear_and_get(QVector<QJsonObject> &list_set)
 
 void TaskDisplay::resizeEvent(QResizeEvent *event)
 {
+    if(once)
+    {
+        for(int id = 0; id < count(); id++){
+            TaskItem* widget = static_cast<TaskItem*>(itemWidget(item(id)));
+            widget->setWidth(event->size().width() - 15);//内边距
+            item(id)->setSizeHint(QSize(widget->width(), widget->height()));
+        }
+    }
+
+    QListWidget::resizeEvent(event);
+}
+
+void TaskDisplay::showEvent(QShowEvent *event)
+{
     if(!once)
     {
         init();
         once = true;
     }
 
-    for(int id = 0; id < count(); id++){
-        TaskItem* widget = static_cast<TaskItem*>(itemWidget(item(id)));
-        widget->setWidth(event->size().width() - 15);//内边距
-        item(id)->setSizeHint(QSize(widget->width(), widget->height()));
-    }
-    QListWidget::resizeEvent(event);
+    QListWidget::showEvent(event);
 }

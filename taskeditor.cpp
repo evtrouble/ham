@@ -41,3 +41,10 @@ void TaskEditor::setRetainSize()
     setSizePolicy(sp_retain);
     hide();
 }
+
+void TaskEditor::setUi(Ui::MainWindow *ui)
+{
+    this->ui = ui; setRetainSize();
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("确定"));
+    ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("取消"));
+}

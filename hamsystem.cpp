@@ -10,7 +10,8 @@ void HamSystem::navConnect(int id)
     QToolButton* btn_changed = btns.at(id);
     QToolButton::connect(btn_changed, &QToolButton::clicked, ui->stackedWidget, [=](){
         //切换页面
-        btns.at(ui->stackedWidget->currentIndex())->setPalette(ui->centralwidget->palette().color(QPalette::Window));
+        if(ui->stackedWidget->currentIndex() < btns.size())
+            btns.at(ui->stackedWidget->currentIndex())->setPalette(ui->centralwidget->palette().color(QPalette::Window));
 
         QColor color;
         color.setRgb(0xff, 0xa5, 0x00);
@@ -45,11 +46,8 @@ HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui)
         btns.at(id)->setFixedSize(50, 50);
         navConnect(id);
     }
-    QColor color;
-    color.setRgb(0xff, 0xa5, 0x00);
-    QPalette pal = ui->homeButton->palette();
-    pal.setColor(QPalette::ButtonText,color);
-    ui->homeButton->setPalette(pal);
 
-    ui->stackedWidget->setCurrentIndex(0);
+    //ui->tab->hide();
+
+    ui->stackedWidget->setCurrentIndex(btns.size());
 }

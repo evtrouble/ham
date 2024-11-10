@@ -20,6 +20,7 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -97,6 +98,23 @@ public:
     QWidget *setting;
     QGridLayout *gridLayout_4;
     QLabel *settingsDisplay;
+    QWidget *login;
+    QGridLayout *gridLayout_8;
+    QFrame *frame_2;
+    QHBoxLayout *horizontalLayout_6;
+    QSpacerItem *horizontalSpacer_7;
+    QFrame *frame_5;
+    QVBoxLayout *verticalLayout_2;
+    QSpacerItem *verticalSpacer;
+    QHBoxLayout *horizontalLayout_4;
+    QLabel *label;
+    QLineEdit *usernameEdit;
+    QHBoxLayout *horizontalLayout_5;
+    QLabel *label_2;
+    QLineEdit *passwordEdit;
+    QDialogButtonBox *buttonBox_2;
+    QSpacerItem *verticalSpacer_10;
+    QSpacerItem *horizontalSpacer_8;
     QToolBar *tab;
 
     void setupUi(QMainWindow *MainWindow)
@@ -481,6 +499,85 @@ public:
         gridLayout_4->addWidget(settingsDisplay, 0, 0, 1, 1);
 
         stackedWidget->addWidget(setting);
+        login = new QWidget();
+        login->setObjectName("login");
+        gridLayout_8 = new QGridLayout(login);
+        gridLayout_8->setObjectName("gridLayout_8");
+        frame_2 = new QFrame(login);
+        frame_2->setObjectName("frame_2");
+        sizePolicy.setHeightForWidth(frame_2->sizePolicy().hasHeightForWidth());
+        frame_2->setSizePolicy(sizePolicy);
+        frame_2->setFrameShape(QFrame::Shape::StyledPanel);
+        frame_2->setFrameShadow(QFrame::Shadow::Raised);
+        horizontalLayout_6 = new QHBoxLayout(frame_2);
+        horizontalLayout_6->setObjectName("horizontalLayout_6");
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_7);
+
+        frame_5 = new QFrame(frame_2);
+        frame_5->setObjectName("frame_5");
+        frame_5->setFrameShape(QFrame::Shape::NoFrame);
+        frame_5->setFrameShadow(QFrame::Shadow::Raised);
+        verticalLayout_2 = new QVBoxLayout(frame_5);
+        verticalLayout_2->setObjectName("verticalLayout_2");
+        verticalSpacer = new QSpacerItem(20, 120, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName("horizontalLayout_4");
+        label = new QLabel(frame_5);
+        label->setObjectName("label");
+
+        horizontalLayout_4->addWidget(label);
+
+        usernameEdit = new QLineEdit(frame_5);
+        usernameEdit->setObjectName("usernameEdit");
+
+        horizontalLayout_4->addWidget(usernameEdit);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_4);
+
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName("horizontalLayout_5");
+        label_2 = new QLabel(frame_5);
+        label_2->setObjectName("label_2");
+
+        horizontalLayout_5->addWidget(label_2);
+
+        passwordEdit = new QLineEdit(frame_5);
+        passwordEdit->setObjectName("passwordEdit");
+        passwordEdit->setEchoMode(QLineEdit::EchoMode::Password);
+
+        horizontalLayout_5->addWidget(passwordEdit);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_5);
+
+        buttonBox_2 = new QDialogButtonBox(frame_5);
+        buttonBox_2->setObjectName("buttonBox_2");
+        buttonBox_2->setStandardButtons(QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok);
+        buttonBox_2->setCenterButtons(true);
+
+        verticalLayout_2->addWidget(buttonBox_2);
+
+        verticalSpacer_10 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer_10);
+
+
+        horizontalLayout_6->addWidget(frame_5);
+
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_8);
+
+
+        gridLayout_8->addWidget(frame_2, 0, 0, 1, 1);
+
+        stackedWidget->addWidget(login);
 
         gridLayout->addWidget(stackedWidget, 0, 0, 1, 1);
 
@@ -493,7 +590,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -520,6 +617,8 @@ public:
 
         label_6->setText(QCoreApplication::translate("MainWindow", "\346\210\252\346\255\242\346\227\245\346\234\237\357\274\232", nullptr));
         settingsDisplay->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "\350\264\246\345\217\267\357\274\232", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "\345\257\206\347\240\201\357\274\232", nullptr));
         tab->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 

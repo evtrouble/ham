@@ -13,7 +13,7 @@ public:
     QListWidgetItem* currentItem() { return currentItem_; }
 
     void itemChange(QListWidgetItem *currentItem);
-    void setUi(Ui::MainWindow *ui) { this->ui = ui; setRetainSize(); }
+    void setUi(Ui::MainWindow *ui);
     void showChange();
 
 private:
