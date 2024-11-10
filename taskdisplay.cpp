@@ -58,7 +58,6 @@ void TaskDisplay::init()
         }
         reply->deleteLater();
         NetDataAccess::disconnect(NetDataAccess::instance().get(), &NetDataAccess::finish, this, 0);
-        once_resize = true;
     });
 }
 
@@ -170,25 +169,19 @@ void TaskDisplay::clear_and_get(QVector<QJsonObject> &list_set)
 
 void TaskDisplay::resizeEvent(QResizeEvent *event)
 {
-    if(once_resize)
+    if(!once)
     {
-        for(int id = 0; id < count(); id++){
-            TaskItem* widget = static_cast<TaskItem*>(itemWidget(item(id)));
-            widget->setWidth(event->size().width() - 15);//内边距
-            item(id)->setSizeHint(QSize(widget->width(), widget->height()));
-        }
+        init();
+        once = true;
+    }
+
+    for(int id = 0; id < count(); id++){
+        TaskItem* widget = static_cast<TaskItem*>(itemWidget(item(id)));
+        if(widget == nullptr)continue;
+
+        widget->setWidth(event->size().width() - 15);//内边距
+        item(id)->setSizeHint(QSize(widget->width(), widget->height()));
     }
 
     QListWidget::resizeEvent(event);
-}
-
-void TaskDisplay::showEvent(QShowEvent *event)
-{
-    if(!once_show)
-    {
-        init();
-        once_show = true;
-    }
-
-    QListWidget::showEvent(event);
 }

@@ -19,7 +19,6 @@ public:
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
-    void showEvent(QShowEvent *event) override;
 
 private:
     void updateTaskItem(QListWidgetItem *currentItem, QDateTime &deadline, QString &text, int priority);
@@ -30,8 +29,7 @@ private:
     void init();
 
 private:
-    bool once_resize = false;
-    bool once_show = false;
+    bool once = false;
 
 signals:
     void editorHide();
