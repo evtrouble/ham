@@ -6,6 +6,7 @@ release/netdataaccess.o
 release/taskdisplay.o
 release/taskeditor.o
 release/taskitem.o
+release/taskitemdelegate.o
 release/taskscontrol.o
 release/qrc_img.o
 release/moc_mainwindow.o
@@ -13,3 +14,4 @@ release/moc_netdataaccess.o
 release/moc_taskdisplay.o
 release/moc_taskeditor.o
 release/moc_taskitem.o
+release/moc_taskitemdelegate.o

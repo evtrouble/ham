@@ -51,43 +51,44 @@ public:
     QGridLayout *gridLayout_5;
     QLabel *timetableDisplay;
     QWidget *tasks;
-    QHBoxLayout *horizontalLayout_5;
+    QGridLayout *gridLayout_6;
+    QFrame *frame_3;
+    QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
     QFrame *frame;
-    QGridLayout *gridLayout_2;
-    QVBoxLayout *verticalLayout;
-    QSpacerItem *verticalSpacer;
-    QHBoxLayout *horizontalLayout;
-    QSpacerItem *horizontalSpacer_5;
+    QGridLayout *gridLayout_7;
+    QVBoxLayout *verticalLayout_3;
+    QSpacerItem *verticalSpacer_2;
+    QFrame *frame_4;
+    QHBoxLayout *horizontalLayout_9;
     QLabel *tasksDisplay;
-    QSpacerItem *horizontalSpacer_6;
     QPushButton *addButton;
-    QSpacerItem *verticalSpacer_10;
-    QHBoxLayout *horizontalLayout_3;
-    QSpacerItem *horizontalSpacer_8;
+    QSpacerItem *verticalSpacer_1;
+    QHBoxLayout *horizontalLayout_1;
+    QSpacerItem *horizontalSpacer_1;
     QPushButton *sortByDeadlineBtn;
-    QSpacerItem *horizontalSpacer_7;
+    QSpacerItem *horizontalSpacer_5;
     QPushButton *sortByPriorityBtn;
-    QSpacerItem *horizontalSpacer_9;
+    QSpacerItem *horizontalSpacer_6;
     TaskDisplay *listWidget;
-    QSpacerItem *verticalSpacer_3;
+    QSpacerItem *verticalSpacer_9;
     QSpacerItem *horizontalSpacer_2;
     QFrame *line;
     QSpacerItem *horizontalSpacer_3;
     TaskEditor *editor;
-    QGridLayout *gridLayout_6;
-    QVBoxLayout *verticalLayout_2;
+    QGridLayout *gridLayout_2;
+    QVBoxLayout *verticalLayout_4;
+    QSpacerItem *verticalSpacer_3;
+    QLabel *label_4;
     QSpacerItem *verticalSpacer_4;
-    QLabel *label_2;
-    QSpacerItem *verticalSpacer_9;
     QTextEdit *textEdit;
     QSpacerItem *verticalSpacer_5;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *label_3;
+    QLabel *label_5;
     QComboBox *comboBox;
     QSpacerItem *verticalSpacer_6;
-    QHBoxLayout *horizontalLayout_4;
-    QLabel *label;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *label_6;
     QDateTimeEdit *dateTimeEdit;
     QSpacerItem *verticalSpacer_7;
     QDialogButtonBox *buttonBox;
@@ -102,9 +103,9 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(850, 400);
-        MainWindow->setMinimumSize(QSize(850, 0));
-        MainWindow->setMaximumSize(QSize(850, 16777215));
+        MainWindow->resize(525, 400);
+        MainWindow->setMinimumSize(QSize(0, 0));
+        MainWindow->setMaximumSize(QSize(16777215, 16777215));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/icon/img/icon.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         MainWindow->setWindowIcon(icon);
@@ -206,47 +207,60 @@ public:
         tasks->setObjectName("tasks");
         sizePolicy.setHeightForWidth(tasks->sizePolicy().hasHeightForWidth());
         tasks->setSizePolicy(sizePolicy);
-        horizontalLayout_5 = new QHBoxLayout(tasks);
-        horizontalLayout_5->setObjectName("horizontalLayout_5");
+        gridLayout_6 = new QGridLayout(tasks);
+        gridLayout_6->setSpacing(0);
+        gridLayout_6->setObjectName("gridLayout_6");
+        gridLayout_6->setContentsMargins(0, 0, 0, 0);
+        frame_3 = new QFrame(tasks);
+        frame_3->setObjectName("frame_3");
+        frame_3->setFrameShape(QFrame::Shape::StyledPanel);
+        frame_3->setFrameShadow(QFrame::Shadow::Raised);
+        horizontalLayout = new QHBoxLayout(frame_3);
+        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalSpacer = new QSpacerItem(13, 20, QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Minimum);
 
-        horizontalLayout_5->addItem(horizontalSpacer);
+        horizontalLayout->addItem(horizontalSpacer);
 
-        frame = new QFrame(tasks);
+        frame = new QFrame(frame_3);
         frame->setObjectName("frame");
+        sizePolicy.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
+        frame->setSizePolicy(sizePolicy);
         frame->setStyleSheet(QString::fromUtf8(""));
         frame->setFrameShape(QFrame::Shape::StyledPanel);
         frame->setFrameShadow(QFrame::Shadow::Raised);
-        gridLayout_2 = new QGridLayout(frame);
-        gridLayout_2->setSpacing(0);
-        gridLayout_2->setObjectName("gridLayout_2");
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setSpacing(0);
-        verticalLayout->setObjectName("verticalLayout");
-        verticalSpacer = new QSpacerItem(20, 13, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
+        gridLayout_7 = new QGridLayout(frame);
+        gridLayout_7->setObjectName("gridLayout_7");
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setObjectName("verticalLayout_3");
+        verticalLayout_3->setSizeConstraint(QLayout::SizeConstraint::SetDefaultConstraint);
+        verticalSpacer_2 = new QSpacerItem(20, 13, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
 
-        verticalLayout->addItem(verticalSpacer);
+        verticalLayout_3->addItem(verticalSpacer_2);
 
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName("horizontalLayout");
-        horizontalSpacer_5 = new QSpacerItem(30, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer_5);
-
-        tasksDisplay = new QLabel(frame);
+        frame_4 = new QFrame(frame);
+        frame_4->setObjectName("frame_4");
+        QSizePolicy sizePolicy1(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(frame_4->sizePolicy().hasHeightForWidth());
+        frame_4->setSizePolicy(sizePolicy1);
+        frame_4->setFrameShape(QFrame::Shape::StyledPanel);
+        frame_4->setFrameShadow(QFrame::Shadow::Raised);
+        horizontalLayout_9 = new QHBoxLayout(frame_4);
+        horizontalLayout_9->setObjectName("horizontalLayout_9");
+        tasksDisplay = new QLabel(frame_4);
         tasksDisplay->setObjectName("tasksDisplay");
+        sizePolicy1.setHeightForWidth(tasksDisplay->sizePolicy().hasHeightForWidth());
+        tasksDisplay->setSizePolicy(sizePolicy1);
         tasksDisplay->setStyleSheet(QString::fromUtf8("background-color: transparent; \n"
 "border: 0;\n"
 "font-size: 20px;"));
         tasksDisplay->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
-        horizontalLayout->addWidget(tasksDisplay);
+        horizontalLayout_9->addWidget(tasksDisplay);
 
-        horizontalSpacer_6 = new QSpacerItem(100, 20, QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer_6);
-
-        addButton = new QPushButton(frame);
+        addButton = new QPushButton(frame_4);
         addButton->setObjectName("addButton");
         addButton->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
 "border: 0;"));
@@ -255,45 +269,45 @@ public:
         addButton->setIcon(icon5);
         addButton->setIconSize(QSize(25, 25));
 
-        horizontalLayout->addWidget(addButton);
+        horizontalLayout_9->addWidget(addButton);
 
 
-        verticalLayout->addLayout(horizontalLayout);
+        verticalLayout_3->addWidget(frame_4);
 
-        verticalSpacer_10 = new QSpacerItem(10, 5, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
+        verticalSpacer_1 = new QSpacerItem(13, 13, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
 
-        verticalLayout->addItem(verticalSpacer_10);
+        verticalLayout_3->addItem(verticalSpacer_1);
 
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName("horizontalLayout_3");
-        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+        horizontalLayout_1 = new QHBoxLayout();
+        horizontalLayout_1->setObjectName("horizontalLayout_1");
+        horizontalSpacer_1 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        horizontalLayout_3->addItem(horizontalSpacer_8);
+        horizontalLayout_1->addItem(horizontalSpacer_1);
 
         sortByDeadlineBtn = new QPushButton(frame);
         sortByDeadlineBtn->setObjectName("sortByDeadlineBtn");
         sortByDeadlineBtn->setStyleSheet(QString::fromUtf8("font-size: 10px;\n"
 "padding: 3px;"));
 
-        horizontalLayout_3->addWidget(sortByDeadlineBtn);
+        horizontalLayout_1->addWidget(sortByDeadlineBtn);
 
-        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        horizontalLayout_3->addItem(horizontalSpacer_7);
+        horizontalLayout_1->addItem(horizontalSpacer_5);
 
         sortByPriorityBtn = new QPushButton(frame);
         sortByPriorityBtn->setObjectName("sortByPriorityBtn");
         sortByPriorityBtn->setStyleSheet(QString::fromUtf8("font-size: 10px;\n"
 "padding: 3px;"));
 
-        horizontalLayout_3->addWidget(sortByPriorityBtn);
+        horizontalLayout_1->addWidget(sortByPriorityBtn);
 
-        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        horizontalLayout_3->addItem(horizontalSpacer_9);
+        horizontalLayout_1->addItem(horizontalSpacer_6);
 
 
-        verticalLayout->addLayout(horizontalLayout_3);
+        verticalLayout_3->addLayout(horizontalLayout_1);
 
         listWidget = new TaskDisplay(frame);
         listWidget->setObjectName("listWidget");
@@ -304,83 +318,85 @@ public:
         listWidget->setEditTriggers(QAbstractItemView::EditTrigger::NoEditTriggers);
         listWidget->setSortingEnabled(false);
 
-        verticalLayout->addWidget(listWidget);
+        verticalLayout_3->addWidget(listWidget);
 
-        verticalSpacer_3 = new QSpacerItem(20, 13, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
+        verticalSpacer_9 = new QSpacerItem(20, 13, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
 
-        verticalLayout->addItem(verticalSpacer_3);
-
-
-        gridLayout_2->addLayout(verticalLayout, 0, 0, 1, 1);
+        verticalLayout_3->addItem(verticalSpacer_9);
 
 
-        horizontalLayout_5->addWidget(frame);
+        gridLayout_7->addLayout(verticalLayout_3, 0, 0, 1, 1);
+
+
+        horizontalLayout->addWidget(frame);
 
         horizontalSpacer_2 = new QSpacerItem(13, 20, QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Minimum);
 
-        horizontalLayout_5->addItem(horizontalSpacer_2);
+        horizontalLayout->addItem(horizontalSpacer_2);
 
-        line = new QFrame(tasks);
+        line = new QFrame(frame_3);
         line->setObjectName("line");
-        QSizePolicy sizePolicy1(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Expanding);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(line->sizePolicy().hasHeightForWidth());
-        line->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(line->sizePolicy().hasHeightForWidth());
+        line->setSizePolicy(sizePolicy2);
         line->setStyleSheet(QString::fromUtf8(""));
         line->setFrameShadow(QFrame::Shadow::Raised);
         line->setFrameShape(QFrame::Shape::VLine);
 
-        horizontalLayout_5->addWidget(line);
+        horizontalLayout->addWidget(line);
 
         horizontalSpacer_3 = new QSpacerItem(13, 20, QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Minimum);
 
-        horizontalLayout_5->addItem(horizontalSpacer_3);
+        horizontalLayout->addItem(horizontalSpacer_3);
 
-        editor = new TaskEditor(tasks);
+        editor = new TaskEditor(frame_3);
         editor->setObjectName("editor");
         sizePolicy.setHeightForWidth(editor->sizePolicy().hasHeightForWidth());
         editor->setSizePolicy(sizePolicy);
         editor->setStyleSheet(QString::fromUtf8(""));
         editor->setFrameShape(QFrame::Shape::StyledPanel);
         editor->setFrameShadow(QFrame::Shadow::Raised);
-        gridLayout_6 = new QGridLayout(editor);
-        gridLayout_6->setObjectName("gridLayout_6");
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setObjectName("verticalLayout_2");
+        gridLayout_2 = new QGridLayout(editor);
+        gridLayout_2->setObjectName("gridLayout_2");
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setObjectName("verticalLayout_4");
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        verticalLayout_4->addItem(verticalSpacer_3);
+
+        label_4 = new QLabel(editor);
+        label_4->setObjectName("label_4");
+        QSizePolicy sizePolicy3(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
+        label_4->setSizePolicy(sizePolicy3);
+
+        verticalLayout_4->addWidget(label_4);
+
         verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
-        verticalLayout_2->addItem(verticalSpacer_4);
-
-        label_2 = new QLabel(editor);
-        label_2->setObjectName("label_2");
-
-        verticalLayout_2->addWidget(label_2);
-
-        verticalSpacer_9 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
-
-        verticalLayout_2->addItem(verticalSpacer_9);
+        verticalLayout_4->addItem(verticalSpacer_4);
 
         textEdit = new QTextEdit(editor);
         textEdit->setObjectName("textEdit");
-        QSizePolicy sizePolicy2(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
-        textEdit->setSizePolicy(sizePolicy2);
+        sizePolicy.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
+        textEdit->setSizePolicy(sizePolicy);
 
-        verticalLayout_2->addWidget(textEdit);
+        verticalLayout_4->addWidget(textEdit);
 
         verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
-        verticalLayout_2->addItem(verticalSpacer_5);
+        verticalLayout_4->addItem(verticalSpacer_5);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName("horizontalLayout_2");
-        label_3 = new QLabel(editor);
-        label_3->setObjectName("label_3");
+        label_5 = new QLabel(editor);
+        label_5->setObjectName("label_5");
 
-        horizontalLayout_2->addWidget(label_3);
+        horizontalLayout_2->addWidget(label_5);
 
         comboBox = new QComboBox(editor);
         comboBox->addItem(QString());
@@ -391,30 +407,30 @@ public:
         horizontalLayout_2->addWidget(comboBox);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_2);
+        verticalLayout_4->addLayout(horizontalLayout_2);
 
         verticalSpacer_6 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
-        verticalLayout_2->addItem(verticalSpacer_6);
+        verticalLayout_4->addItem(verticalSpacer_6);
 
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName("horizontalLayout_4");
-        label = new QLabel(editor);
-        label->setObjectName("label");
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName("horizontalLayout_3");
+        label_6 = new QLabel(editor);
+        label_6->setObjectName("label_6");
 
-        horizontalLayout_4->addWidget(label);
+        horizontalLayout_3->addWidget(label_6);
 
         dateTimeEdit = new QDateTimeEdit(editor);
         dateTimeEdit->setObjectName("dateTimeEdit");
 
-        horizontalLayout_4->addWidget(dateTimeEdit);
+        horizontalLayout_3->addWidget(dateTimeEdit);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_4);
+        verticalLayout_4->addLayout(horizontalLayout_3);
 
         verticalSpacer_7 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
-        verticalLayout_2->addItem(verticalSpacer_7);
+        verticalLayout_4->addItem(verticalSpacer_7);
 
         buttonBox = new QDialogButtonBox(editor);
         buttonBox->setObjectName("buttonBox");
@@ -422,21 +438,24 @@ public:
         buttonBox->setStandardButtons(QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok);
         buttonBox->setCenterButtons(true);
 
-        verticalLayout_2->addWidget(buttonBox);
+        verticalLayout_4->addWidget(buttonBox);
 
         verticalSpacer_8 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
-        verticalLayout_2->addItem(verticalSpacer_8);
+        verticalLayout_4->addItem(verticalSpacer_8);
 
 
-        gridLayout_6->addLayout(verticalLayout_2, 0, 0, 1, 1);
+        gridLayout_2->addLayout(verticalLayout_4, 0, 0, 1, 1);
 
 
-        horizontalLayout_5->addWidget(editor);
+        horizontalLayout->addWidget(editor);
 
         horizontalSpacer_4 = new QSpacerItem(13, 20, QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Minimum);
 
-        horizontalLayout_5->addItem(horizontalSpacer_4);
+        horizontalLayout->addItem(horizontalSpacer_4);
+
+
+        gridLayout_6->addWidget(frame_3, 0, 0, 1, 1);
 
         stackedWidget->addWidget(tasks);
         setting = new QWidget();
@@ -484,13 +503,13 @@ public:
         addButton->setText(QString());
         sortByDeadlineBtn->setText(QCoreApplication::translate("MainWindow", "\346\214\211\346\210\252\346\255\242\346\227\266\351\227\264\346\216\222\345\272\217", nullptr));
         sortByPriorityBtn->setText(QCoreApplication::translate("MainWindow", "\346\214\211\344\274\230\345\205\210\347\272\247\346\216\222\345\272\217", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "\345\276\205\345\212\236\344\272\213\351\241\271\357\274\232", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "\344\274\230\345\205\210\347\272\247\357\274\232", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "\345\276\205\345\212\236\344\272\213\351\241\271\357\274\232", nullptr));
+        label_5->setText(QCoreApplication::translate("MainWindow", "\344\274\230\345\205\210\347\272\247\357\274\232", nullptr));
         comboBox->setItemText(0, QCoreApplication::translate("MainWindow", "\344\275\216", nullptr));
         comboBox->setItemText(1, QCoreApplication::translate("MainWindow", "\344\270\255", nullptr));
         comboBox->setItemText(2, QCoreApplication::translate("MainWindow", "\351\253\230", nullptr));
 
-        label->setText(QCoreApplication::translate("MainWindow", "\346\210\252\346\255\242\346\227\245\346\234\237\357\274\232", nullptr));
+        label_6->setText(QCoreApplication::translate("MainWindow", "\346\210\252\346\255\242\346\227\245\346\234\237\357\274\232", nullptr));
         settingsDisplay->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256", nullptr));
         tab->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi

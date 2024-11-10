@@ -9,7 +9,6 @@
 #include "ui_mainwindow.h"
 #include "taskitem.h"
 #include "taskscontrol.h"
-#include "netdataaccess.h"
 
 TasksControl::TasksControl(Ui::MainWindow* ui) : ui(ui)
 {
