@@ -16,7 +16,6 @@ SOURCES += \
     taskdisplay.cpp \
     taskeditor.cpp \
     taskitem.cpp \
-    taskitemdelegate.cpp \
     taskscontrol.cpp
 
 HEADERS += \
@@ -27,7 +26,6 @@ HEADERS += \
     taskdisplay.h \
     taskeditor.h \
     taskitem.h \
-    taskitemdelegate.h \
     taskscontrol.h
 
 FORMS += \

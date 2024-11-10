@@ -6,7 +6,6 @@ debug/netdataaccess.o
 debug/taskdisplay.o
 debug/taskeditor.o
 debug/taskitem.o
-debug/taskitemdelegate.o
 debug/taskscontrol.o
 debug/qrc_img.o
 debug/moc_mainwindow.o
@@ -14,4 +13,3 @@ debug/moc_netdataaccess.o
 debug/moc_taskdisplay.o
 debug/moc_taskeditor.o
 debug/moc_taskitem.o
-debug/moc_taskitemdelegate.o

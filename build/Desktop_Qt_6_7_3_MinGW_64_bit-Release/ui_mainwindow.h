@@ -103,8 +103,8 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(525, 400);
-        MainWindow->setMinimumSize(QSize(0, 0));
+        MainWindow->resize(641, 400);
+        MainWindow->setMinimumSize(QSize(600, 0));
         MainWindow->setMaximumSize(QSize(16777215, 16777215));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/icon/img/icon.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
@@ -117,12 +117,14 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(centralwidget->sizePolicy().hasHeightForWidth());
         centralwidget->setSizePolicy(sizePolicy);
+        centralwidget->setMinimumSize(QSize(300, 0));
         gridLayout = new QGridLayout(centralwidget);
         gridLayout->setObjectName("gridLayout");
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName("stackedWidget");
         sizePolicy.setHeightForWidth(stackedWidget->sizePolicy().hasHeightForWidth());
         stackedWidget->setSizePolicy(sizePolicy);
+        stackedWidget->setMinimumSize(QSize(300, 0));
         home = new QWidget();
         home->setObjectName("home");
         gridLayout_3 = new QGridLayout(home);
@@ -213,6 +215,10 @@ public:
         gridLayout_6->setContentsMargins(0, 0, 0, 0);
         frame_3 = new QFrame(tasks);
         frame_3->setObjectName("frame_3");
+        sizePolicy.setHeightForWidth(frame_3->sizePolicy().hasHeightForWidth());
+        frame_3->setSizePolicy(sizePolicy);
+        frame_3->setAutoFillBackground(true);
+        frame_3->setStyleSheet(QString::fromUtf8(""));
         frame_3->setFrameShape(QFrame::Shape::StyledPanel);
         frame_3->setFrameShadow(QFrame::Shadow::Raised);
         horizontalLayout = new QHBoxLayout(frame_3);
@@ -245,10 +251,11 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(frame_4->sizePolicy().hasHeightForWidth());
         frame_4->setSizePolicy(sizePolicy1);
-        frame_4->setFrameShape(QFrame::Shape::StyledPanel);
+        frame_4->setFrameShape(QFrame::Shape::NoFrame);
         frame_4->setFrameShadow(QFrame::Shadow::Raised);
         horizontalLayout_9 = new QHBoxLayout(frame_4);
         horizontalLayout_9->setObjectName("horizontalLayout_9");
+        horizontalLayout_9->setContentsMargins(9, 0, -1, 0);
         tasksDisplay = new QLabel(frame_4);
         tasksDisplay->setObjectName("tasksDisplay");
         sizePolicy1.setHeightForWidth(tasksDisplay->sizePolicy().hasHeightForWidth());
@@ -368,11 +375,8 @@ public:
 
         label_4 = new QLabel(editor);
         label_4->setObjectName("label_4");
-        QSizePolicy sizePolicy3(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Preferred);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
-        label_4->setSizePolicy(sizePolicy3);
+        sizePolicy1.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
+        label_4->setSizePolicy(sizePolicy1);
 
         verticalLayout_4->addWidget(label_4);
 
@@ -403,6 +407,11 @@ public:
         comboBox->addItem(QString());
         comboBox->addItem(QString());
         comboBox->setObjectName("comboBox");
+        QSizePolicy sizePolicy3(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
+        comboBox->setSizePolicy(sizePolicy3);
 
         horizontalLayout_2->addWidget(comboBox);
 

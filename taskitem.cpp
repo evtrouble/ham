@@ -70,13 +70,9 @@ void TaskItem::init(QDateTime &deadline, QString &text, int priority, QListWidge
     checkBox = new QCheckBox(this);
 
     setText(text);
-    this->text->setFixedWidth(width() - 50);
     this->text->setWordWrap(true);
 
     this->text->setAttribute(Qt::WA_TransparentForMouseEvents, true);
-
-    this->text->adjustSize();
-    resize(width(), this->text->height() + 5);
 }
 
 void TaskItem::init(const QJsonObject& json, QListWidgetItem* item)
@@ -91,13 +87,9 @@ void TaskItem::init(const QJsonObject& json, QListWidgetItem* item)
     if(json["finish"].toBool()) checkBox->setCheckState(Qt::Checked);
 
     setText(json["content"].toString());
-    text->setFixedWidth(width() - 50);
     text->setWordWrap(true);
 
     text->setAttribute(Qt::WA_TransparentForMouseEvents, true);
-
-    text->adjustSize();
-    resize(width(), text->height() + 5);
 }
 
 void TaskItem::setData(QDateTime &deadline, QString &text, int priority)
@@ -105,9 +97,6 @@ void TaskItem::setData(QDateTime &deadline, QString &text, int priority)
     this->deadline = deadline;
     this->priority = priority;
     setText(text);
-
-    this->text->adjustSize();
-    resize(width(), this->text->height() + 5);
 }
 
 QJsonObject TaskItem::toJson()
@@ -136,4 +125,11 @@ void TaskItem::setText(const QString& text)
     prefixlen = prefix.length();
     if(this->text == nullptr) this->text = new QLabel(prefix + text, this);
     else this->text->setText(prefix + text);
+}
+
+void TaskItem::setWidth(int width)
+{
+    text->setFixedWidth(width - 50);
+    text->adjustSize();
+    resize(width, text->height() + 5);
 }

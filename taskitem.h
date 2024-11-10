@@ -25,7 +25,7 @@ public:
     void init(const QJsonObject& json, QListWidgetItem* item);
 
     void setData(QDateTime &deadline, QString &text, int priority);
-    void setWidth(int width) { resize(width, height()); }
+    void setWidth(int width);
     void setId(int id) { this->id = id; }
 
     QString getText() { return text->text().mid(prefixlen); }

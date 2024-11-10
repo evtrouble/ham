@@ -11,6 +11,7 @@
 TaskDisplay::TaskDisplay(QWidget *parent)
     : QListWidget(parent)
 {
+    this->setResizeMode(QListView::Adjust);
 }
 
 void TaskDisplay::mousePressEvent(QMouseEvent *event)
@@ -47,7 +48,6 @@ void TaskDisplay::init()
                     TaskItem* widget = new TaskItem(this);
                     QListWidgetItem* item = new QListWidgetItem;
 
-                    widget->setWidth(width() - 15);//内边距
                     widget->init(task.toObject(), item);
                     initTaskItem(widget, item);
                 }
@@ -79,7 +79,6 @@ void TaskDisplay::addTaskItem(QDateTime &deadline, QString &text, int priority)
     TaskItem* widget = new TaskItem(this);
     QListWidgetItem* item = new QListWidgetItem;
 
-    widget->setWidth(width() - 15);//内边距
     widget->init(deadline, text, priority, item);
     initTaskItem(widget, item);
     emit editorHide();
@@ -91,6 +90,7 @@ void TaskDisplay::addTaskItem(QDateTime &deadline, QString &text, int priority)
 
 void TaskDisplay::initTaskItem(TaskItem* widget, QListWidgetItem* item)
 {
+    widget->setWidth(width() - 15);//内边距
     item->setSizeHint(QSize(widget->width(), widget->height()));
     addItem(item);
     setItemWidget(item, widget);
@@ -131,7 +131,6 @@ void TaskDisplay::sortByDeadline()
         TaskItem* widget = new TaskItem(this);
         QListWidgetItem* item = new QListWidgetItem;
 
-        widget->setWidth(width() - 15);//内边距
         widget->init(task, item);
         initTaskItem(widget, item);
     }
@@ -151,7 +150,6 @@ void TaskDisplay::sortByPriority()
         TaskItem* widget = new TaskItem(this);
         QListWidgetItem* item = new QListWidgetItem;
 
-        widget->setWidth(width() - 15);//内边距
         widget->init(task, item);
         initTaskItem(widget, item);
     }
@@ -168,12 +166,18 @@ void TaskDisplay::clear_and_get(QVector<QJsonObject> &list_set)
     clear();
 }
 
-void TaskDisplay::showEvent(QShowEvent *event)
+void TaskDisplay::resizeEvent(QResizeEvent *event)
 {
     if(!once)
     {
         init();
         once = true;
     }
-    QListWidget::showEvent(event);
+
+    for(int id = 0; id < count(); id++){
+        TaskItem* widget = static_cast<TaskItem*>(itemWidget(item(id)));
+        widget->setWidth(event->size().width() - 15);//内边距
+        item(id)->setSizeHint(QSize(widget->width(), widget->height()));
+    }
+    QListWidget::resizeEvent(event);
 }

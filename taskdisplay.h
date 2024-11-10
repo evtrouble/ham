@@ -18,7 +18,7 @@ public:
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
-    void showEvent(QShowEvent *event) override;
+    void resizeEvent(QResizeEvent *event) override;
 
 private:
     void updateTaskItem(QListWidgetItem *currentItem, QDateTime &deadline, QString &text, int priority);
