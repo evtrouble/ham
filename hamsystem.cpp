@@ -47,7 +47,21 @@ HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui)
         navConnect(id);
     }
 
-    //ui->tab->hide();
+    ui->buttonBox_2->button(QDialogButtonBox::Ok)->setText("确定");
+    ui->buttonBox_2->button(QDialogButtonBox::Cancel)->setText("取消");
+    QDialogButtonBox::connect(ui->buttonBox_2, &QDialogButtonBox::accepted, ui->stackedWidget, [=]{
+
+
+        QColor color;
+        color.setRgb(0xff, 0xa5, 0x00);
+        QPalette pal = ui->homeButton->palette();
+        pal.setColor(QPalette::ButtonText, color);
+        ui->homeButton->setPalette(pal);
+        ui->stackedWidget->setCurrentIndex(0);
+        ui->tab->show();
+    });//登录
+
+    ui->tab->hide();
 
     ui->stackedWidget->setCurrentIndex(btns.size());
 }
