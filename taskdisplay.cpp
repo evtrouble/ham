@@ -52,11 +52,13 @@ void TaskDisplay::init()
                     initTaskItem(widget, item);
                 }
             }
+
         } else {
             qWarning() << "Network error:" << reply->errorString();
         }
         reply->deleteLater();
         NetDataAccess::disconnect(NetDataAccess::instance().get(), &NetDataAccess::finish, this, 0);
+        once_resize = true;
     });
 }
 
@@ -168,7 +170,7 @@ void TaskDisplay::clear_and_get(QVector<QJsonObject> &list_set)
 
 void TaskDisplay::resizeEvent(QResizeEvent *event)
 {
-    if(once)
+    if(once_resize)
     {
         for(int id = 0; id < count(); id++){
             TaskItem* widget = static_cast<TaskItem*>(itemWidget(item(id)));
@@ -182,10 +184,10 @@ void TaskDisplay::resizeEvent(QResizeEvent *event)
 
 void TaskDisplay::showEvent(QShowEvent *event)
 {
-    if(!once)
+    if(!once_show)
     {
         init();
-        once = true;
+        once_show = true;
     }
 
     QListWidget::showEvent(event);

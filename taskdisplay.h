@@ -30,7 +30,8 @@ private:
     void init();
 
 private:
-    bool once = false;
+    bool once_resize = false;
+    bool once_show = false;
 
 signals:
     void editorHide();
