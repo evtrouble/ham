@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/tab">
+        <file>img/home.png</file>
+        <file>img/settings.png</file>
+        <file>img/tasks.png</file>
+        <file>img/class.png</file>
+    </qresource>
+    <qresource prefix="/more">
+        <file>img/more.png</file>
+        <file>img/add.png</file>
+        <file>img/delete.png</file>
+    </qresource>
+    <qresource prefix="/icon">
+        <file>img/icon.png</file>
+        <file>img/people.png</file>
+    </qresource>
+</RCC>
