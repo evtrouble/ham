@@ -68,7 +68,7 @@
         <item row="0" column="2">
          <widget class="QLabel" name="homeDisplay">
           <property name="styleSheet">
-           <string notr="true">background-color: transparent; 
+           <string notr="true">background-color: transparent;
 border: 0;
 font-size: 20px;</string>
           </property>
@@ -83,7 +83,7 @@ font-size: 20px;</string>
         <item row="1" column="3">
          <widget class="QToolButton" name="settingsButton">
           <property name="styleSheet">
-           <string notr="true">background-color: transparent; 
+           <string notr="true">background-color: transparent;
 border: 0;</string>
           </property>
           <property name="text">
@@ -110,7 +110,7 @@ border: 0;</string>
         <item row="2" column="0">
          <widget class="QToolButton" name="homeButton">
           <property name="styleSheet">
-           <string notr="true">background-color: transparent; 
+           <string notr="true">background-color: transparent;
 border: 0;</string>
           </property>
           <property name="text">
@@ -137,7 +137,7 @@ border: 0;</string>
         <item row="2" column="2">
          <widget class="QToolButton" name="tasksButton">
           <property name="styleSheet">
-           <string notr="true">background-color: transparent; 
+           <string notr="true">background-color: transparent;
 border: 0;</string>
           </property>
           <property name="text">
@@ -164,7 +164,7 @@ border: 0;</string>
         <item row="3" column="1">
          <widget class="QToolButton" name="classButton">
           <property name="styleSheet">
-           <string notr="true">background-color: transparent; 
+           <string notr="true">background-color: transparent;
 border: 0;</string>
           </property>
           <property name="text">
@@ -191,23 +191,63 @@ border: 0;</string>
        </layout>
       </widget>
       <widget class="QWidget" name="timetable">
-       <layout class="QGridLayout" name="gridLayout_5">
-        <item row="0" column="0">
-         <widget class="QLabel" name="timetableDisplay">
-          <property name="styleSheet">
-           <string notr="true">background-color: transparent; 
-border: 0;
-font-size: 20px;</string>
-          </property>
-          <property name="text">
-           <string>课表</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <widget class="QWidget" name="horizontalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>20</y>
+          <width>351</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QPushButton" name="btnPersonalCourse">
+           <property name="text">
+            <string>个人课表</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_9">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnSchoolCourse">
+           <property name="text">
+            <string>查询课表</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="verticalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>-1</x>
+          <y>69</y>
+          <width>621</width>
+          <height>321</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QStackedWidget" name="stackedWidget_2">
+           <widget class="QWidget" name="PersonalCourse"/>
+           <widget class="QWidget" name="SchoolCourse"/>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
       <widget class="QWidget" name="tasks">
        <property name="sizePolicy">
@@ -353,7 +393,7 @@ font-size: 20px;</string>
                       </sizepolicy>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">background-color: transparent; 
+                      <string notr="true">background-color: transparent;
 border: 0;
 font-size: 20px;</string>
                      </property>
@@ -791,7 +831,7 @@ padding: 3px;</string>
         <item row="0" column="0">
          <widget class="QLabel" name="settingsDisplay">
           <property name="styleSheet">
-           <string notr="true">background-color: transparent; 
+           <string notr="true">background-color: transparent;
 border: 0;
 font-size: 20px;</string>
           </property>
