@@ -6,6 +6,13 @@
 #include "taskscontrol.h"
 #include "classcontrol.h"
 #include "mainwindow.h"
+#include "homedisplay.h"
+
+enum class UserType
+{
+    ADMINISTRATOR,
+    ORDINARY
+};
 
 class HamSystem
 {
@@ -19,6 +26,7 @@ private:
     Ui::MainWindow *ui;
     TasksControl tasksControl;
     ClassControl classControl;
+    HomeDisplay homeDisplay;
 
     QVector<QToolButton*> btns;
 };

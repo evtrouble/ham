@@ -23,7 +23,7 @@ void HamSystem::navConnect(int id)
     });
 }
 
-HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui)
+HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui), homeDisplay(ui)
 {
     btns.append(ui->homeButton);
     btns.append(ui->classButton);
@@ -62,6 +62,5 @@ HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui)
     });//登录
 
     ui->tab->hide();
-    qDebug()<<btns.size();
     ui->stackedWidget->setCurrentIndex(btns.size());
 }

@@ -44,13 +44,21 @@ public:
     QWidget *home;
     QGridLayout *gridLayout_3;
     QLabel *homeDisplay;
+    QToolButton *classButton;
+    QToolButton *tasksButton;
     QToolButton *settingsButton;
     QToolButton *homeButton;
-    QToolButton *tasksButton;
-    QToolButton *classButton;
     QWidget *timetable;
-    QGridLayout *gridLayout_5;
-    QLabel *timetableDisplay;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout_7;
+    QPushButton *btnPersonalCourse;
+    QSpacerItem *horizontalSpacer_9;
+    QPushButton *btnSchoolCourse;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
+    QStackedWidget *stackedWidget_2;
+    QWidget *PersonalCourse;
+    QWidget *SchoolCourse;
     QWidget *tasks;
     QGridLayout *gridLayout_6;
     QFrame *frame_3;
@@ -149,78 +157,104 @@ public:
         gridLayout_3->setObjectName("gridLayout_3");
         homeDisplay = new QLabel(home);
         homeDisplay->setObjectName("homeDisplay");
-        homeDisplay->setStyleSheet(QString::fromUtf8("background-color: transparent; \n"
+        homeDisplay->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
 "border: 0;\n"
 "font-size: 20px;"));
         homeDisplay->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
-        gridLayout_3->addWidget(homeDisplay, 0, 2, 1, 1);
-
-        settingsButton = new QToolButton(home);
-        settingsButton->setObjectName("settingsButton");
-        settingsButton->setStyleSheet(QString::fromUtf8("background-color: transparent; \n"
-"border: 0;"));
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/tab/img/settings.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        settingsButton->setIcon(icon1);
-        settingsButton->setIconSize(QSize(30, 30));
-        settingsButton->setAutoExclusive(true);
-        settingsButton->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
-
-        gridLayout_3->addWidget(settingsButton, 1, 3, 1, 1);
-
-        homeButton = new QToolButton(home);
-        homeButton->setObjectName("homeButton");
-        homeButton->setStyleSheet(QString::fromUtf8("background-color: transparent; \n"
-"border: 0;"));
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/tab/img/home.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        homeButton->setIcon(icon2);
-        homeButton->setIconSize(QSize(30, 30));
-        homeButton->setAutoExclusive(true);
-        homeButton->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
-
-        gridLayout_3->addWidget(homeButton, 2, 0, 1, 1);
-
-        tasksButton = new QToolButton(home);
-        tasksButton->setObjectName("tasksButton");
-        tasksButton->setStyleSheet(QString::fromUtf8("background-color: transparent; \n"
-"border: 0;"));
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/tab/img/tasks.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        tasksButton->setIcon(icon3);
-        tasksButton->setIconSize(QSize(30, 30));
-        tasksButton->setAutoExclusive(true);
-        tasksButton->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
-
-        gridLayout_3->addWidget(tasksButton, 2, 2, 1, 1);
+        gridLayout_3->addWidget(homeDisplay, 0, 1, 2, 1);
 
         classButton = new QToolButton(home);
         classButton->setObjectName("classButton");
-        classButton->setStyleSheet(QString::fromUtf8("background-color: transparent; \n"
+        classButton->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
 "border: 0;"));
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/tab/img/class.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        classButton->setIcon(icon4);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/tab/img/class.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        classButton->setIcon(icon1);
         classButton->setIconSize(QSize(30, 30));
         classButton->setAutoExclusive(true);
         classButton->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
 
-        gridLayout_3->addWidget(classButton, 3, 1, 1, 1);
+        gridLayout_3->addWidget(classButton, 3, 0, 1, 1);
+
+        tasksButton = new QToolButton(home);
+        tasksButton->setObjectName("tasksButton");
+        tasksButton->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
+"border: 0;"));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/tab/img/tasks.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        tasksButton->setIcon(icon2);
+        tasksButton->setIconSize(QSize(30, 30));
+        tasksButton->setAutoExclusive(true);
+        tasksButton->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
+
+        gridLayout_3->addWidget(tasksButton, 2, 0, 1, 1);
+
+        settingsButton = new QToolButton(home);
+        settingsButton->setObjectName("settingsButton");
+        settingsButton->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
+"border: 0;"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/tab/img/settings.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        settingsButton->setIcon(icon3);
+        settingsButton->setIconSize(QSize(30, 30));
+        settingsButton->setAutoExclusive(true);
+        settingsButton->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
+
+        gridLayout_3->addWidget(settingsButton, 1, 0, 1, 1);
+
+        homeButton = new QToolButton(home);
+        homeButton->setObjectName("homeButton");
+        homeButton->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
+"border: 0;"));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/tab/img/home.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        homeButton->setIcon(icon4);
+        homeButton->setIconSize(QSize(30, 30));
+        homeButton->setAutoExclusive(true);
+        homeButton->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
+
+        gridLayout_3->addWidget(homeButton, 0, 0, 1, 1);
 
         stackedWidget->addWidget(home);
         timetable = new QWidget();
         timetable->setObjectName("timetable");
-        gridLayout_5 = new QGridLayout(timetable);
-        gridLayout_5->setObjectName("gridLayout_5");
-        timetableDisplay = new QLabel(timetable);
-        timetableDisplay->setObjectName("timetableDisplay");
-        timetableDisplay->setStyleSheet(QString::fromUtf8("background-color: transparent; \n"
-"border: 0;\n"
-"font-size: 20px;"));
-        timetableDisplay->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        horizontalLayoutWidget = new QWidget(timetable);
+        horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
+        horizontalLayoutWidget->setGeometry(QRect(120, 20, 351, 51));
+        horizontalLayout_7 = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout_7->setObjectName("horizontalLayout_7");
+        horizontalLayout_7->setContentsMargins(0, 0, 0, 0);
+        btnPersonalCourse = new QPushButton(horizontalLayoutWidget);
+        btnPersonalCourse->setObjectName("btnPersonalCourse");
 
-        gridLayout_5->addWidget(timetableDisplay, 0, 0, 1, 1);
+        horizontalLayout_7->addWidget(btnPersonalCourse);
+
+        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_7->addItem(horizontalSpacer_9);
+
+        btnSchoolCourse = new QPushButton(horizontalLayoutWidget);
+        btnSchoolCourse->setObjectName("btnSchoolCourse");
+
+        horizontalLayout_7->addWidget(btnSchoolCourse);
+
+        verticalLayoutWidget = new QWidget(timetable);
+        verticalLayoutWidget->setObjectName("verticalLayoutWidget");
+        verticalLayoutWidget->setGeometry(QRect(-1, 69, 621, 321));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setObjectName("verticalLayout");
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        stackedWidget_2 = new QStackedWidget(verticalLayoutWidget);
+        stackedWidget_2->setObjectName("stackedWidget_2");
+        PersonalCourse = new QWidget();
+        PersonalCourse->setObjectName("PersonalCourse");
+        stackedWidget_2->addWidget(PersonalCourse);
+        SchoolCourse = new QWidget();
+        SchoolCourse->setObjectName("SchoolCourse");
+        stackedWidget_2->addWidget(SchoolCourse);
+
+        verticalLayout->addWidget(stackedWidget_2);
 
         stackedWidget->addWidget(timetable);
         tasks = new QWidget();
@@ -278,7 +312,7 @@ public:
         tasksDisplay->setObjectName("tasksDisplay");
         sizePolicy1.setHeightForWidth(tasksDisplay->sizePolicy().hasHeightForWidth());
         tasksDisplay->setSizePolicy(sizePolicy1);
-        tasksDisplay->setStyleSheet(QString::fromUtf8("background-color: transparent; \n"
+        tasksDisplay->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
 "border: 0;\n"
 "font-size: 20px;"));
         tasksDisplay->setAlignment(Qt::AlignmentFlag::AlignCenter);
@@ -491,7 +525,7 @@ public:
         gridLayout_4->setObjectName("gridLayout_4");
         settingsDisplay = new QLabel(setting);
         settingsDisplay->setObjectName("settingsDisplay");
-        settingsDisplay->setStyleSheet(QString::fromUtf8("background-color: transparent; \n"
+        settingsDisplay->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
 "border: 0;\n"
 "font-size: 20px;"));
         settingsDisplay->setAlignment(Qt::AlignmentFlag::AlignCenter);
@@ -590,7 +624,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -600,11 +634,12 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "ham", nullptr));
         homeDisplay->setText(QCoreApplication::translate("MainWindow", "\344\270\273\351\241\265", nullptr));
+        classButton->setText(QCoreApplication::translate("MainWindow", "\350\257\276\350\241\250", nullptr));
+        tasksButton->setText(QCoreApplication::translate("MainWindow", "\344\273\273\345\212\241", nullptr));
         settingsButton->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256", nullptr));
         homeButton->setText(QCoreApplication::translate("MainWindow", "\344\270\273\351\241\265", nullptr));
-        tasksButton->setText(QCoreApplication::translate("MainWindow", "\344\273\273\345\212\241", nullptr));
-        classButton->setText(QCoreApplication::translate("MainWindow", "\350\257\276\350\241\250", nullptr));
-        timetableDisplay->setText(QCoreApplication::translate("MainWindow", "\350\257\276\350\241\250", nullptr));
+        btnPersonalCourse->setText(QCoreApplication::translate("MainWindow", "\344\270\252\344\272\272\350\257\276\350\241\250", nullptr));
+        btnSchoolCourse->setText(QCoreApplication::translate("MainWindow", "\346\237\245\350\257\242\350\257\276\350\241\250", nullptr));
         tasksDisplay->setText(QCoreApplication::translate("MainWindow", "\345\276\205\345\212\236", nullptr));
         addButton->setText(QString());
         sortByDeadlineBtn->setText(QCoreApplication::translate("MainWindow", "\346\214\211\346\210\252\346\255\242\346\227\266\351\227\264\346\216\222\345\272\217", nullptr));

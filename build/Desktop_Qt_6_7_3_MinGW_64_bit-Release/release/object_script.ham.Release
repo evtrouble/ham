@@ -1,5 +1,6 @@
 release/classcontrol.o
 release/hamsystem.o
+release/homedisplay.o
 release/main.o
 release/mainwindow.o
 release/netdataaccess.o

@@ -32,7 +32,7 @@ void TaskDisplay::mousePressEvent(QMouseEvent *event)
 void TaskDisplay::init()
 {
     //bool success = NetDataAccess::instance()->loadData(value);
-    NetDataAccess::instance()->loadData();
+    NetDataAccess::instance()->loadTaskData();
 
     NetDataAccess::connect(NetDataAccess::instance().get(), &NetDataAccess::finish, this, [=](QNetworkReply* reply){
         if (reply->error() == QNetworkReply::NoError) {
@@ -72,7 +72,7 @@ void TaskDisplay::updateTaskItem(QListWidgetItem *currentItem, QDateTime &deadli
     TaskItem* widget = static_cast<TaskItem*>(itemWidget(currentItem));
     widget->setData(deadline, text, priority);
     currentItem->setSizeHint(QSize(widget->width(), widget->height()));
-    NetDataAccess::instance()->updateItem(widget->toJson());
+    NetDataAccess::instance()->updateTaskItem(widget->toJson());
 }
 
 void TaskDisplay::addTaskItem(QDateTime &deadline, QString &text, int priority)
@@ -85,7 +85,7 @@ void TaskDisplay::addTaskItem(QDateTime &deadline, QString &text, int priority)
     emit editorHide();
 
     int id = 0;
-    NetDataAccess::instance()->addItem(widget->toJson(), id);
+    NetDataAccess::instance()->addTaskItem(widget->toJson(), id);
     widget->setId(id);
 }
 
@@ -98,7 +98,7 @@ void TaskDisplay::initTaskItem(TaskItem* widget, QListWidgetItem* item)
     widget->show();
 
     connect(widget, &TaskItem::remove, this, [=](QListWidgetItem* currentItem){
-        NetDataAccess::instance()->deleteItem(static_cast<TaskItem*>(itemWidget(currentItem))->toJson());
+        NetDataAccess::instance()->deleteTaskItem(static_cast<TaskItem*>(itemWidget(currentItem))->toJson());
         removeTask(currentItem);
     });
 }

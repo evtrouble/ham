@@ -12,13 +12,13 @@ class NetDataAccess : public QWidget
 private:
     NetDataAccess(QWidget* parent = nullptr);
 
-    constexpr static char server[] = "http://localhost:3000/tasks";
+    constexpr static char server[] = "http://localhost:3000/";
 
 public:
-    bool loadData();
-    bool addItem(QJsonObject&& data, int& id);
-    bool updateItem(QJsonObject&& data);
-    bool deleteItem(QJsonObject&& data);
+    bool loadTaskData();
+    bool addTaskItem(QJsonObject&& data, int& id);
+    bool updateTaskItem(QJsonObject&& data);
+    bool deleteTaskItem(QJsonObject&& data);
 
     static std::unique_ptr<NetDataAccess>& instance();
 

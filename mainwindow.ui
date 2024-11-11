@@ -61,11 +61,11 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="home">
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="2">
+        <item row="0" column="1" rowspan="2">
          <widget class="QLabel" name="homeDisplay">
           <property name="styleSheet">
            <string notr="true">background-color: transparent;
@@ -80,18 +80,18 @@ font-size: 20px;</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="3">
-         <widget class="QToolButton" name="settingsButton">
+        <item row="3" column="0">
+         <widget class="QToolButton" name="classButton">
           <property name="styleSheet">
            <string notr="true">background-color: transparent;
 border: 0;</string>
           </property>
           <property name="text">
-           <string>设置</string>
+           <string>课表</string>
           </property>
           <property name="icon">
            <iconset resource="img.qrc">
-            <normaloff>:/tab/img/settings.png</normaloff>:/tab/img/settings.png</iconset>
+            <normaloff>:/tab/img/class.png</normaloff>:/tab/img/class.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -108,33 +108,6 @@ border: 0;</string>
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="QToolButton" name="homeButton">
-          <property name="styleSheet">
-           <string notr="true">background-color: transparent;
-border: 0;</string>
-          </property>
-          <property name="text">
-           <string>主页</string>
-          </property>
-          <property name="icon">
-           <iconset resource="img.qrc">
-            <normaloff>:/tab/img/home.png</normaloff>:/tab/img/home.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>30</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="autoExclusive">
-           <bool>true</bool>
-          </property>
-          <property name="toolButtonStyle">
-           <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2">
          <widget class="QToolButton" name="tasksButton">
           <property name="styleSheet">
            <string notr="true">background-color: transparent;
@@ -161,18 +134,45 @@ border: 0;</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="1">
-         <widget class="QToolButton" name="classButton">
+        <item row="1" column="0">
+         <widget class="QToolButton" name="settingsButton">
           <property name="styleSheet">
            <string notr="true">background-color: transparent;
 border: 0;</string>
           </property>
           <property name="text">
-           <string>课表</string>
+           <string>设置</string>
           </property>
           <property name="icon">
            <iconset resource="img.qrc">
-            <normaloff>:/tab/img/class.png</normaloff>:/tab/img/class.png</iconset>
+            <normaloff>:/tab/img/settings.png</normaloff>:/tab/img/settings.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="autoExclusive">
+           <bool>true</bool>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QToolButton" name="homeButton">
+          <property name="styleSheet">
+           <string notr="true">background-color: transparent;
+border: 0;</string>
+          </property>
+          <property name="text">
+           <string>主页</string>
+          </property>
+          <property name="icon">
+           <iconset resource="img.qrc">
+            <normaloff>:/tab/img/home.png</normaloff>:/tab/img/home.png</iconset>
           </property>
           <property name="iconSize">
            <size>

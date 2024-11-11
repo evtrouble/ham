@@ -10,6 +10,7 @@ CONFIG += c++17
 SOURCES += \
     classcontrol.cpp \
     hamsystem.cpp \
+    homedisplay.cpp \
     main.cpp \
     mainwindow.cpp \
     netdataaccess.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 HEADERS += \
     classcontrol.h \
     hamsystem.h \
+    homedisplay.h \
     mainwindow.h \
     netdataaccess.h \
     taskdisplay.h \

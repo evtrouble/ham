@@ -8,10 +8,12 @@ NetDataAccess::NetDataAccess(QWidget* parent) : QWidget(parent), access(new QNet
 
 std::unique_ptr<NetDataAccess> NetDataAccess::dataAccess = nullptr;
 
-bool NetDataAccess::loadData()
+bool NetDataAccess::loadTaskData()
 {
     QNetworkRequest request;
-    request.setUrl(QUrl(server));
+    QString url = server;
+    url += "tasks/";
+    request.setUrl(QUrl(url));
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));
     reply = access->get(request);
@@ -22,10 +24,12 @@ bool NetDataAccess::loadData()
     return true;
 }
 
-bool NetDataAccess::addItem(QJsonObject&& data, int& id)
+bool NetDataAccess::addTaskItem(QJsonObject&& data, int& id)
 {
     QNetworkRequest request;
-    request.setUrl(QUrl(server));
+    QString url = server;
+    url += "tasks/";
+    request.setUrl(QUrl(url));
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));
 
@@ -53,11 +57,11 @@ bool NetDataAccess::addItem(QJsonObject&& data, int& id)
     return true;
 }
 
-bool NetDataAccess::updateItem(QJsonObject&& data)
+bool NetDataAccess::updateTaskItem(QJsonObject&& data)
 {
     QNetworkRequest request;
     QString url = server;
-    url += "/" + data["id"].toString();
+    url += "tasks/" + data["id"].toString();
     request.setUrl(QUrl(url));
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));
@@ -67,11 +71,11 @@ bool NetDataAccess::updateItem(QJsonObject&& data)
     return true;
 }
 
-bool NetDataAccess::deleteItem(QJsonObject&& data)
+bool NetDataAccess::deleteTaskItem(QJsonObject&& data)
 {
     QNetworkRequest request;
     QString url = server;
-    url += "/" + data["id"].toString();
+    url += "tasks/" + data["id"].toString();
     request.setUrl(QUrl(url));
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));

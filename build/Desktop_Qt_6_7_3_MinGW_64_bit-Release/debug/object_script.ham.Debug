@@ -1,5 +1,6 @@
 debug/classcontrol.o
 debug/hamsystem.o
+debug/homedisplay.o
 debug/main.o
 debug/mainwindow.o
 debug/netdataaccess.o
