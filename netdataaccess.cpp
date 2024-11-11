@@ -133,7 +133,6 @@ bool NetDataAccess::userLogin(const QString& username, const QString& password)
             } else {
                 QMessageBox::critical(this, "error!", document.object()["error"].toString());
             }
-
         } else {
             qWarning() << "Network error:" << reply->errorString();
         }
@@ -178,7 +177,6 @@ bool NetDataAccess::userRegister(const QString& username, const QString& passwor
             else {
                 QMessageBox::critical(this, "error!", document.object()["error"].toString());
             }
-
         } else {
             qWarning() << "Network error:" << reply->errorString();
         }

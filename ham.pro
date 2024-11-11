@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     netdataaccess.cpp \
+    registeruser.cpp \
     taskdisplay.cpp \
     taskeditor.cpp \
     taskitem.cpp \
@@ -25,13 +26,15 @@ HEADERS += \
     homedisplay.h \
     mainwindow.h \
     netdataaccess.h \
+    registeruser.h \
     taskdisplay.h \
     taskeditor.h \
     taskitem.h \
     taskscontrol.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    registeruser.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

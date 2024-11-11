@@ -1,10 +1,12 @@
 #include "hamsystem.h"
 #include "ui_mainwindow.h"
 #include "netdataaccess.h"
+#include "registeruser.h"
 
 #include <QIcon>
 #include <QDebug>
 #include <QVBoxLayout>
+#include <QMessageBox>
 
 void HamSystem::navConnect(int id)
 {
@@ -64,7 +66,15 @@ HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui), homeDisplay
     });//登录
 
     QPushButton::connect(ui->registerBtn, &QPushButton::clicked, ui->stackedWidget, [=]{
-
+        RegisterUser userRegister(ui->centralwidget);
+        RegisterUser::connect(&userRegister, &RegisterUser::registerUser, ui->centralwidget, [&](const QString& username, const QString& email, const QString& password)
+                {
+            if(!NetDataAccess::instance()->userRegister(username, password, email))return;
+            QMessageBox::information(ui->centralwidget, "注册成功!", "注册成功");
+            userRegister.close();
+        });
+        userRegister.show();
+        userRegister.exec();
     });//注册
 
     ui->tab->hide();
