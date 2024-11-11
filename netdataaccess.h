@@ -16,9 +16,12 @@ private:
 
 public:
     bool loadTaskData();
-    bool addTaskItem(QJsonObject&& data, int& id);
-    bool updateTaskItem(QJsonObject&& data);
-    bool deleteTaskItem(QJsonObject&& data);
+    bool addTaskItem(const QJsonObject& data, int& id);
+    bool updateTaskItem(const QJsonObject& data);
+    bool deleteTaskItem(const QJsonObject& data);
+
+    bool userLogin(const QJsonObject& data);
+    bool userRegister(const QJsonObject& data);
 
     static std::unique_ptr<NetDataAccess>& instance();
 
@@ -26,9 +29,11 @@ private:
     static std::unique_ptr<NetDataAccess> dataAccess;
     std::unique_ptr<QNetworkAccessManager> access;
     QNetworkReply* reply;
+    QString jwt;
 
 signals:
     void finish(QNetworkReply*);
+    void tokenError();
 };
 
 #endif // NETDATAACCESS_H

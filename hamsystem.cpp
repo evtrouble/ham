@@ -1,14 +1,16 @@
 #include "hamsystem.h"
 #include "ui_mainwindow.h"
+#include "netdataaccess.h"
 
 #include <QIcon>
 #include <QDebug>
+#include <QJsonObject>
 #include <QVBoxLayout>
 
 void HamSystem::navConnect(int id)
 {
     QToolButton* btn_changed = btns.at(id);
-    QToolButton::connect(btn_changed, &QToolButton::clicked, ui->stackedWidget, [=](){
+    QToolButton::connect(btn_changed, &QToolButton::clicked, ui->stackedWidget, [=]{
         //切换页面
         if(ui->stackedWidget->currentIndex() < btns.size())
             btns.at(ui->stackedWidget->currentIndex())->setPalette(ui->centralwidget->palette().color(QPalette::Window));
@@ -47,8 +49,24 @@ HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui), homeDisplay
         navConnect(id);
     }
 
-    ui->buttonBox_2->button(QDialogButtonBox::Ok)->setText("确定");
+    ui->buttonBox_2->button(QDialogButtonBox::Ok)->setText("登录");
     ui->buttonBox_2->button(QDialogButtonBox::Cancel)->setText("取消");
+    QDialogButtonBox::connect(ui->buttonBox_2, &QDialogButtonBox::accepted, ui->stackedWidget, [=]{
+        QJsonObject json;
+        json["username"] = ui->usernameEdit->text();
+        json["password"] = ui->passwordEdit->text();
+
+        if(!NetDataAccess::instance()->userLogin(json))return;
+
+        QColor color;
+        color.setRgb(0xff, 0xa5, 0x00);
+        QPalette pal = ui->homeButton->palette();
+        pal.setColor(QPalette::ButtonText, color);
+        ui->homeButton->setPalette(pal);
+        ui->stackedWidget->setCurrentIndex(0);
+        ui->tab->show();
+    });//登录
+
     QDialogButtonBox::connect(ui->buttonBox_2, &QDialogButtonBox::accepted, ui->stackedWidget, [=]{
 
 
@@ -59,7 +77,7 @@ HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui), homeDisplay
         ui->homeButton->setPalette(pal);
         ui->stackedWidget->setCurrentIndex(0);
         ui->tab->show();
-    });//登录
+    });//注册
 
     ui->tab->hide();
     ui->stackedWidget->setCurrentIndex(btns.size());

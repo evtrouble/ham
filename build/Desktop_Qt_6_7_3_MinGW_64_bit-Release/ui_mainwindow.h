@@ -40,14 +40,34 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
+    QToolButton *tasksButton;
+    QToolButton *classButton;
+    QToolButton *homeButton;
+    QToolButton *settingsButton;
     QStackedWidget *stackedWidget;
     QWidget *home;
+    QVBoxLayout *verticalLayout_6;
+    QFrame *frame_6;
     QGridLayout *gridLayout_3;
-    QLabel *homeDisplay;
-    QToolButton *classButton;
-    QToolButton *tasksButton;
-    QToolButton *settingsButton;
-    QToolButton *homeButton;
+    QHBoxLayout *horizontalLayout_12;
+    QSpacerItem *horizontalSpacer_14;
+    QPushButton *exportLogBtn;
+    QSpacerItem *horizontalSpacer_15;
+    QSpacerItem *verticalSpacer_12;
+    QHBoxLayout *horizontalLayout_11;
+    QSpacerItem *horizontalSpacer_10;
+    QPushButton *changePasswordBtn;
+    QSpacerItem *horizontalSpacer_11;
+    QFrame *frame_7;
+    QHBoxLayout *horizontalLayout_10;
+    QLabel *userImageDisplay;
+    QLabel *usernameDisplay;
+    QSpacerItem *horizontalSpacer_16;
+    QSpacerItem *verticalSpacer_11;
+    QHBoxLayout *horizontalLayout_8;
+    QSpacerItem *horizontalSpacer_13;
+    QPushButton *logoutBtn;
+    QSpacerItem *horizontalSpacer_12;
     QWidget *timetable;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout_7;
@@ -114,12 +134,18 @@ public:
     QFrame *frame_5;
     QVBoxLayout *verticalLayout_2;
     QSpacerItem *verticalSpacer;
+    QLabel *label_3;
     QHBoxLayout *horizontalLayout_4;
     QLabel *label;
     QLineEdit *usernameEdit;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_2;
     QLineEdit *passwordEdit;
+    QHBoxLayout *horizontalLayout_13;
+    QSpacerItem *horizontalSpacer_18;
+    QLabel *label_7;
+    QPushButton *pushButton_2;
+    QSpacerItem *horizontalSpacer_17;
     QDialogButtonBox *buttonBox_2;
     QSpacerItem *verticalSpacer_10;
     QSpacerItem *horizontalSpacer_8;
@@ -129,7 +155,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(641, 400);
+        MainWindow->resize(799, 573);
         MainWindow->setMinimumSize(QSize(600, 0));
         MainWindow->setMaximumSize(QSize(16777215, 16777215));
         QIcon icon;
@@ -146,6 +172,58 @@ public:
         centralwidget->setMinimumSize(QSize(300, 0));
         gridLayout = new QGridLayout(centralwidget);
         gridLayout->setObjectName("gridLayout");
+        tasksButton = new QToolButton(centralwidget);
+        tasksButton->setObjectName("tasksButton");
+        tasksButton->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
+"border: 0;"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/tab/img/tasks.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        tasksButton->setIcon(icon1);
+        tasksButton->setIconSize(QSize(30, 30));
+        tasksButton->setAutoExclusive(true);
+        tasksButton->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
+
+        gridLayout->addWidget(tasksButton, 0, 0, 1, 1);
+
+        classButton = new QToolButton(centralwidget);
+        classButton->setObjectName("classButton");
+        classButton->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
+"border: 0;"));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/tab/img/class.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        classButton->setIcon(icon2);
+        classButton->setIconSize(QSize(30, 30));
+        classButton->setAutoExclusive(true);
+        classButton->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
+
+        gridLayout->addWidget(classButton, 0, 1, 1, 1);
+
+        homeButton = new QToolButton(centralwidget);
+        homeButton->setObjectName("homeButton");
+        homeButton->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
+"border: 0;"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/tab/img/home.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        homeButton->setIcon(icon3);
+        homeButton->setIconSize(QSize(30, 30));
+        homeButton->setAutoExclusive(true);
+        homeButton->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
+
+        gridLayout->addWidget(homeButton, 0, 2, 1, 1);
+
+        settingsButton = new QToolButton(centralwidget);
+        settingsButton->setObjectName("settingsButton");
+        settingsButton->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
+"border: 0;"));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/tab/img/settings.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        settingsButton->setIcon(icon4);
+        settingsButton->setIconSize(QSize(30, 30));
+        settingsButton->setAutoExclusive(true);
+        settingsButton->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
+
+        gridLayout->addWidget(settingsButton, 0, 3, 1, 1);
+
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName("stackedWidget");
         sizePolicy.setHeightForWidth(stackedWidget->sizePolicy().hasHeightForWidth());
@@ -153,68 +231,126 @@ public:
         stackedWidget->setMinimumSize(QSize(300, 0));
         home = new QWidget();
         home->setObjectName("home");
-        gridLayout_3 = new QGridLayout(home);
+        verticalLayout_6 = new QVBoxLayout(home);
+        verticalLayout_6->setObjectName("verticalLayout_6");
+        frame_6 = new QFrame(home);
+        frame_6->setObjectName("frame_6");
+        frame_6->setFrameShape(QFrame::Shape::StyledPanel);
+        frame_6->setFrameShadow(QFrame::Shadow::Raised);
+        gridLayout_3 = new QGridLayout(frame_6);
         gridLayout_3->setObjectName("gridLayout_3");
-        homeDisplay = new QLabel(home);
-        homeDisplay->setObjectName("homeDisplay");
-        homeDisplay->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
-"border: 0;\n"
-"font-size: 20px;"));
-        homeDisplay->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        horizontalLayout_12 = new QHBoxLayout();
+        horizontalLayout_12->setObjectName("horizontalLayout_12");
+        horizontalSpacer_14 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        gridLayout_3->addWidget(homeDisplay, 0, 1, 2, 1);
+        horizontalLayout_12->addItem(horizontalSpacer_14);
 
-        classButton = new QToolButton(home);
-        classButton->setObjectName("classButton");
-        classButton->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
-"border: 0;"));
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/tab/img/class.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        classButton->setIcon(icon1);
-        classButton->setIconSize(QSize(30, 30));
-        classButton->setAutoExclusive(true);
-        classButton->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
+        exportLogBtn = new QPushButton(frame_6);
+        exportLogBtn->setObjectName("exportLogBtn");
+        QSizePolicy sizePolicy1(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(exportLogBtn->sizePolicy().hasHeightForWidth());
+        exportLogBtn->setSizePolicy(sizePolicy1);
+        exportLogBtn->setMinimumSize(QSize(0, 30));
+        exportLogBtn->setStyleSheet(QString::fromUtf8("QPushButton{border:2px groove gray;border-radius:10px;padding:2px 4px;border-style: outset;font-size: 20px;}\n"
+"QPushButton:hover{background-color:rgb(229, 241, 251); color: black;}\n"
+"QPushButton:pressed{background-color:rgb(204, 228, 247);border-style: inset;}"));
+        exportLogBtn->setFlat(false);
 
-        gridLayout_3->addWidget(classButton, 3, 0, 1, 1);
+        horizontalLayout_12->addWidget(exportLogBtn);
 
-        tasksButton = new QToolButton(home);
-        tasksButton->setObjectName("tasksButton");
-        tasksButton->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
-"border: 0;"));
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/tab/img/tasks.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        tasksButton->setIcon(icon2);
-        tasksButton->setIconSize(QSize(30, 30));
-        tasksButton->setAutoExclusive(true);
-        tasksButton->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
+        horizontalSpacer_15 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        gridLayout_3->addWidget(tasksButton, 2, 0, 1, 1);
+        horizontalLayout_12->addItem(horizontalSpacer_15);
 
-        settingsButton = new QToolButton(home);
-        settingsButton->setObjectName("settingsButton");
-        settingsButton->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
-"border: 0;"));
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/tab/img/settings.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        settingsButton->setIcon(icon3);
-        settingsButton->setIconSize(QSize(30, 30));
-        settingsButton->setAutoExclusive(true);
-        settingsButton->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
 
-        gridLayout_3->addWidget(settingsButton, 1, 0, 1, 1);
+        gridLayout_3->addLayout(horizontalLayout_12, 2, 0, 1, 1);
 
-        homeButton = new QToolButton(home);
-        homeButton->setObjectName("homeButton");
-        homeButton->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
-"border: 0;"));
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/tab/img/home.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        homeButton->setIcon(icon4);
-        homeButton->setIconSize(QSize(30, 30));
-        homeButton->setAutoExclusive(true);
-        homeButton->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
+        verticalSpacer_12 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
-        gridLayout_3->addWidget(homeButton, 0, 0, 1, 1);
+        gridLayout_3->addItem(verticalSpacer_12, 5, 0, 1, 1);
+
+        horizontalLayout_11 = new QHBoxLayout();
+        horizontalLayout_11->setObjectName("horizontalLayout_11");
+        horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_11->addItem(horizontalSpacer_10);
+
+        changePasswordBtn = new QPushButton(frame_6);
+        changePasswordBtn->setObjectName("changePasswordBtn");
+        sizePolicy1.setHeightForWidth(changePasswordBtn->sizePolicy().hasHeightForWidth());
+        changePasswordBtn->setSizePolicy(sizePolicy1);
+        changePasswordBtn->setMinimumSize(QSize(0, 30));
+        changePasswordBtn->setStyleSheet(QString::fromUtf8("QPushButton{border:2px groove gray;border-radius:10px;padding:2px 4px;border-style: outset;font-size: 20px;}\n"
+"QPushButton:hover{background-color:rgb(229, 241, 251); color: black;}\n"
+"QPushButton:pressed{background-color:rgb(204, 228, 247);border-style: inset;}"));
+        changePasswordBtn->setFlat(false);
+
+        horizontalLayout_11->addWidget(changePasswordBtn);
+
+        horizontalSpacer_11 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_11->addItem(horizontalSpacer_11);
+
+
+        gridLayout_3->addLayout(horizontalLayout_11, 4, 0, 1, 1);
+
+        frame_7 = new QFrame(frame_6);
+        frame_7->setObjectName("frame_7");
+        frame_7->setFrameShape(QFrame::Shape::StyledPanel);
+        frame_7->setFrameShadow(QFrame::Shadow::Raised);
+        horizontalLayout_10 = new QHBoxLayout(frame_7);
+        horizontalLayout_10->setObjectName("horizontalLayout_10");
+        userImageDisplay = new QLabel(frame_7);
+        userImageDisplay->setObjectName("userImageDisplay");
+        userImageDisplay->setMinimumSize(QSize(80, 80));
+        userImageDisplay->setTextFormat(Qt::TextFormat::AutoText);
+        userImageDisplay->setScaledContents(false);
+
+        horizontalLayout_10->addWidget(userImageDisplay);
+
+        usernameDisplay = new QLabel(frame_7);
+        usernameDisplay->setObjectName("usernameDisplay");
+        usernameDisplay->setStyleSheet(QString::fromUtf8("font-size:20px;"));
+
+        horizontalLayout_10->addWidget(usernameDisplay);
+
+        horizontalSpacer_16 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_10->addItem(horizontalSpacer_16);
+
+
+        gridLayout_3->addWidget(frame_7, 0, 0, 1, 1);
+
+        verticalSpacer_11 = new QSpacerItem(20, 30, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
+
+        gridLayout_3->addItem(verticalSpacer_11, 3, 0, 1, 1);
+
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setObjectName("horizontalLayout_8");
+        horizontalSpacer_13 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_8->addItem(horizontalSpacer_13);
+
+        logoutBtn = new QPushButton(frame_6);
+        logoutBtn->setObjectName("logoutBtn");
+        logoutBtn->setMinimumSize(QSize(0, 30));
+        logoutBtn->setStyleSheet(QString::fromUtf8("QPushButton{border:2px groove gray;border-radius:10px;padding:2px 4px;border-style: outset;background-color:red;font-size: 20px;}\n"
+"QPushButton:hover{background-color:rgb(229, 241, 251); color: black;}\n"
+"QPushButton:pressed{background-color:rgb(204, 228, 247);border-style: inset;}"));
+
+        horizontalLayout_8->addWidget(logoutBtn);
+
+        horizontalSpacer_12 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_8->addItem(horizontalSpacer_12);
+
+
+        gridLayout_3->addLayout(horizontalLayout_8, 8, 0, 1, 1);
+
+
+        verticalLayout_6->addWidget(frame_6);
 
         stackedWidget->addWidget(home);
         timetable = new QWidget();
@@ -298,11 +434,11 @@ public:
 
         frame_4 = new QFrame(frame);
         frame_4->setObjectName("frame_4");
-        QSizePolicy sizePolicy1(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(frame_4->sizePolicy().hasHeightForWidth());
-        frame_4->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(frame_4->sizePolicy().hasHeightForWidth());
+        frame_4->setSizePolicy(sizePolicy2);
         frame_4->setFrameShape(QFrame::Shape::NoFrame);
         frame_4->setFrameShadow(QFrame::Shadow::Raised);
         horizontalLayout_9 = new QHBoxLayout(frame_4);
@@ -310,8 +446,8 @@ public:
         horizontalLayout_9->setContentsMargins(9, 0, -1, 0);
         tasksDisplay = new QLabel(frame_4);
         tasksDisplay->setObjectName("tasksDisplay");
-        sizePolicy1.setHeightForWidth(tasksDisplay->sizePolicy().hasHeightForWidth());
-        tasksDisplay->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(tasksDisplay->sizePolicy().hasHeightForWidth());
+        tasksDisplay->setSizePolicy(sizePolicy2);
         tasksDisplay->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
 "border: 0;\n"
 "font-size: 20px;"));
@@ -395,11 +531,11 @@ public:
 
         line = new QFrame(frame_3);
         line->setObjectName("line");
-        QSizePolicy sizePolicy2(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Expanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(line->sizePolicy().hasHeightForWidth());
-        line->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Expanding);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(line->sizePolicy().hasHeightForWidth());
+        line->setSizePolicy(sizePolicy3);
         line->setStyleSheet(QString::fromUtf8(""));
         line->setFrameShadow(QFrame::Shadow::Raised);
         line->setFrameShape(QFrame::Shape::VLine);
@@ -427,8 +563,8 @@ public:
 
         label_4 = new QLabel(editor);
         label_4->setObjectName("label_4");
-        sizePolicy1.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
-        label_4->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
+        label_4->setSizePolicy(sizePolicy2);
 
         verticalLayout_4->addWidget(label_4);
 
@@ -459,11 +595,11 @@ public:
         comboBox->addItem(QString());
         comboBox->addItem(QString());
         comboBox->setObjectName("comboBox");
-        QSizePolicy sizePolicy3(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
-        comboBox->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy4(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Fixed);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
+        comboBox->setSizePolicy(sizePolicy4);
 
         horizontalLayout_2->addWidget(comboBox);
 
@@ -554,20 +690,31 @@ public:
         frame_5->setFrameShape(QFrame::Shape::NoFrame);
         frame_5->setFrameShadow(QFrame::Shadow::Raised);
         verticalLayout_2 = new QVBoxLayout(frame_5);
+        verticalLayout_2->setSpacing(15);
         verticalLayout_2->setObjectName("verticalLayout_2");
         verticalSpacer = new QSpacerItem(20, 120, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         verticalLayout_2->addItem(verticalSpacer);
 
+        label_3 = new QLabel(frame_5);
+        label_3->setObjectName("label_3");
+        label_3->setStyleSheet(QString::fromUtf8("font-size:25px;\n"
+"font: bold;"));
+
+        verticalLayout_2->addWidget(label_3);
+
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName("horizontalLayout_4");
         label = new QLabel(frame_5);
         label->setObjectName("label");
+        label->setStyleSheet(QString::fromUtf8("font-size:18px;"));
 
         horizontalLayout_4->addWidget(label);
 
         usernameEdit = new QLineEdit(frame_5);
         usernameEdit->setObjectName("usernameEdit");
+        usernameEdit->setStyleSheet(QString::fromUtf8(""));
+        usernameEdit->setFrame(true);
 
         horizontalLayout_4->addWidget(usernameEdit);
 
@@ -578,11 +725,13 @@ public:
         horizontalLayout_5->setObjectName("horizontalLayout_5");
         label_2 = new QLabel(frame_5);
         label_2->setObjectName("label_2");
+        label_2->setStyleSheet(QString::fromUtf8("font-size:18px;"));
 
         horizontalLayout_5->addWidget(label_2);
 
         passwordEdit = new QLineEdit(frame_5);
         passwordEdit->setObjectName("passwordEdit");
+        passwordEdit->setStyleSheet(QString::fromUtf8(""));
         passwordEdit->setEchoMode(QLineEdit::EchoMode::Password);
 
         horizontalLayout_5->addWidget(passwordEdit);
@@ -590,8 +739,47 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_5);
 
+        horizontalLayout_13 = new QHBoxLayout();
+        horizontalLayout_13->setObjectName("horizontalLayout_13");
+        horizontalSpacer_18 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_13->addItem(horizontalSpacer_18);
+
+        label_7 = new QLabel(frame_5);
+        label_7->setObjectName("label_7");
+        label_7->setCursor(QCursor(Qt::CursorShape::ArrowCursor));
+        label_7->setStyleSheet(QString::fromUtf8("font-size:12px;color:0x888888;"));
+
+        horizontalLayout_13->addWidget(label_7);
+
+        pushButton_2 = new QPushButton(frame_5);
+        pushButton_2->setObjectName("pushButton_2");
+        QSizePolicy sizePolicy5(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Fixed);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
+        pushButton_2->setSizePolicy(sizePolicy5);
+        QPalette palette;
+        QBrush brush(QColor(77, 105, 245, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::ButtonText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
+        pushButton_2->setPalette(palette);
+        pushButton_2->setStyleSheet(QString::fromUtf8("font-size:12px;\n"
+"padding:3px;"));
+
+        horizontalLayout_13->addWidget(pushButton_2);
+
+        horizontalSpacer_17 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_13->addItem(horizontalSpacer_17);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_13);
+
         buttonBox_2 = new QDialogButtonBox(frame_5);
         buttonBox_2->setObjectName("buttonBox_2");
+        buttonBox_2->setStyleSheet(QString::fromUtf8("font-size:18px;"));
         buttonBox_2->setStandardButtons(QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok);
         buttonBox_2->setCenterButtons(true);
 
@@ -613,7 +801,7 @@ public:
 
         stackedWidget->addWidget(login);
 
-        gridLayout->addWidget(stackedWidget, 0, 0, 1, 1);
+        gridLayout->addWidget(stackedWidget, 1, 3, 1, 1);
 
         MainWindow->setCentralWidget(centralwidget);
         tab = new QToolBar(MainWindow);
@@ -624,7 +812,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -633,11 +821,15 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "ham", nullptr));
-        homeDisplay->setText(QCoreApplication::translate("MainWindow", "\344\270\273\351\241\265", nullptr));
-        classButton->setText(QCoreApplication::translate("MainWindow", "\350\257\276\350\241\250", nullptr));
         tasksButton->setText(QCoreApplication::translate("MainWindow", "\344\273\273\345\212\241", nullptr));
-        settingsButton->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256", nullptr));
+        classButton->setText(QCoreApplication::translate("MainWindow", "\350\257\276\350\241\250", nullptr));
         homeButton->setText(QCoreApplication::translate("MainWindow", "\344\270\273\351\241\265", nullptr));
+        settingsButton->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256", nullptr));
+        exportLogBtn->setText(QCoreApplication::translate("MainWindow", "\345\257\274\345\207\272\346\212\245\350\241\250", nullptr));
+        changePasswordBtn->setText(QCoreApplication::translate("MainWindow", "\344\277\256\346\224\271\345\257\206\347\240\201", nullptr));
+        userImageDisplay->setText(QString());
+        usernameDisplay->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        logoutBtn->setText(QCoreApplication::translate("MainWindow", "\351\200\200\345\207\272\347\231\273\345\275\225", nullptr));
         btnPersonalCourse->setText(QCoreApplication::translate("MainWindow", "\344\270\252\344\272\272\350\257\276\350\241\250", nullptr));
         btnSchoolCourse->setText(QCoreApplication::translate("MainWindow", "\346\237\245\350\257\242\350\257\276\350\241\250", nullptr));
         tasksDisplay->setText(QCoreApplication::translate("MainWindow", "\345\276\205\345\212\236", nullptr));
@@ -652,8 +844,13 @@ public:
 
         label_6->setText(QCoreApplication::translate("MainWindow", "\346\210\252\346\255\242\346\227\245\346\234\237\357\274\232", nullptr));
         settingsDisplay->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "\346\254\242\350\277\216\347\231\273\345\275\225", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "\350\264\246\345\217\267\357\274\232", nullptr));
+        usernameEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "\350\257\267\350\276\223\345\205\245\350\264\246\345\217\267", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "\345\257\206\347\240\201\357\274\232", nullptr));
+        passwordEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "\350\257\267\350\276\223\345\205\245\345\257\206\347\240\201", nullptr));
+        label_7->setText(QCoreApplication::translate("MainWindow", "\350\277\230\346\262\241\346\234\211\350\264\246\345\217\267?", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("MainWindow", "\346\263\250\345\206\214", nullptr));
         tab->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 

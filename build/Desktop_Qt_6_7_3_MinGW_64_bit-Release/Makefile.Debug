@@ -144,6 +144,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) debug\qrc_img.cpp
 debug/qrc_img.cpp: ../../img.qrc \
 		../../../../qt/6.7.3/mingw_64/bin/rcc.exe \
+		../../img/people.png \
 		../../img/icon.png \
 		../../img/class.png \
 		../../img/settings.png \
@@ -2176,7 +2177,14 @@ debug/homedisplay.o: ../../homedisplay.cpp ../../homedisplay.h \
 		../../../../qt/6.7.3/mingw_64/include/QtCore/qitemselectionmodel.h \
 		../../../../qt/6.7.3/mingw_64/include/QtGui/QMouseEvent \
 		../../taskeditor.h \
-		../../../../qt/6.7.3/mingw_64/include/QtWidgets/QListWidgetItem
+		../../../../qt/6.7.3/mingw_64/include/QtWidgets/QListWidgetItem \
+		../../../../qt/6.7.3/mingw_64/include/QtWidgets/QFileDialog \
+		../../../../qt/6.7.3/mingw_64/include/QtWidgets/qfiledialog.h \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/qdir.h \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/qfile.h \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/qfiledevice.h \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/qfileinfo.h \
+		../../../../qt/6.7.3/mingw_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\homedisplay.o ..\..\homedisplay.cpp
 
 debug/main.o: ../../main.cpp ../../mainwindow.h \
