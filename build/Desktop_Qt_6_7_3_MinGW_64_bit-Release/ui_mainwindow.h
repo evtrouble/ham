@@ -387,7 +387,7 @@ public:
         gridLayout_2->setObjectName("gridLayout_2");
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName("verticalLayout_4");
-        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
 
         verticalLayout_4->addItem(verticalSpacer_3);
 
@@ -398,7 +398,7 @@ public:
 
         verticalLayout_4->addWidget(label_4);
 
-        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
 
         verticalLayout_4->addItem(verticalSpacer_4);
 
@@ -409,7 +409,7 @@ public:
 
         verticalLayout_4->addWidget(textEdit);
 
-        verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
 
         verticalLayout_4->addItem(verticalSpacer_5);
 
@@ -455,7 +455,7 @@ public:
 
         verticalLayout_4->addLayout(horizontalLayout_3);
 
-        verticalSpacer_7 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        verticalSpacer_7 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
 
         verticalLayout_4->addItem(verticalSpacer_7);
 
@@ -590,7 +590,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(4);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
