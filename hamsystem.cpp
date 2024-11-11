@@ -62,6 +62,6 @@ HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui)
     });//登录
 
     ui->tab->hide();
-
+    qDebug()<<btns.size();
     ui->stackedWidget->setCurrentIndex(btns.size());
 }
