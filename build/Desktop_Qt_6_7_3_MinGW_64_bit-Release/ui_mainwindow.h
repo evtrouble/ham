@@ -144,7 +144,7 @@ public:
     QHBoxLayout *horizontalLayout_13;
     QSpacerItem *horizontalSpacer_18;
     QLabel *label_7;
-    QPushButton *pushButton_2;
+    QPushButton *registerBtn;
     QSpacerItem *horizontalSpacer_17;
     QDialogButtonBox *buttonBox_2;
     QSpacerItem *verticalSpacer_10;
@@ -752,23 +752,23 @@ public:
 
         horizontalLayout_13->addWidget(label_7);
 
-        pushButton_2 = new QPushButton(frame_5);
-        pushButton_2->setObjectName("pushButton_2");
+        registerBtn = new QPushButton(frame_5);
+        registerBtn->setObjectName("registerBtn");
         QSizePolicy sizePolicy5(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Fixed);
         sizePolicy5.setHorizontalStretch(0);
         sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy5);
+        sizePolicy5.setHeightForWidth(registerBtn->sizePolicy().hasHeightForWidth());
+        registerBtn->setSizePolicy(sizePolicy5);
         QPalette palette;
         QBrush brush(QColor(77, 105, 245, 255));
         brush.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::ButtonText, brush);
         palette.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        pushButton_2->setPalette(palette);
-        pushButton_2->setStyleSheet(QString::fromUtf8("font-size:12px;\n"
+        registerBtn->setPalette(palette);
+        registerBtn->setStyleSheet(QString::fromUtf8("font-size:12px;\n"
 "padding:3px;"));
 
-        horizontalLayout_13->addWidget(pushButton_2);
+        horizontalLayout_13->addWidget(registerBtn);
 
         horizontalSpacer_17 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
@@ -812,7 +812,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(4);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -850,7 +850,7 @@ public:
         label_2->setText(QCoreApplication::translate("MainWindow", "\345\257\206\347\240\201\357\274\232", nullptr));
         passwordEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "\350\257\267\350\276\223\345\205\245\345\257\206\347\240\201", nullptr));
         label_7->setText(QCoreApplication::translate("MainWindow", "\350\277\230\346\262\241\346\234\211\350\264\246\345\217\267?", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "\346\263\250\345\206\214", nullptr));
+        registerBtn->setText(QCoreApplication::translate("MainWindow", "\346\263\250\345\206\214", nullptr));
         tab->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 

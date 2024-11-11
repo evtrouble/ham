@@ -1916,6 +1916,33 @@ debug/hamsystem.o: ../../hamsystem.cpp ../../hamsystem.h \
 		../../../../qt/6.7.3/mingw_64/include/QtGui/QMouseEvent \
 		../../taskeditor.h \
 		../../../../qt/6.7.3/mingw_64/include/QtWidgets/QListWidgetItem \
+		../../netdataaccess.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qtnetworkexports.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/QSharedDataPointer \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/QUrl \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/QSslConfiguration \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qsslsocket.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qtcpsocket.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qabstractsocket.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qhostaddress.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qsslerror.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qsslcertificate.h \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/qcryptographichash.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qssl.h \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/QFlags \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/QMetaType \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/QNetworkRequest \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/QNetworkReply \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qnetworkreply.h \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/QIODevice \
 		../../../../qt/6.7.3/mingw_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\hamsystem.o ..\..\hamsystem.cpp
 
@@ -2178,6 +2205,33 @@ debug/homedisplay.o: ../../homedisplay.cpp ../../homedisplay.h \
 		../../../../qt/6.7.3/mingw_64/include/QtGui/QMouseEvent \
 		../../taskeditor.h \
 		../../../../qt/6.7.3/mingw_64/include/QtWidgets/QListWidgetItem \
+		../../netdataaccess.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qtnetworkexports.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/QSharedDataPointer \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/QUrl \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/QSslConfiguration \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qsslsocket.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qtcpsocket.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qabstractsocket.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qhostaddress.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qsslerror.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qsslcertificate.h \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/qcryptographichash.h \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qssl.h \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/QFlags \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/QMetaType \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/QNetworkRequest \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/QNetworkReply \
+		../../../../qt/6.7.3/mingw_64/include/QtNetwork/qnetworkreply.h \
+		../../../../qt/6.7.3/mingw_64/include/QtCore/QIODevice \
 		../../../../qt/6.7.3/mingw_64/include/QtWidgets/QFileDialog \
 		../../../../qt/6.7.3/mingw_64/include/QtWidgets/qfiledialog.h \
 		../../../../qt/6.7.3/mingw_64/include/QtCore/qdir.h \
@@ -2873,7 +2927,11 @@ debug/netdataaccess.o: ../../netdataaccess.cpp ../../netdataaccess.h \
 		../../../../qt/6.7.3/mingw_64/include/QtCore/quuid.h \
 		../../../../qt/6.7.3/mingw_64/include/QtCore/QJsonDocument \
 		../../../../qt/6.7.3/mingw_64/include/QtCore/qjsondocument.h \
-		../../../../qt/6.7.3/mingw_64/include/QtCore/QEventLoop
+		../../../../qt/6.7.3/mingw_64/include/QtCore/QEventLoop \
+		../../../../qt/6.7.3/mingw_64/include/QtWidgets/QMessageBox \
+		../../../../qt/6.7.3/mingw_64/include/QtWidgets/qmessagebox.h \
+		../../../../qt/6.7.3/mingw_64/include/QtWidgets/qdialog.h \
+		../../../../qt/6.7.3/mingw_64/include/QtWidgets/qdialogbuttonbox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\netdataaccess.o ..\..\netdataaccess.cpp
 
 debug/taskdisplay.o: ../../taskdisplay.cpp ../../taskdisplay.h \

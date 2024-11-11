@@ -8,9 +8,9 @@ class HomeDisplay
 {
 public:
     HomeDisplay(Ui::MainWindow* ui);
+    void setUsername(const QString& username);
 
 private:
-    QString username;
     Ui::MainWindow *ui;
 };
 

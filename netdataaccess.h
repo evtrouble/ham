@@ -20,8 +20,9 @@ public:
     bool updateTaskItem(const QJsonObject& data);
     bool deleteTaskItem(const QJsonObject& data);
 
-    bool userLogin(const QJsonObject& data);
-    bool userRegister(const QJsonObject& data);
+    bool userLogin(const QString& username, const QString& password);
+    bool userRegister(const QString& username, const QString& password, const QString& email);
+    bool changePassword(const QString& old_password, const QString& new_password);
 
     static std::unique_ptr<NetDataAccess>& instance();
 
