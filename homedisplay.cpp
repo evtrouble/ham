@@ -1,8 +1,10 @@
 #include "homedisplay.h"
 #include "ui_mainwindow.h"
 #include "netdataaccess.h"
+#include "passwordchange.h"
 
 #include <QFileDialog>
+#include <QMessageBox>
 #include <QPushButton>
 
 HomeDisplay::HomeDisplay(Ui::MainWindow* ui) : ui(ui)
@@ -28,12 +30,37 @@ HomeDisplay::HomeDisplay(Ui::MainWindow* ui) : ui(ui)
     });//导出报表
 
     QPushButton::connect(ui->changePasswordBtn, &QPushButton::clicked, ui->stackedWidget, [=]{
-        //NetDataAccess::instance()->
-
+        PassWordChange passwordChange(ui->centralwidget);
+        PassWordChange::connect(&passwordChange, &PassWordChange::changePassword, ui->centralwidget, [&](const QString& old_password, const QString& new_password)
+                              {
+                                  if(!NetDataAccess::instance()->changePassword(old_password, new_password))return;
+                                  QMessageBox::information(ui->centralwidget, "注册成功!", "注册成功");
+                                  passwordChange.close();
+                                  ui->stackedWidget->setCurrentIndex(ui->stackedWidget->count() - 1);//登出
+                                  ui->tab->hide();
+                              });
+        passwordChange.show();
+        passwordChange.exec();
     });//更改密码
 }
 
 void HomeDisplay::setUsername(const QString& username)
 {
     ui->usernameDisplay->setText(username);
+}
+
+void HomeDisplay::setuserType(UserType userType)
+{
+    this->userType = userType;
+    switch (userType) {
+    case UserType::ADMINISTRATOR:
+        ui->exportLogBtn->show();
+        break;
+    case UserType::ORDINARY:
+         ui->exportLogBtn->hide();
+        break;
+    default:
+        QMessageBox::critical(ui->centralwidget, "error!", "用户类型未知！");
+        break;
+    }
 }

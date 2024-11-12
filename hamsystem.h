@@ -8,12 +8,6 @@
 #include "mainwindow.h"
 #include "homedisplay.h"
 
-enum class UserType
-{
-    ADMINISTRATOR,
-    ORDINARY
-};
-
 class HamSystem
 {
 public:

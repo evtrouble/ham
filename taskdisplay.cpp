@@ -52,7 +52,6 @@ void TaskDisplay::init()
                     initTaskItem(widget, item);
                 }
             }
-
         } else {
             qWarning() << "Network error:" << reply->errorString();
         }

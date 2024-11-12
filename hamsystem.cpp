@@ -53,7 +53,11 @@ HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui), homeDisplay
     ui->buttonBox_2->button(QDialogButtonBox::Ok)->setText("登录");
     ui->buttonBox_2->button(QDialogButtonBox::Cancel)->setText("取消");
     QDialogButtonBox::connect(ui->buttonBox_2, &QDialogButtonBox::accepted, ui->stackedWidget, [=]{
-        if(!NetDataAccess::instance()->userLogin(ui->usernameEdit->text(), ui->passwordEdit->text()))return;
+        bool isAdmin = false;
+        if(!NetDataAccess::instance()->userLogin(ui->usernameEdit->text(), ui->passwordEdit->text(), isAdmin))return;
+        homeDisplay.setUsername(ui->usernameEdit->text());
+        if(isAdmin) homeDisplay.setuserType(UserType::ADMINISTRATOR);
+        else homeDisplay.setuserType(UserType::ORDINARY);
 
         QColor color;
         color.setRgb(0xff, 0xa5, 0x00);
@@ -68,7 +72,7 @@ HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui), homeDisplay
     QPushButton::connect(ui->registerBtn, &QPushButton::clicked, ui->stackedWidget, [=]{
         RegisterUser userRegister(ui->centralwidget);
         RegisterUser::connect(&userRegister, &RegisterUser::registerUser, ui->centralwidget, [&](const QString& username, const QString& email, const QString& password)
-                {
+        {
             if(!NetDataAccess::instance()->userRegister(username, password, email))return;
             QMessageBox::information(ui->centralwidget, "注册成功!", "注册成功");
             userRegister.close();
@@ -76,6 +80,7 @@ HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui), homeDisplay
         userRegister.show();
         userRegister.exec();
     });//注册
+
 
     ui->tab->hide();
     ui->stackedWidget->setCurrentIndex(btns.size());

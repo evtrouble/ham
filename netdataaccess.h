@@ -20,7 +20,7 @@ public:
     bool updateTaskItem(const QJsonObject& data);
     bool deleteTaskItem(const QJsonObject& data);
 
-    bool userLogin(const QString& username, const QString& password);
+    bool userLogin(const QString& username, const QString& password, bool& isAdmin);
     bool userRegister(const QString& username, const QString& password, const QString& email);
     bool changePassword(const QString& old_password, const QString& new_password);
 

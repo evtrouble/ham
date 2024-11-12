@@ -101,7 +101,7 @@ std::unique_ptr<NetDataAccess>& NetDataAccess::instance()
     return dataAccess;
 }
 
-bool NetDataAccess::userLogin(const QString& username, const QString& password)
+bool NetDataAccess::userLogin(const QString& username, const QString& password, bool& isAdmin)
 {
     QJsonObject json;
     json["username"] = username;
@@ -128,7 +128,9 @@ bool NetDataAccess::userLogin(const QString& username, const QString& password)
             QVariant stateCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
             if(!stateCode.isValid())return;
             if(stateCode.toInt() == 200){
-                jwt = document.object()["token"].toString();
+                auto obj = document.object();
+                jwt = obj["token"].toString();
+                isAdmin = obj["user"].toObject()["isAdmin"].toBool();
                 success = true;
             } else {
                 QMessageBox::critical(this, "error!", document.object()["error"].toString());
@@ -220,7 +222,6 @@ bool NetDataAccess::changePassword(const QString& old_password, const QString& n
             else {
                 QMessageBox::critical(this, "error!", document.object()["error"].toString());
             }
-
         } else {
             qWarning() << "Network error:" << reply->errorString();
         }

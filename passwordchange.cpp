@@ -1,15 +1,15 @@
-#include "registeruser.h"
-#include "ui_registeruser.h"
+#include "passwordchange.h"
+#include "ui_passwordchange.h"
 
 #include <QMessageBox>
 #include <QPushButton>
 
-RegisterUser::RegisterUser(QWidget *parent)
+PassWordChange::PassWordChange(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::RegisterUser)
+    , ui(new Ui::PassWordChange)
 {
     ui->setupUi(this);
-    ui->buttonBox->button(QDialogButtonBox::Ok)->setText("注册");
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setText("确定");
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText("取消");
 
     QDialogButtonBox::connect(ui->buttonBox, &QDialogButtonBox::accepted, this, [=]{
@@ -19,7 +19,7 @@ RegisterUser::RegisterUser(QWidget *parent)
             return;
         }
 
-        emit registerUser(ui->usernameEdit->text(), ui->userEmailEdit->text(), ui->passwordEdit->text());
+        emit changePassword(ui->oldPassword->text(), ui->passwordEdit->text());
     });//注册
 
     QDialogButtonBox::connect(ui->buttonBox, &QDialogButtonBox::rejected, this, [=]{
@@ -27,7 +27,7 @@ RegisterUser::RegisterUser(QWidget *parent)
     });//取消
 }
 
-RegisterUser::~RegisterUser()
+PassWordChange::~PassWordChange()
 {
     delete ui;
 }

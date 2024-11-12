@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     netdataaccess.cpp \
+    passwordchange.cpp \
     registeruser.cpp \
     taskdisplay.cpp \
     taskeditor.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     homedisplay.h \
     mainwindow.h \
     netdataaccess.h \
+    passwordchange.h \
     registeruser.h \
     taskdisplay.h \
     taskeditor.h \
@@ -34,6 +36,7 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui \
+    passwordchange.ui \
     registeruser.ui
 
 # Default rules for deployment.
