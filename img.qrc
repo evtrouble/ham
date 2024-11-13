@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/tab">
         <file>img/home.png</file>
-        <file>img/settings.png</file>
+        <file>img/clock.png</file>
         <file>img/tasks.png</file>
         <file>img/class.png</file>
     </qresource>

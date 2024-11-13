@@ -31,7 +31,7 @@ HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui), homeDisplay
     btns.append(ui->homeButton);
     btns.append(ui->classButton);
     btns.append(ui->tasksButton);
-    btns.append(ui->settingsButton);
+    btns.append(ui->clockButton);
 
     //按钮均匀分布
     QVBoxLayout *VLayout = new QVBoxLayout;
