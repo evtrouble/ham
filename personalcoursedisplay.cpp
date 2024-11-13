@@ -8,8 +8,10 @@
 #include <QJsonDocument>
 #include <QMessageBox>
 #include <QJsonParseError>
+#include <QMouseEvent>
+#include <QMessageBox>
 
-PersonalCourseDisplay::PersonalCourseDisplay(QWidget *parent) : QTableWidget(parent)
+PersonalCourseDisplay::PersonalCourseDisplay(QWidget *parent) : QTableWidget(parent), courses(MAX_DAY * MAX_TIME)
 {
     horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     verticalHeader()->setMinimumSectionSize(80);
@@ -24,51 +26,18 @@ void PersonalCourseDisplay::setData(const QJsonObject& data)
 
 void PersonalCourseDisplay::displayCourse(const QJsonArray& courses)
 {
-    //"courseId": "CS101",
-    // "name": "计算机导论",
-    //          "instructor": "张教授",
-    //                         "credit": 3,
-    //                         "schedules": [
-    //                                           {
-    //                                               "dayOfWeek": 1,
-    //                                               "startSlot": 1,
-    //                                               "endSlot": 2,
-    //                                               "classroom": "教学楼101",
-    //                                               "weekStart": 1,
-    //                                               "weekEnd": 16,
-    //                                               "weekType": "all"
-    //                                           }
-    // ]
     clearContents();
     for(const auto& course : courses)
     {
-        const auto& obj = course.toObject();
-        const auto& schedule = obj["schedules"];
-
-        QString text = obj["name"].toString() + "<br/>";
-        int i = schedule["startSlot"].toInt() - 1;
-        int i_end = schedule["endSlot"].toInt();
-        int j = schedule["dayOfWeek"].toInt();
-        setSpan(i, j, i_end - i, 1);
+        auto& course_ = setCourseItem(course.toObject());
         const QStringView& color = colors[QRandomGenerator::global()->bounded(colors.size())];
-        item(i, j)->setBackground(QColor(color.mid(1, 2).toInt(nullptr, 16),
-                                         color.mid(3, 2).toInt(nullptr, 16), color.mid(5, 2).toInt(nullptr, 16)));
-        text += "<font style = 'font-size:10px;'>" +
-                schedule["weekStart"].toString() + "-" + schedule["weekEnd"].toString() + "周, ";//周数
-        switch (schedule["weekType"].toString().at(0).toLatin1()) {
-        case 'a':
-            break;
-        case 'o':
-            text += "单周, ";
-            break;
-        case 'e':
-            text += "双周, ";
-            break;
-        default:
-            break;
-        }
-        text += QString::number(i_end - i) + ", " + schedule["classroom"].toString() + "</font> <br/>";
-        item(i, j)->setText(text);
+
+        setSpan(course_.startSlot, course_.dayOfWeek, course_.slotInterval, 1);
+
+        const auto& temp = item(course_.startSlot, course_.dayOfWeek);
+        temp->setBackground(QColor(color.mid(1, 2).toInt(nullptr, 16),
+                    color.mid(3, 2).toInt(nullptr, 16), color.mid(5, 2).toInt(nullptr, 16)));
+        temp->setText(course_.toSimpleString());
     }
 }
 
@@ -98,5 +67,45 @@ void PersonalCourseDisplay::init(int week)
 
 void PersonalCourseDisplay::mousePressEvent(QMouseEvent *event)
 {
+    auto temp = itemAt(event->pos());
+    if(temp != nullptr)
+    {
+        QMessageBox::about(this, "课程详细信息", courses[temp->column() * MAX_TIME + temp->row()].toString());
+    }
     QTableWidget::mousePressEvent(event);
+}
+
+Course& PersonalCourseDisplay::setCourseItem(const QJsonObject& course)
+{
+    const auto& schedule = course["schedules"];
+    int i = schedule["startSlot"].toInt() - 1;
+    int j = schedule["dayOfWeek"].toInt();
+    auto& course_ = courses[j * MAX_TIME + i];
+
+    course_.courseId = course["courseId"].toString();
+    course_.name = course["name"].toString();
+    course_.instructor = course["instructor"].toString();
+    course_.credit = course["credit"].toInt();
+    course_.dayOfWeek = j;
+    course_.weekStart = course["weekStart"].toInt();
+    course_.weekEnd = course["weekEnd"].toInt();
+    course_.slotInterval = course["endSlot"].toInt() - i;
+    course_.startSlot = course["startSlot"].toInt();
+    course_.classroom = course["classroom"].toString();
+
+    switch (schedule["weekType"].toString().at(0).toLatin1()) {
+    case 'a':
+        course_.weekType = WeekType::ALL;
+        break;
+    case 'o':
+        course_.weekType = WeekType::ODD;
+        break;
+    case 'e':
+        course_.weekType = WeekType::EVEN;
+        break;
+    default:
+        break;
+    }
+
+    return course_;
 }
