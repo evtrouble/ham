@@ -51,7 +51,7 @@ bool NetDataAccess::addTaskItem(const QJsonObject& data, int& id)
             // }
             id = document.object()["id"].toInt();
         } else {
-            qWarning() << "Network error:" << reply->errorString();
+            QMessageBox::critical(this, "Network error!", reply->errorString());
         }
         reply->deleteLater();
         loop.quit();
@@ -136,7 +136,7 @@ bool NetDataAccess::userLogin(const QString& username, const QString& password, 
                 QMessageBox::critical(this, "error!", document.object()["error"].toString());
             }
         } else {
-            qWarning() << "Network error:" << reply->errorString();
+            QMessageBox::critical(this, "Network error!", reply->errorString());
         }
         reply->deleteLater();
         loop.quit();
@@ -180,7 +180,7 @@ bool NetDataAccess::userRegister(const QString& username, const QString& passwor
                 QMessageBox::critical(this, "error!", document.object()["error"].toString());
             }
         } else {
-            qWarning() << "Network error:" << reply->errorString();
+            QMessageBox::critical(this, "Network error!", reply->errorString());
         }
         reply->deleteLater();
         loop.quit();
@@ -223,7 +223,7 @@ bool NetDataAccess::changePassword(const QString& old_password, const QString& n
                 QMessageBox::critical(this, "error!", document.object()["error"].toString());
             }
         } else {
-            qWarning() << "Network error:" << reply->errorString();
+            QMessageBox::critical(this, "Network error!", reply->errorString());
         }
         reply->deleteLater();
         loop.quit();
