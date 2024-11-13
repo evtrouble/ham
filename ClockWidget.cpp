@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 
 ClockWidget::ClockWidget(Ui::MainWindow* ui, QWidget *parent) 
-    : QWidget(parent), ui(ui), alarmSound(new QSound("music/music.ogg"))  // 假设您的声音文件位于资源文件中
+    : QWidget(parent), ui(ui), alarmSound(new QSound("music.ogg"))  // 假设您的声音文件位于资源文件中
 {
     // 连接按钮点击信号到槽函数
     connect(ui->setAlarmBtn, &QPushButton::clicked, this, &ClockWidget::onSetAlarmClicked);
