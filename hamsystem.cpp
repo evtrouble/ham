@@ -81,11 +81,10 @@ HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui), homeDisplay
         userRegister.exec();
     });//注册
 
-
     ui->tab->hide();
     ui->stackedWidget->setCurrentIndex(btns.size());
 
-    ui->stackedWidget->setCurrentIndex(0);
-    ui->tab->show();
-    homeDisplay.setuserType(UserType::ORDINARY);
+    // ui->stackedWidget->setCurrentIndex(0);
+    // ui->tab->show();
+    // homeDisplay.setuserType(UserType::ORDINARY);
 }

@@ -101,7 +101,7 @@ border: 0;</string>
      </widget>
     </item>
     <item row="0" column="3">
-     <widget class="QToolButton" name="settingsButton">
+     <widget class="QToolButton" name="clockButton">
       <property name="styleSheet">
        <string notr="true">background-color: transparent;
 border: 0;</string>
@@ -169,7 +169,7 @@ border: 0;</string>
        </size>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="home">
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1255,176 +1255,153 @@ padding: 3px;</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="setting">
-       <layout class="QGridLayout" name="gridLayout_4">
+      <widget class="QWidget" name="clock">
+       <layout class="QGridLayout" name="gridLayout_11">
         <item row="0" column="0">
-         <widget class="QLabel" name="settingsDisplay">
-          <property name="styleSheet">
-           <string notr="true">background-color: transparent;
-border: 0;
-font-size: 20px;</string>
+         <widget class="QFrame" name="frame_8">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
           </property>
-          <property name="text">
-           <string>设置</string>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
           </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
-          </property>
+          <widget class="QPushButton" name="setAlarmBtn">
+           <property name="geometry">
+            <rect>
+             <x>260</x>
+             <y>30</y>
+             <width>93</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>设置闹钟</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="startCountdownBtn">
+           <property name="geometry">
+            <rect>
+             <x>150</x>
+             <y>90</y>
+             <width>93</width>
+             <height>28</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>开始倒计时</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="startStopwatchBtn">
+           <property name="geometry">
+            <rect>
+             <x>150</x>
+             <y>150</y>
+             <width>93</width>
+             <height>28</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>开始计时</string>
+           </property>
+          </widget>
+          <widget class="QTimeEdit" name="countdownTimeEdit">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>90</y>
+             <width>118</width>
+             <height>25</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="resetCountdownBtn">
+           <property name="geometry">
+            <rect>
+             <x>370</x>
+             <y>90</y>
+             <width>93</width>
+             <height>28</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>重置</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="resetStopwatchBtn">
+           <property name="geometry">
+            <rect>
+             <x>370</x>
+             <y>150</y>
+             <width>93</width>
+             <height>28</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>重置</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="stopCountdownBtn">
+           <property name="geometry">
+            <rect>
+             <x>260</x>
+             <y>90</y>
+             <width>93</width>
+             <height>28</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>停止</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="stopStopwatchBtn">
+           <property name="geometry">
+            <rect>
+             <x>260</x>
+             <y>150</y>
+             <width>93</width>
+             <height>28</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>停止</string>
+           </property>
+          </widget>
+          <widget class="QDateTimeEdit" name="alarmTimeEdit">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>30</y>
+             <width>194</width>
+             <height>25</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QTimeEdit" name="stopwatchTimeEdit">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>150</y>
+             <width>118</width>
+             <height>25</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QLabel" name="notificationLabel">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>200</y>
+             <width>101</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>消息通知</string>
+           </property>
+          </widget>
          </widget>
         </item>
        </layout>
-      </widget>
-      <widget class="QWidget" name="clock">
-       <widget class="QFrame" name="frame_8">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>0</y>
-          <width>483</width>
-          <height>331</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
-        </property>
-        <widget class="QPushButton" name="setAlarmBtn">
-         <property name="geometry">
-          <rect>
-           <x>260</x>
-           <y>30</y>
-           <width>93</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>设置闹钟</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="startCountdownBtn">
-         <property name="geometry">
-          <rect>
-           <x>150</x>
-           <y>90</y>
-           <width>93</width>
-           <height>28</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>开始倒计时</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="startStopwatchBtn">
-         <property name="geometry">
-          <rect>
-           <x>150</x>
-           <y>150</y>
-           <width>93</width>
-           <height>28</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>开始计时</string>
-         </property>
-        </widget>
-        <widget class="QTimeEdit" name="countdownTimeEdit">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>90</y>
-           <width>118</width>
-           <height>25</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="resetCountdownBtn">
-         <property name="geometry">
-          <rect>
-           <x>370</x>
-           <y>90</y>
-           <width>93</width>
-           <height>28</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>重置</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="resetStopwatchBtn">
-         <property name="geometry">
-          <rect>
-           <x>370</x>
-           <y>150</y>
-           <width>93</width>
-           <height>28</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>重置</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="stopCountdownBtn">
-         <property name="geometry">
-          <rect>
-           <x>260</x>
-           <y>90</y>
-           <width>93</width>
-           <height>28</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>停止</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="stopStopwatchBtn">
-         <property name="geometry">
-          <rect>
-           <x>260</x>
-           <y>150</y>
-           <width>93</width>
-           <height>28</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>停止</string>
-         </property>
-        </widget>
-        <widget class="QDateTimeEdit" name="alarmTimeEdit">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>30</y>
-           <width>194</width>
-           <height>25</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QTimeEdit" name="stopwatchTimeEdit">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>150</y>
-           <width>118</width>
-           <height>25</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="notificationLabel">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>200</y>
-           <width>101</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>消息通知</string>
-         </property>
-        </widget>
-       </widget>
       </widget>
       <widget class="QWidget" name="login">
        <layout class="QGridLayout" name="gridLayout_8">
