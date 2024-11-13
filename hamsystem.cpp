@@ -64,7 +64,11 @@ HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui), courseContr
         QPalette pal = ui->homeButton->palette();
         pal.setColor(QPalette::ButtonText, color);
         ui->homeButton->setPalette(pal);
+
         homeDisplay.setUsername(ui->usernameEdit->text());
+        tasksControl.init();
+        courseControl.init();
+
         ui->stackedWidget->setCurrentIndex(0);
         ui->tab->show();
     });//登录

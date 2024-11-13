@@ -10,6 +10,7 @@ class TasksControl
 {
 public:
     TasksControl(Ui::MainWindow* ui);
+    void init();
 
 private:
     void connectTaskDisplay();
