@@ -4,7 +4,7 @@
 #include <QToolButton>
 
 #include "taskscontrol.h"
-#include "classcontrol.h"
+#include "coursecontrol.h"
 #include "mainwindow.h"
 #include "homedisplay.h"
 
@@ -19,7 +19,7 @@ private:
 private:
     Ui::MainWindow *ui;
     TasksControl tasksControl;
-    ClassControl classControl;
+    CourseControl classControl;
     HomeDisplay homeDisplay;
 
     QVector<QToolButton*> btns;

@@ -24,6 +24,8 @@ public:
     bool userRegister(const QString& username, const QString& password, const QString& email);
     bool changePassword(const QString& old_password, const QString& new_password);
 
+    bool getPersonalCourse(int week = -1);
+
     static std::unique_ptr<NetDataAccess>& instance();
 
 private:

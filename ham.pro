@@ -8,27 +8,31 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    classcontrol.cpp \
+    coursecontrol.cpp \
     hamsystem.cpp \
     homedisplay.cpp \
     main.cpp \
     mainwindow.cpp \
     netdataaccess.cpp \
     passwordchange.cpp \
+    personalcoursedisplay.cpp \
     registeruser.cpp \
+    schoolcoursedisplay.cpp \
     taskdisplay.cpp \
     taskeditor.cpp \
     taskitem.cpp \
     taskscontrol.cpp
 
 HEADERS += \
-    classcontrol.h \
+    coursecontrol.h \
     hamsystem.h \
     homedisplay.h \
     mainwindow.h \
     netdataaccess.h \
     passwordchange.h \
+    personalcoursedisplay.h \
     registeruser.h \
+    schoolcoursedisplay.h \
     taskdisplay.h \
     taskeditor.h \
     taskitem.h \
