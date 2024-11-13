@@ -87,8 +87,4 @@ HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui), courseContr
 
     ui->tab->hide();
     ui->stackedWidget->setCurrentIndex(btns.size());
-
-    // ui->stackedWidget->setCurrentIndex(0);
-    // ui->tab->show();
-    // homeDisplay.setuserType(UserType::ORDINARY);
 }

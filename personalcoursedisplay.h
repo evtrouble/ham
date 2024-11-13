@@ -23,11 +23,11 @@ struct Course
 
     QString toString()
     {
-        QString text = "课程名：" + name + "<br/>";
-        text += "课程id:" + courseId + "<br/>";
-        text += "学分:" + QString::number(credit) + "<br/>";
-        text += "课程教师" + instructor + "<br/>";
-        text += "课程地点" + classroom + "<br/>";
+        QString text = "课程名：" + name + "\n";
+        text += "课程id:" + courseId + "\n";
+        text += "学分:" + QString::number(credit) + "\n";
+        text += "课程教师" + instructor + "\n";
+        text += "课程地点" + classroom + "\n";
 
         text += "课程时间：" + QString::number(weekStart) + "-" + QString::number(weekEnd) + "周，";//周数
         switch (weekType) {
@@ -84,7 +84,7 @@ public:
     int getCurrentWeek() { return currentWeek; }
 
 protected:
-    void mousePressEvent(QMouseEvent *event) override;
+    void mouseDoubleClickEvent(QMouseEvent *event) override;
 
 private:
     QVector<QString> colors{"#762E38", "#780C20", "#4C3778", "#133A7A", "#3D2302", "#786E01", "#646464"};

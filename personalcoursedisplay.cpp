@@ -65,14 +65,17 @@ void PersonalCourseDisplay::init(int week)
     });
 }
 
-void PersonalCourseDisplay::mousePressEvent(QMouseEvent *event)
+void PersonalCourseDisplay::mouseDoubleClickEvent(QMouseEvent *event)
 {
-    auto temp = itemAt(event->pos());
-    if(temp != nullptr)
+    if(event->button() == Qt::LeftButton)
     {
-        QMessageBox::about(this, "课程详细信息", courses[temp->column() * MAX_TIME + temp->row()].toString());
+        auto temp = itemAt(event->pos());
+        if(temp != nullptr)
+        {
+            QMessageBox::about(this, "课程详细信息", courses[temp->column() * MAX_TIME + temp->row()].toString());
+        }
     }
-    QTableWidget::mousePressEvent(event);
+    QTableWidget::mouseDoubleClickEvent(event);
 }
 
 Course& PersonalCourseDisplay::setCourseItem(const QJsonObject& course)
