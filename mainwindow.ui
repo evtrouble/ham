@@ -169,7 +169,7 @@ border: 0;</string>
        </size>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="home">
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -626,6 +626,11 @@ QPushButton:pressed{background-color:rgb(204, 228, 247);border-style: inset;}</s
                   </row>
                   <column>
                    <property name="text">
+                    <string>星期日</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
                     <string>星期一</string>
                    </property>
                   </column>
@@ -654,11 +659,6 @@ QPushButton:pressed{background-color:rgb(204, 228, 247);border-style: inset;}</s
                     <string>星期六</string>
                    </property>
                   </column>
-                  <column>
-                   <property name="text">
-                    <string>星期日</string>
-                   </property>
-                  </column>
                  </widget>
                 </item>
                </layout>
@@ -666,7 +666,68 @@ QPushButton:pressed{background-color:rgb(204, 228, 247);border-style: inset;}</s
               <widget class="QWidget" name="SchoolCourse">
                <layout class="QGridLayout" name="gridLayout_10">
                 <item row="0" column="0">
-                 <widget class="SchoolCourseDisplay" name="schoolCourseTable"/>
+                 <widget class="SchoolCourseDisplay" name="schoolCourseTable">
+                  <column>
+                   <property name="text">
+                    <string>课程id</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>课程名</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>课程教师</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>课程地点</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>学分</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>周日</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>周一</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>周二</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>新建列</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>周四</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>周五</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>周六</string>
+                   </property>
+                  </column>
+                 </widget>
                 </item>
                </layout>
               </widget>

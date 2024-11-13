@@ -26,7 +26,7 @@ void HamSystem::navConnect(int id)
     });
 }
 
-HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui), homeDisplay(ui)
+HamSystem::HamSystem(Ui::MainWindow *ui) : ui(ui), tasksControl(ui), courseControl(ui), homeDisplay(ui)
 {
     btns.append(ui->homeButton);
     btns.append(ui->classButton);

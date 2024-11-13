@@ -19,7 +19,7 @@ private:
 private:
     Ui::MainWindow *ui;
     TasksControl tasksControl;
-    CourseControl classControl;
+    CourseControl courseControl;
     HomeDisplay homeDisplay;
 
     QVector<QToolButton*> btns;
