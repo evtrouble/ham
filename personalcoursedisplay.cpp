@@ -11,7 +11,7 @@
 #include <QMouseEvent>
 #include <QMessageBox>
 
-PersonalCourseDisplay::PersonalCourseDisplay(QWidget *parent) : QTableWidget(parent), courses(MAX_DAY * MAX_TIME)
+PersonalCourseDisplay::PersonalCourseDisplay(QWidget *parent) : QTableWidget(parent), courses_(MAX_DAY * MAX_TIME)
 {
     horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     verticalHeader()->setMinimumSectionSize(80);
@@ -25,42 +25,42 @@ PersonalCourseDisplay::PersonalCourseDisplay(QWidget *parent) : QTableWidget(par
         "border: none;"
         "font-weight: bold;"
         "color: #495057;"
-        "}"
-        );
+        "}");
     // 设置更现代的配色方案
     colors = {
-        "#E3F2FD",  // 浅蓝
-        "#F3E5F5",  // 浅紫
-        "#E8F5E9",  // 浅绿
-        "#FFF3E0",  // 浅橙
-        "#F3E5F5",  // 浅粉
-        "#E0F7FA",  // 浅青
-        "#FBE9E7",  // 浅红
-        "#F1F8E9"   // 浅黄绿
+        "#E3F2FD", // 浅蓝
+        "#F3E5F5", // 浅紫
+        "#E8F5E9", // 浅绿
+        "#FFF3E0", // 浅橙
+        "#F3E5F5", // 浅粉
+        "#E0F7FA", // 浅青
+        "#FBE9E7", // 浅红
+        "#F1F8E9"  // 浅黄绿
     };
     setMouseTracking(true);
-
-
 }
 
-void PersonalCourseDisplay::setData(const QJsonObject& data)
+void PersonalCourseDisplay::setData(const QJsonObject &data)
 {
-    QJsonObject innerData = data["data"].toObject();  // 获取 data 对象
-    currentWeek = innerData["week"].toInt();           // 从 innerData 获取 week 值
+    QJsonObject innerData = data["data"].toObject(); // 获取 data 对象
+    currentWeek = innerData["week"].toInt();         // 从 innerData 获取 week 值
 
-    displayCourse(innerData["courses"].toArray());     // 从 innerData 获取 courses 数组
+    displayCourse(innerData["courses"].toArray()); // 从 innerData 获取 courses 数组
 }
 
-void PersonalCourseDisplay::displayCourse(const QJsonArray& coursesArray)
+void PersonalCourseDisplay::displayCourse(const QJsonArray &coursesArray)
 {
     clearContents();
     courses.clear();
     courses.resize(MAX_DAY * MAX_TIME);
 
     // 初始化所有单元格
-    for(int i = 0; i < rowCount(); ++i) {
-        for(int j = 0; j < columnCount(); ++j) {
-            if(!item(i, j)) {
+    for (int i = 0; i < rowCount(); ++i)
+    {
+        for (int j = 0; j < columnCount(); ++j)
+        {
+            if (!item(i, j))
+            {
                 setItem(i, j, new QTableWidgetItem());
             }
             item(i, j)->setTextAlignment(Qt::AlignCenter);
@@ -72,7 +72,7 @@ void PersonalCourseDisplay::displayCourse(const QJsonArray& coursesArray)
     QMap<QString, QString> courseColors;
     int colorIndex = 0;
 
-    for(const auto& courseValue : coursesArray)
+    for (const auto &courseValue : coursesArray)
     {
         QJsonObject courseObj = courseValue.toObject();
 
@@ -82,9 +82,9 @@ void PersonalCourseDisplay::displayCourse(const QJsonArray& coursesArray)
         QString instructor = courseObj["instructor"].toString();
         int credit = courseObj["credit"].toInt();
 
-
         // 为课程分配固定颜色
-        if (!courseColors.contains(courseId)) {
+        if (!courseColors.contains(courseId))
+        {
             courseColors[courseId] = colors[colorIndex % colors.size()];
             colorIndex++;
         }
@@ -92,7 +92,7 @@ void PersonalCourseDisplay::displayCourse(const QJsonArray& coursesArray)
 
         // 处理多个时间安排
         QJsonArray schedules = courseObj["schedules"].toArray();
-        for(const auto& scheduleValue : schedules)
+        for (const auto &scheduleValue : schedules)
         {
             QJsonObject schedule = scheduleValue.toObject();
 
@@ -117,11 +117,19 @@ void PersonalCourseDisplay::displayCourse(const QJsonArray& coursesArray)
             course.slotInterval = endSlot - startSlot;
 
             // 设置周类型
-            switch (weekTypeStr.at(0).toLatin1()) {
-            case 'a': course.weekType = WeekType::ALL; break;
-            case 'o': course.weekType = WeekType::ODD; break;
-            case 'e': course.weekType = WeekType::EVEN; break;
-            default: break;
+            switch (weekTypeStr.at(0).toLatin1())
+            {
+            case 'a':
+                course.weekType = WeekType::ALL;
+                break;
+            case 'o':
+                course.weekType = WeekType::ODD;
+                break;
+            case 'e':
+                course.weekType = WeekType::EVEN;
+                break;
+            default:
+                break;
             }
 
             // 保存课程信息
@@ -133,7 +141,8 @@ void PersonalCourseDisplay::displayCourse(const QJsonArray& coursesArray)
 
             // 创建并设置单元格
             auto tableItem = item(startSlot, dayOfWeek);
-            if (!tableItem) {
+            if (!tableItem)
+            {
                 tableItem = new QTableWidgetItem();
                 setItem(startSlot, dayOfWeek, tableItem);
             }
@@ -154,10 +163,17 @@ void PersonalCourseDisplay::displayCourse(const QJsonArray& coursesArray)
 
             // 设置工具提示
             QString weekType;
-            switch(course.weekType) {
-            case WeekType::ALL: weekType = "每周"; break;
-            case WeekType::ODD: weekType = "单周"; break;
-            case WeekType::EVEN: weekType = "双周"; break;
+            switch (course.weekType)
+            {
+            case WeekType::ALL:
+                weekType = "每周";
+                break;
+            case WeekType::ODD:
+                weekType = "单周";
+                break;
+            case WeekType::EVEN:
+                weekType = "双周";
+                break;
             }
 
             QString tooltipText = QString(
@@ -183,7 +199,8 @@ void PersonalCourseDisplay::init(int week)
 {
     NetDataAccess::instance()->getPersonalCourse(week);
 
-    NetDataAccess::connect(NetDataAccess::instance().get(), &NetDataAccess::finish, this, [=](QNetworkReply* reply){
+    NetDataAccess::connect(NetDataAccess::instance().get(), &NetDataAccess::finish, this, [=](QNetworkReply *reply)
+                           {
         if (reply->error() == QNetworkReply::NoError) {
             QByteArray data = reply->readAll();
             QJsonParseError parseJsonErr;
@@ -198,52 +215,29 @@ void PersonalCourseDisplay::init(int week)
 
         reply->deleteLater();
         if(week == -1) emit initFinish();
-        NetDataAccess::disconnect(NetDataAccess::instance().get(), &NetDataAccess::finish, this, 0);
-    });
+        NetDataAccess::disconnect(NetDataAccess::instance().get(), &NetDataAccess::finish, this, 0); });
 }
 
 void PersonalCourseDisplay::mouseDoubleClickEvent(QMouseEvent *event)
 {
-    if(event->button() == Qt::LeftButton) {
-        auto tableItem = itemAt(event->pos());
-        if(tableItem != nullptr) {
-            auto& course = courses[tableItem->column() * MAX_TIME + tableItem->row()];
-            QString weekType;
-            switch(course.weekType) {
-            case WeekType::ALL: weekType = "每周"; break;
-            case WeekType::ODD: weekType = "单周"; break;
-            case WeekType::EVEN: weekType = "双周"; break;
-            }
-
-            QString detailText = QString(
-                                     "课程名称：%1\n"
-                                     "课程编号：%2\n"
-                                     "任课教师：%3\n"
-                                     "教室：%4\n"
-                                     "上课周次：%5-%6周 (%7)\n"
-                                     "学分：%8")
-                                     .arg(course.name)
-                                     .arg(course.courseId)
-                                     .arg(course.instructor)
-                                     .arg(course.classroom)
-                                     .arg(course.weekStart)
-                                     .arg(course.weekEnd)
-                                     .arg(weekType)
-                                     .arg(course.credit);
-
-            QMessageBox::information(this, "课程详细信息", detailText);
+    if (event->button() == Qt::LeftButton)
+    {
+        auto temp = itemAt(event->pos());
+        if (temp != nullptr)
+        {
+            QMessageBox::about(this, "课程详细信息", courses[temp->column() * MAX_TIME + temp->row()].toString());
         }
     }
     QTableWidget::mouseDoubleClickEvent(event);
 }
 
-Course& PersonalCourseDisplay::setCourseItem(const QJsonObject& course)
+Course &PersonalCourseDisplay::setCourseItem(const QJsonObject &course)
 {
-    const auto& schedule = course["schedules"];
+    const auto &schedule = course["schedules"];
 
     int i = schedule["startSlot"].toInt() - 1;
     int j = schedule["dayOfWeek"].toInt();
-    auto& course_ = courses[j * MAX_TIME + i];
+    auto &course_ = courses_[j * MAX_TIME + i];
 
     course_.courseId = course["courseId"].toString();
     course_.name = course["name"].toString();
@@ -256,7 +250,8 @@ Course& PersonalCourseDisplay::setCourseItem(const QJsonObject& course)
     course_.startSlot = course["startSlot"].toInt();
     course_.classroom = course["classroom"].toString();
 
-    switch (schedule["weekType"].toString().at(0).toLatin1()) {
+    switch (schedule["weekType"].toString().at(0).toLatin1())
+    {
     case 'a':
         course_.weekType = WeekType::ALL;
         break;

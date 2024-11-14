@@ -2,6 +2,8 @@
 #define TASKDISPLAY_H
 #include <QListWidget>
 #include <QMouseEvent>
+#include <QSystemTrayIcon>
+#include <unordered_map>
 
 class QListWidgetItem;
 class TaskItem;
@@ -16,10 +18,12 @@ public:
     void sortByDeadline();
     void sortByPriority();
     void init();
+    void setSystemTrayIcon (QSystemTrayIcon *SysIcon) { trayIcon = SysIcon; }
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
+    void timerEvent(QTimerEvent *event) override;
 
 private:
     void updateTaskItem(QListWidgetItem *currentItem, QDateTime &deadline, QString &text, int priority);
@@ -27,9 +31,11 @@ private:
     void initTaskItem(TaskItem* widget, QListWidgetItem* item);
     void removeTask(QListWidgetItem* currentItem);
     void clear_and_get(QVector<QJsonObject> &list_set);
+    void setTimer(TaskItem* widget);
 
 private:
-    bool once = false;
+    QSystemTrayIcon *trayIcon;
+    std::unordered_map<int, TaskItem*> timerMap;
 
 signals:
     void editorHide();

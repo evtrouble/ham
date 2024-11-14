@@ -2,7 +2,7 @@
 #define TASKEDITOR_H
 
 #include <QListWidgetItem>
-#include "mainwindow.h"
+#include "hamsystem.h"
 
 class TaskEditor : public QFrame
 {

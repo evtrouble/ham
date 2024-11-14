@@ -1,5 +1,5 @@
 #include "taskeditor.h"
-#include "ui_mainwindow.h"
+#include "ui_hamsystem.h"
 #include "taskitem.h"
 
 #include <QSizePolicy>

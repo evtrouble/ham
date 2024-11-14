@@ -12,7 +12,6 @@ SOURCES += \
     hamsystem.cpp \
     homedisplay.cpp \
     main.cpp \
-    mainwindow.cpp \
     netdataaccess.cpp \
     passwordchange.cpp \
     personalcoursedisplay.cpp \
@@ -27,7 +26,6 @@ HEADERS += \
     coursecontrol.h \
     hamsystem.h \
     homedisplay.h \
-    mainwindow.h \
     netdataaccess.h \
     passwordchange.h \
     personalcoursedisplay.h \
@@ -39,7 +37,7 @@ HEADERS += \
     taskscontrol.h
 
 FORMS += \
-    mainwindow.ui \
+    hamsystem.ui \
     passwordchange.ui \
     registeruser.ui
 

@@ -6,7 +6,7 @@
 #include <QMessageBox>
 #include <QUrlQuery>
 
-NetDataAccess::NetDataAccess(QWidget* parent) : QWidget(parent), access(new QNetworkAccessManager) {}
+NetDataAccess::NetDataAccess(QWidget *parent) : QWidget(parent), access(new QNetworkAccessManager) {}
 
 std::unique_ptr<NetDataAccess> NetDataAccess::dataAccess = nullptr;
 
@@ -21,13 +21,12 @@ bool NetDataAccess::loadTaskData()
     request.setRawHeader("Authorization", "Bearer " + jwt.toUtf8());
     reply = access->get(request);
     // 连接槽函数解析数据
-    QNetworkReply::connect(reply, &QNetworkReply::finished, this, [=]() {
-        emit finish(reply);
-    });
+    QNetworkReply::connect(reply, &QNetworkReply::finished, this, [=]()
+                           { emit finish(reply); });
     return true;
 }
 
-bool NetDataAccess::addTaskItem(const QJsonObject& data, int& id)
+bool NetDataAccess::addTaskItem(const QJsonObject &data, int &id)
 {
     QNetworkRequest request;
     QString url = server;
@@ -42,7 +41,8 @@ bool NetDataAccess::addTaskItem(const QJsonObject& data, int& id)
 
     QEventLoop loop;
     // 连接槽函数解析数据
-    QNetworkReply::connect(reply, &QNetworkReply::finished, this, [&]() {
+    QNetworkReply::connect(reply, &QNetworkReply::finished, this, [&]()
+                           {
         if (reply->error() == QNetworkReply::NoError) {
             QByteArray _data = reply->readAll();
             QJsonParseError parseJsonErr;
@@ -55,8 +55,7 @@ bool NetDataAccess::addTaskItem(const QJsonObject& data, int& id)
             QMessageBox::critical(this, "Network error!", reply->errorString());
         }
         reply->deleteLater();
-        loop.quit();
-    });
+        loop.quit(); });
 
     // 阻塞等待网络请求完成
     loop.exec();
@@ -64,7 +63,7 @@ bool NetDataAccess::addTaskItem(const QJsonObject& data, int& id)
     return true;
 }
 
-bool NetDataAccess::updateTaskItem(const QJsonObject& data)
+bool NetDataAccess::updateTaskItem(const QJsonObject &data)
 {
     QNetworkRequest request;
     QString url = server;
@@ -79,7 +78,7 @@ bool NetDataAccess::updateTaskItem(const QJsonObject& data)
     return true;
 }
 
-bool NetDataAccess::deleteTaskItem(const QJsonObject& data)
+bool NetDataAccess::deleteTaskItem(const QJsonObject &data)
 {
     QNetworkRequest request;
     QString url = server;
@@ -93,16 +92,16 @@ bool NetDataAccess::deleteTaskItem(const QJsonObject& data)
     return true;
 }
 
-std::unique_ptr<NetDataAccess>& NetDataAccess::instance()
+std::unique_ptr<NetDataAccess> &NetDataAccess::instance()
 {
-    if(dataAccess == nullptr)
+    if (dataAccess == nullptr)
     {
         dataAccess = std::unique_ptr<NetDataAccess>(new NetDataAccess);
     }
     return dataAccess;
 }
 
-bool NetDataAccess::userLogin(const QString& username, const QString& password, bool& isAdmin)
+bool NetDataAccess::userLogin(const QString &username, const QString &password, bool &isAdmin)
 {
     QJsonObject json;
     json["username"] = username;
@@ -121,7 +120,8 @@ bool NetDataAccess::userLogin(const QString& username, const QString& password, 
     QEventLoop loop;
     // 连接槽函数解析数据
     bool success = false;
-    QNetworkReply::connect(reply, &QNetworkReply::finished, this, [&]() {
+    QNetworkReply::connect(reply, &QNetworkReply::finished, this, [&]()
+                           {
         if (reply->error() == QNetworkReply::NoError) {
             QByteArray _data = reply->readAll();
             QJsonParseError parseJsonErr;
@@ -140,8 +140,7 @@ bool NetDataAccess::userLogin(const QString& username, const QString& password, 
             QMessageBox::critical(this, "Network error!", reply->errorString());
         }
         reply->deleteLater();
-        loop.quit();
-    });
+        loop.quit(); });
 
     // 阻塞等待网络请求完成
     loop.exec();
@@ -149,7 +148,7 @@ bool NetDataAccess::userLogin(const QString& username, const QString& password, 
     return success;
 }
 
-bool NetDataAccess::userRegister(const QString& username, const QString& password, const QString& email)
+bool NetDataAccess::userRegister(const QString &username, const QString &password, const QString &email)
 {
     QJsonObject json;
     json["username"] = username;
@@ -169,7 +168,8 @@ bool NetDataAccess::userRegister(const QString& username, const QString& passwor
     QEventLoop loop;
     // 连接槽函数解析数据
     bool success = false;
-    QNetworkReply::connect(reply, &QNetworkReply::finished, this, [&]() {
+    QNetworkReply::connect(reply, &QNetworkReply::finished, this, [&]()
+                           {
         if (reply->error() == QNetworkReply::NoError) {
             QByteArray _data = reply->readAll();
             QJsonParseError parseJsonErr;
@@ -184,8 +184,7 @@ bool NetDataAccess::userRegister(const QString& username, const QString& passwor
             QMessageBox::critical(this, "Network error!", reply->errorString());
         }
         reply->deleteLater();
-        loop.quit();
-    });
+        loop.quit(); });
 
     // 阻塞等待网络请求完成
     loop.exec();
@@ -193,7 +192,7 @@ bool NetDataAccess::userRegister(const QString& username, const QString& passwor
     return success;
 }
 
-bool NetDataAccess::changePassword(const QString& old_password, const QString& new_password)
+bool NetDataAccess::changePassword(const QString &old_password, const QString &new_password)
 {
     QJsonObject json;
     json["oldPassword"] = old_password;
@@ -212,7 +211,8 @@ bool NetDataAccess::changePassword(const QString& old_password, const QString& n
     QEventLoop loop;
     // 连接槽函数解析数据
     bool success = false;
-    QNetworkReply::connect(reply, &QNetworkReply::finished, this, [&]() {
+    QNetworkReply::connect(reply, &QNetworkReply::finished, this, [&]()
+                           {
         if (reply->error() == QNetworkReply::NoError) {
             QByteArray _data = reply->readAll();
             QJsonParseError parseJsonErr;
@@ -227,8 +227,7 @@ bool NetDataAccess::changePassword(const QString& old_password, const QString& n
             QMessageBox::critical(this, "Network error!", reply->errorString());
         }
         reply->deleteLater();
-        loop.quit();
-    });
+        loop.quit(); });
 
     // 阻塞等待网络请求完成
     loop.exec();
@@ -241,22 +240,20 @@ bool NetDataAccess::getPersonalCourse(int week)
     QNetworkRequest request;
     QString url = server;
     url += "schedule/weekly/";
-    QUrl url_temp = QUrl(url);
-    if(week >= 0)
+    QUrl url_temp(url);
+    if (week >= 0)
     {
         QUrlQuery query;
         query.addQueryItem("week", QString::number((week)));
         url_temp.setQuery(query.query());
-
     }
-    request.setUrl(QUrl(url_temp));
+    request.setUrl(url_temp);
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));
     request.setRawHeader("Authorization", "Bearer " + jwt.toUtf8());
     reply = access->get(request);
     // 连接槽函数解析数据
-    QNetworkReply::connect(reply, &QNetworkReply::finished, this, [=]() {
-        emit finish(reply);
-    });
+    QNetworkReply::connect(reply, &QNetworkReply::finished, this, [=]()
+                           { emit finish(reply); });
     return true;
 }

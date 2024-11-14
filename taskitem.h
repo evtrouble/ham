@@ -27,10 +27,13 @@ public:
     void setData(QDateTime &deadline, QString &text, int priority);
     void setWidth(int width);
     void setId(int id) { this->id = id; }
+    void setTimerId(int id) { timerId = id; }
 
     QString getText() { return text->text().mid(prefixlen); }
     QDateTime &getDeadline() { return deadline; }
     int getPriority() { return priority; }
+    bool isfinish() { return checkBox->checkState() == Qt::Checked; }
+    int getTimerId() { return timerId; }
 
     QJsonObject toJson();
 
@@ -46,6 +49,7 @@ private:
     QLabel* text = nullptr; //内容
     int id;
     int prefixlen = 0;
+    int timerId = -1;
 
     QListWidgetItem *item = nullptr;
 
