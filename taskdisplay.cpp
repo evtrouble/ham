@@ -183,7 +183,7 @@ void TaskDisplay::clear_and_get(QVector<QJsonObject> &list_set)
 
     for(auto& [id, temp] : timerMap)
     {
-         killTimer(id);
+        killTimer(id);
     }
     timerMap.clear();
     clear();
@@ -208,12 +208,16 @@ void TaskDisplay::timerEvent(QTimerEvent *event)
     if(iter != timerMap.end())
     {
         killTimer(iter->first);
-        QString title = "距离截止日期还有";
 
-        int minutes = iter->second->getDeadline().secsTo(QDateTime::currentDateTime());
+        if(!iter->second->isfinish()){
+            QString title = "距离截止日期还有";
 
-        title += QString::number(minutes) + "分钟！";
-        trayIcon->showMessage(title, iter->second->getText());
+            int minutes = iter->second->getDeadline().secsTo(QDateTime::currentDateTime());
+
+            title += QString::number(minutes) + "分钟！";
+            trayIcon->showMessage(title, iter->second->getText());
+        }
+
         timerMap.erase(iter);
     }
     QListWidget::timerEvent(event);
