@@ -1,7 +1,10 @@
 #ifndef COURSECONTROL_H
 #define COURSECONTROL_H
 
-#include "mainwindow.h"
+#include "hamsystem.h"
+#include "ui_hamsystem.h"
+
+class HamSystem;
 
 class CourseControl
 {

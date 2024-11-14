@@ -1,5 +1,5 @@
 #include "homedisplay.h"
-#include "ui_mainwindow.h"
+#include "ui_hamsystem.h"
 #include "netdataaccess.h"
 #include "passwordchange.h"
 

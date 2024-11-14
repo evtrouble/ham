@@ -2,7 +2,7 @@
 #define HOMEDISPLAY_H
 
 #include <QString>
-#include "mainwindow.h"
+#include "hamsystem.h"
 
 enum class UserType
 {

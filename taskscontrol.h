@@ -4,7 +4,7 @@
 #include <QVector>
 #include <QDateTime>
 
-#include "mainwindow.h"
+#include "hamsystem.h"
 
 class TasksControl
 {
