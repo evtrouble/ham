@@ -97,7 +97,7 @@ signals:
 private:
     int currentWeek = 0;
     bool once = false;
-    QVector<Course> courses;
+    QVector<Course> courses_;
 };
 
 #endif // PERSONALCOURSEDISPLAY_H

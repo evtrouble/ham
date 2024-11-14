@@ -2728,7 +2728,7 @@ border: 0;</string>
 border: 0;</string>
       </property>
       <property name="text">
-       <string>...</string>
+       <string>任务</string>
       </property>
       <property name="icon">
        <iconset resource="img.qrc">
@@ -2739,6 +2739,9 @@ border: 0;</string>
         <width>30</width>
         <height>30</height>
        </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
       </property>
      </widget>
     </item>

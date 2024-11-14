@@ -11,7 +11,7 @@
 #include <QMouseEvent>
 #include <QMessageBox>
 
-PersonalCourseDisplay::PersonalCourseDisplay(QWidget *parent) : QTableWidget(parent), courses(MAX_DAY * MAX_TIME)
+PersonalCourseDisplay::PersonalCourseDisplay(QWidget *parent) : QTableWidget(parent), courses_(MAX_DAY * MAX_TIME)
 {
     horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     verticalHeader()->setMinimumSectionSize(80);
@@ -20,8 +20,10 @@ PersonalCourseDisplay::PersonalCourseDisplay(QWidget *parent) : QTableWidget(par
 
 void PersonalCourseDisplay::setData(const QJsonObject& data)
 {
-    currentWeek = data["week"].toInt();
-    displayCourse(data["courses"].toArray());
+    QJsonObject innerData = data["data"].toObject();  // 获取 data 对象
+    currentWeek = innerData["week"].toInt();           // 从 innerData 获取 week 值
+
+    displayCourse(innerData["courses"].toArray());
 }
 
 void PersonalCourseDisplay::displayCourse(const QJsonArray& courses)
@@ -43,7 +45,6 @@ void PersonalCourseDisplay::displayCourse(const QJsonArray& courses)
 
 void PersonalCourseDisplay::init(int week)
 {
-    //bool success = NetDataAccess::instance()->loadData(value);
     NetDataAccess::instance()->getPersonalCourse(week);
 
     NetDataAccess::connect(NetDataAccess::instance().get(), &NetDataAccess::finish, this, [=](QNetworkReply* reply){
@@ -72,7 +73,7 @@ void PersonalCourseDisplay::mouseDoubleClickEvent(QMouseEvent *event)
         auto temp = itemAt(event->pos());
         if(temp != nullptr)
         {
-            QMessageBox::about(this, "课程详细信息", courses[temp->column() * MAX_TIME + temp->row()].toString());
+            QMessageBox::about(this, "课程详细信息", courses_[temp->column() * MAX_TIME + temp->row()].toString());
         }
     }
     QTableWidget::mouseDoubleClickEvent(event);
@@ -83,7 +84,7 @@ Course& PersonalCourseDisplay::setCourseItem(const QJsonObject& course)
     const auto& schedule = course["schedules"];
     int i = schedule["startSlot"].toInt() - 1;
     int j = schedule["dayOfWeek"].toInt();
-    auto& course_ = courses[j * MAX_TIME + i];
+    auto& course_ = courses_[j * MAX_TIME + i];
 
     course_.courseId = course["courseId"].toString();
     course_.name = course["name"].toString();

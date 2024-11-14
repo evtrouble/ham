@@ -39,4 +39,3 @@ private:
     QSystemTrayIcon *SysIcon;
 };
 #endif // HAMSYSTEM_H
-

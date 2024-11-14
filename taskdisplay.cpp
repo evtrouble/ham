@@ -6,6 +6,7 @@
 #include <QListWidget>
 #include <QJsonArray>
 #include <QMessageBox>
+#include <QApplication>
 #include <QJsonObject>
 
 TaskDisplay::TaskDisplay(QWidget *parent)
@@ -64,6 +65,11 @@ void TaskDisplay::init()
 
 void TaskDisplay::itemChange(QListWidgetItem *currentItem, QDateTime &&deadline, QString &&text, int priority)
 {
+    if(text == "")
+    {
+        QMessageBox::information(this, "注意!", "待办事项不能为空！");
+        return;
+    }
     if(currentItem == nullptr) addTaskItem(deadline, text, priority);
     else updateTaskItem(currentItem, deadline, text, priority);
 }
@@ -98,6 +104,8 @@ void TaskDisplay::initTaskItem(TaskItem* widget, QListWidgetItem* item)
     setItemWidget(item, widget);
     widget->show();
 
+    setTimer(widget);
+
     connect(widget, &TaskItem::remove, this, [=](QListWidgetItem* currentItem){
         NetDataAccess::instance()->deleteTaskItem(static_cast<TaskItem*>(itemWidget(currentItem))->toJson());
         removeTask(currentItem);
@@ -114,6 +122,14 @@ void TaskDisplay::removeTask(QListWidgetItem* currentItem)
     if(ret == QMessageBox::Cancel)return;
 
     emit remove(currentItem);
+
+    int id = item->getTimerId();
+    if(id != -1)
+    {
+        killTimer(id);
+        timerMap.erase(id);
+    }
+
     item->deleteLater();
     removeItemWidget(currentItem);
     delete takeItem(row(currentItem));
@@ -165,6 +181,11 @@ void TaskDisplay::clear_and_get(QVector<QJsonObject> &list_set)
         list_set[id] = static_cast<TaskItem*>(itemWidget(item(id)))->toJson();
     }
 
+    for(auto& [id, temp] : timerMap)
+    {
+         killTimer(id);
+    }
+    timerMap.clear();
     clear();
 }
 
@@ -179,4 +200,34 @@ void TaskDisplay::resizeEvent(QResizeEvent *event)
     }
 
     QListWidget::resizeEvent(event);
+}
+
+void TaskDisplay::timerEvent(QTimerEvent *event)
+{
+    auto iter = timerMap.find(event->timerId());
+    if(iter != timerMap.end())
+    {
+        killTimer(iter->first);
+        QString title = "距离截止日期还有";
+
+        int minutes = iter->second->getDeadline().secsTo(QDateTime::currentDateTime());
+
+        title += QString::number(minutes) + "分钟！";
+        trayIcon->showMessage(title, iter->second->getText());
+        timerMap.erase(iter);
+    }
+    QListWidget::timerEvent(event);
+}
+
+void TaskDisplay::setTimer(TaskItem* widget)
+{
+    qint64 startSec = QDateTime::currentDateTime().toMSecsSinceEpoch();
+    qint64 endSec = widget->getDeadline().toMSecsSinceEpoch();
+
+    if(startSec < endSec && !widget->isfinish())
+    {
+        int id = startTimer(std::max(endSec - startSec - 3600000, 1000LL));
+        timerMap.emplace(id, widget);
+        widget->setTimerId(id);
+    }
 }

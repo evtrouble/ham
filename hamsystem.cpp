@@ -28,9 +28,12 @@ HamSystem::HamSystem(QWidget *parent)
     SysIcon->setIcon(icon);
     SysIcon->setToolTip("Ham");
     QAction *restor = new QAction("恢复", this);
-    connect(restor,&QAction::triggered,this,&HamSystem::showNormal);
+    connect(restor, &QAction::triggered, this, &HamSystem::showNormal);
     QAction *quit = new QAction("退出", this);
-    connect(quit, &QAction::triggered,qApp, &QApplication::quit);
+    connect(quit, &QAction::triggered, qApp, [=]{
+        this->hide();
+        QApplication::quit();
+    });
     connect(SysIcon, &QSystemTrayIcon::activated, this, &HamSystem::on_activatedSysTrayIcon);
 
     menu->addAction(restor);
@@ -54,6 +57,7 @@ HamSystem::HamSystem(QWidget *parent)
     widget->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
 
     ui->tab->addWidget(widget);
+    ui->listWidget->setSystemTrayIcon(SysIcon);
 
     for (int id = 0; id < btns.size(); id++)
     {
@@ -151,6 +155,5 @@ void HamSystem::on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason
         break;
     default:
         break;
-
     }
 }

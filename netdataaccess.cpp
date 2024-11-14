@@ -241,15 +241,14 @@ bool NetDataAccess::getPersonalCourse(int week)
     QNetworkRequest request;
     QString url = server;
     url += "schedule/weekly/";
-    QUrl url_temp = QUrl(url);
+    QUrl url_temp(url);
     if(week >= 0)
     {
         QUrlQuery query;
         query.addQueryItem("week", QString::number((week)));
         url_temp.setQuery(query.query());
-
     }
-    request.setUrl(QUrl(url));
+    request.setUrl(url_temp);
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));
     request.setRawHeader("Authorization", "Bearer " + jwt.toUtf8());

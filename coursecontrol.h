@@ -2,7 +2,6 @@
 #define COURSECONTROL_H
 
 #include "hamsystem.h"
-#include "ui_hamsystem.h"
 
 class HamSystem;
 
