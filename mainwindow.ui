@@ -73,87 +73,6 @@ border: 0;</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="2">
-     <widget class="QToolButton" name="homeButton">
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-border: 0;</string>
-      </property>
-      <property name="text">
-       <string>主页</string>
-      </property>
-      <property name="icon">
-       <iconset resource="img.qrc">
-        <normaloff>:/tab/img/home.png</normaloff>:/tab/img/home.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>30</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="autoExclusive">
-       <bool>true</bool>
-      </property>
-      <property name="toolButtonStyle">
-       <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QToolButton" name="homeButton">
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-border: 0;</string>
-      </property>
-      <property name="text">
-       <string>主页</string>
-      </property>
-      <property name="icon">
-       <iconset resource="img.qrc">
-        <normaloff>:/tab/img/home.png</normaloff>:/tab/img/home.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>30</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="autoExclusive">
-       <bool>true</bool>
-      </property>
-      <property name="toolButtonStyle">
-       <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <widget class="QToolButton" name="clockButton">
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-border: 0;</string>
-      </property>
-      <property name="text">
-       <string>时钟</string>
-      </property>
-      <property name="icon">
-       <iconset resource="img.qrc">
-        <normaloff>:/tab/img/clock.png</normaloff>:/tab/img/clock.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>30</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="autoExclusive">
-       <bool>true</bool>
-      </property>
-      <property name="toolButtonStyle">
-       <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="3">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="sizePolicy">
@@ -539,427 +458,537 @@ QPushButton#logoutBtn:disabled {
        </layout>
       </widget>
       <widget class="QWidget" name="timetable">
-       <layout class="QGridLayout" name="gridLayout_9">
-        <item row="0" column="0">
-         <layout class="QVBoxLayout" name="verticalLayout_5">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_7">
-            <item>
-             <spacer name="horizontalSpacer_19">
-              <property name="orientation">
-               <enum>Qt::Orientation::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QPushButton" name="btnPersonalCourse">
-              <property name="styleSheet">
-               <string notr="true">QPushButton {
-    color: #1e222b;
-    background-color: #ffffff;
-    border: 1px solid rgba(228,228,228,1);
-    border-radius: 8px;
-    font-family: Microsoft YaHei;
-    font-size: 14px;
-    padding: 1px 15px;
-    min-height: 24px;
-    outline: none;  /* 添加这行去除焦点边框 */
-}
-
-QPushButton:focus {  /* 添加focus状态样式 */
-    outline: none;
-    border: 1px solid rgba(228,228,228,1);
-}
-
-QPushButton:hover {
-    background-color: rgba(30, 34, 43, 0.05);
-    border: 1px solid rgba(30, 34, 43, 0.2);
-}
-
-QPushButton:pressed {
-    background-color: rgba(30, 34, 43, 0.1);
-    border: 1px solid rgba(30, 34, 43, 0.3);
-    padding: 2px 15px 0px 15px;
-}
-
-QPushButton:disabled {
-    color: rgba(30, 34, 43, 0.3);
-    background-color: rgba(228,228,228,0.3);
-    border: 1px solid rgba(228,228,228,0.5);
-}
-
-QPushButton:icon {
-    padding: 1px 15px 1px 10px;
-}</string>
-              </property>
-              <property name="text">
-               <string>个人课表</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_9">
-              <property name="orientation">
-               <enum>Qt::Orientation::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QPushButton" name="btnSchoolCourse">
-              <property name="styleSheet">
-               <string notr="true">QPushButton {
-    color: #1e222b;
-    background-color: #ffffff;
-    border: 1px solid rgba(228,228,228,1);
-    border-radius: 8px;
-    font-family: Microsoft YaHei;
-    font-size: 14px;
-    padding: 1px 15px;
-    min-height: 24px;
-    outline: none;  /* 添加这行去除焦点边框 */
-}
-
-QPushButton:focus {  /* 添加focus状态样式 */
-    outline: none;
-    border: 1px solid rgba(228,228,228,1);
-}
-
-QPushButton:hover {
-    background-color: rgba(30, 34, 43, 0.05);
-    border: 1px solid rgba(30, 34, 43, 0.2);
-}
-
-QPushButton:pressed {
-    background-color: rgba(30, 34, 43, 0.1);
-    border: 1px solid rgba(30, 34, 43, 0.3);
-    padding: 2px 15px 0px 15px;
-}
-
-QPushButton:disabled {
-    color: rgba(30, 34, 43, 0.3);
-    background-color: rgba(228,228,228,0.3);
-    border: 1px solid rgba(228,228,228,0.5);
-}
-
-QPushButton:icon {
-    padding: 1px 15px 1px 10px;
-}</string>
-              </property>
-              <property name="text">
-               <string>查询课表</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_20">
-              <property name="orientation">
-               <enum>Qt::Orientation::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
+           <spacer name="horizontalSpacer_19">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout">
-            <item>
-             <widget class="QStackedWidget" name="stackedWidget_2">
-              <widget class="QWidget" name="PersonalCourse">
-               <layout class="QGridLayout" name="gridLayout_5">
-                <item row="1" column="0">
-                 <widget class="PersonalCourseDisplay" name="personalCourseTable">
-                  <property name="editTriggers">
-                   <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
-                  </property>
-                  <attribute name="horizontalHeaderCascadingSectionResizes">
-                   <bool>true</bool>
-                  </attribute>
-                  <attribute name="horizontalHeaderMinimumSectionSize">
-                   <number>80</number>
-                  </attribute>
-                  <attribute name="horizontalHeaderDefaultSectionSize">
-                   <number>80</number>
-                  </attribute>
-                  <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-                   <bool>false</bool>
-                  </attribute>
-                  <attribute name="horizontalHeaderStretchLastSection">
-                   <bool>false</bool>
-                  </attribute>
-                  <attribute name="verticalHeaderCascadingSectionResizes">
-                   <bool>true</bool>
-                  </attribute>
-                  <row>
-                   <property name="text">
-                    <string>1</string>
-                   </property>
-                   <property name="textAlignment">
-                    <set>AlignCenter</set>
-                   </property>
-                  </row>
-                  <row>
-                   <property name="text">
-                    <string>2</string>
-                   </property>
-                   <property name="textAlignment">
-                    <set>AlignCenter</set>
-                   </property>
-                  </row>
-                  <row>
-                   <property name="text">
-                    <string>3</string>
-                   </property>
-                   <property name="textAlignment">
-                    <set>AlignCenter</set>
-                   </property>
-                  </row>
-                  <row>
-                   <property name="text">
-                    <string>4</string>
-                   </property>
-                   <property name="textAlignment">
-                    <set>AlignCenter</set>
-                   </property>
-                  </row>
-                  <row>
-                   <property name="text">
-                    <string>5</string>
-                   </property>
-                   <property name="textAlignment">
-                    <set>AlignCenter</set>
-                   </property>
-                  </row>
-                  <row>
-                   <property name="text">
-                    <string>6</string>
-                   </property>
-                   <property name="textAlignment">
-                    <set>AlignCenter</set>
-                   </property>
-                  </row>
-                  <row>
-                   <property name="text">
-                    <string>7</string>
-                   </property>
-                   <property name="textAlignment">
-                    <set>AlignCenter</set>
-                   </property>
-                  </row>
-                  <row>
-                   <property name="text">
-                    <string>8</string>
-                   </property>
-                   <property name="textAlignment">
-                    <set>AlignCenter</set>
-                   </property>
-                  </row>
-                  <row>
-                   <property name="text">
-                    <string>9</string>
-                   </property>
-                   <property name="textAlignment">
-                    <set>AlignCenter</set>
-                   </property>
-                  </row>
-                  <row>
-                   <property name="text">
-                    <string>10</string>
-                   </property>
-                   <property name="textAlignment">
-                    <set>AlignCenter</set>
-                   </property>
-                  </row>
-                  <row>
-                   <property name="text">
-                    <string>11</string>
-                   </property>
-                   <property name="textAlignment">
-                    <set>AlignCenter</set>
-                   </property>
-                  </row>
-                  <row>
-                   <property name="text">
-                    <string>12</string>
-                   </property>
-                   <property name="textAlignment">
-                    <set>AlignCenter</set>
-                   </property>
-                  </row>
-                  <column>
-                   <property name="text">
-                    <string>星期日</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>星期一</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>星期二</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>星期三</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>星期四</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>星期五</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>星期六</string>
-                   </property>
-                  </column>
-                 </widget>
+           <widget class="QPushButton" name="btnPersonalCourse">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    color: #1e222b;
+    background-color: #ffffff;
+    border: 1px solid rgba(228,228,228,1);
+    border-radius: 8px;
+    font-family: Microsoft YaHei;
+    font-size: 14px;
+    padding: 1px 15px;
+    min-height: 24px;
+    outline: none;  /* 添加这行去除焦点边框 */
+}
+
+QPushButton:focus {  /* 添加focus状态样式 */
+    outline: none;
+    border: 1px solid rgba(228,228,228,1);
+}
+
+QPushButton:hover {
+    background-color: rgba(30, 34, 43, 0.05);
+    border: 1px solid rgba(30, 34, 43, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: rgba(30, 34, 43, 0.1);
+    border: 1px solid rgba(30, 34, 43, 0.3);
+    padding: 2px 15px 0px 15px;
+}
+
+QPushButton:disabled {
+    color: rgba(30, 34, 43, 0.3);
+    background-color: rgba(228,228,228,0.3);
+    border: 1px solid rgba(228,228,228,0.5);
+}
+
+QPushButton:icon {
+    padding: 1px 15px 1px 10px;
+}</string>
+            </property>
+            <property name="text">
+             <string>个人课表</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_9">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnSchoolCourse">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    color: #1e222b;
+    background-color: #ffffff;
+    border: 1px solid rgba(228,228,228,1);
+    border-radius: 8px;
+    font-family: Microsoft YaHei;
+    font-size: 14px;
+    padding: 1px 15px;
+    min-height: 24px;
+    outline: none;  /* 添加这行去除焦点边框 */
+}
+
+QPushButton:focus {  /* 添加focus状态样式 */
+    outline: none;
+    border: 1px solid rgba(228,228,228,1);
+}
+
+QPushButton:hover {
+    background-color: rgba(30, 34, 43, 0.05);
+    border: 1px solid rgba(30, 34, 43, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: rgba(30, 34, 43, 0.1);
+    border: 1px solid rgba(30, 34, 43, 0.3);
+    padding: 2px 15px 0px 15px;
+}
+
+QPushButton:disabled {
+    color: rgba(30, 34, 43, 0.3);
+    background-color: rgba(228,228,228,0.3);
+    border: 1px solid rgba(228,228,228,0.5);
+}
+
+QPushButton:icon {
+    padding: 1px 15px 1px 10px;
+}</string>
+            </property>
+            <property name="text">
+             <string>查询课表</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_20">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QStackedWidget" name="stackedWidget_2">
+          <widget class="QWidget" name="PersonalCourse">
+           <layout class="QGridLayout" name="gridLayout_5">
+            <item row="1" column="0">
+             <widget class="PersonalCourseDisplay" name="personalCourseTable">
+              <property name="editTriggers">
+               <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+              </property>
+              <attribute name="horizontalHeaderCascadingSectionResizes">
+               <bool>true</bool>
+              </attribute>
+              <attribute name="horizontalHeaderMinimumSectionSize">
+               <number>80</number>
+              </attribute>
+              <attribute name="horizontalHeaderDefaultSectionSize">
+               <number>80</number>
+              </attribute>
+              <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="horizontalHeaderStretchLastSection">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="verticalHeaderCascadingSectionResizes">
+               <bool>true</bool>
+              </attribute>
+              <row>
+               <property name="text">
+                <string>1</string>
+               </property>
+               <property name="textAlignment">
+                <set>AlignCenter</set>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>2</string>
+               </property>
+               <property name="textAlignment">
+                <set>AlignCenter</set>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>3</string>
+               </property>
+               <property name="textAlignment">
+                <set>AlignCenter</set>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>4</string>
+               </property>
+               <property name="textAlignment">
+                <set>AlignCenter</set>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>5</string>
+               </property>
+               <property name="textAlignment">
+                <set>AlignCenter</set>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>6</string>
+               </property>
+               <property name="textAlignment">
+                <set>AlignCenter</set>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>7</string>
+               </property>
+               <property name="textAlignment">
+                <set>AlignCenter</set>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>8</string>
+               </property>
+               <property name="textAlignment">
+                <set>AlignCenter</set>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>9</string>
+               </property>
+               <property name="textAlignment">
+                <set>AlignCenter</set>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>10</string>
+               </property>
+               <property name="textAlignment">
+                <set>AlignCenter</set>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>11</string>
+               </property>
+               <property name="textAlignment">
+                <set>AlignCenter</set>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>12</string>
+               </property>
+               <property name="textAlignment">
+                <set>AlignCenter</set>
+               </property>
+              </row>
+              <column>
+               <property name="text">
+                <string>星期日</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>星期一</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>星期二</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>星期三</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>星期四</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>星期五</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>星期六</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_14">
+              <item>
+               <spacer name="horizontalSpacer_22">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QComboBox" name="weekSelect">
+                <item>
+                 <property name="text">
+                  <string>第一周</string>
+                 </property>
                 </item>
-               </layout>
-              </widget>
-              <widget class="QWidget" name="SchoolCourse">
-               <layout class="QGridLayout" name="gridLayout_10">
-                <item row="1" column="0">
-                 <widget class="SchoolCourseDisplay" name="schoolCourseTable">
-                  <column>
-                   <property name="text">
-                    <string>课程id</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>课程名</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>课程教师</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>课程地点</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>学分</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>周日</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>周一</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>周二</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>新建列</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>周四</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>周五</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>周六</string>
-                   </property>
-                  </column>
-                 </widget>
+                <item>
+                 <property name="text">
+                  <string>第二周</string>
+                 </property>
                 </item>
-                <item row="0" column="0">
-                 <widget class="QGroupBox" name="groupBox">
-                  <property name="styleSheet">
-                   <string notr="true">        QGroupBox {
+                <item>
+                 <property name="text">
+                  <string>第三周</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>第四周</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>第五周</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>第六周</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>第七周</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>第八周</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>第九周</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>第十周</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>第十一周</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>第十二周</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>第十三周</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>第十四周</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>第十五周</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>第十六周</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_23">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="SchoolCourse">
+           <layout class="QGridLayout" name="gridLayout_10">
+            <item row="1" column="0">
+             <widget class="SchoolCourseDisplay" name="schoolCourseTable">
+              <column>
+               <property name="text">
+                <string>课程id</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>课程名</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>课程教师</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>课程地点</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>学分</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>周日</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>周一</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>周二</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>新建列</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>周四</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>周五</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>周六</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QGroupBox" name="groupBox">
+              <property name="styleSheet">
+               <string notr="true">        QGroupBox {
             border-color: rgb(0, 0, 0);
             border-width: 0px;
             border-style: solid;
             margin-top: 0.5ex;
         }</string>
-                  </property>
-                  <property name="title">
-                   <string/>
-                  </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_9">
-                   <item>
-                    <widget class="QGroupBox" name="groupBox_18">
-                     <property name="styleSheet">
-                      <string notr="true">        QGroupBox {
+              </property>
+              <property name="title">
+               <string/>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_9">
+               <item>
+                <widget class="QGroupBox" name="groupBox_18">
+                 <property name="styleSheet">
+                  <string notr="true">        QGroupBox {
             border-color: rgb(0, 0, 0);
             border-width: 0px;
             border-style: solid;
             margin-top: 0.5ex;
         }</string>
-                     </property>
-                     <property name="title">
-                      <string/>
-                     </property>
-                     <layout class="QHBoxLayout" name="horizontalLayout_37">
-                      <item>
-                       <widget class="QGroupBox" name="groupBox_20">
-                        <property name="styleSheet">
-                         <string notr="true">        QGroupBox {
+                 </property>
+                 <property name="title">
+                  <string/>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_37">
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_20">
+                    <property name="styleSheet">
+                     <string notr="true">        QGroupBox {
             border-color: rgb(0, 0, 0);
             border-width: 0px;
             border-style: solid;
             margin-top: 0.5ex;
         }</string>
-                        </property>
-                        <property name="title">
-                         <string/>
-                        </property>
-                        <layout class="QHBoxLayout" name="horizontalLayout_30">
-                         <item>
-                          <widget class="QLabel" name="label_20">
-                           <property name="text">
-                            <string>学年</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QComboBox" name="comboBox_14">
-                           <property name="styleSheet">
-                            <string notr="true">QComboBox{
+                    </property>
+                    <property name="title">
+                     <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_30">
+                     <item>
+                      <widget class="QLabel" name="label_20">
+                       <property name="text">
+                        <string>学年</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QComboBox" name="comboBox_14">
+                       <property name="styleSheet">
+                        <string notr="true">QComboBox{
   color:#1e222b;
   padding: 1px 15px 1px 3px;
   border:1px solid rgba(228,228,228,1);
@@ -1016,37 +1045,37 @@ QComboBox QScrollBar::sub-line::vertical{/*下箭头*/
 }
 
 </string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QGroupBox" name="groupBox_22">
-                        <property name="styleSheet">
-                         <string notr="true">        QGroupBox {
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_22">
+                    <property name="styleSheet">
+                     <string notr="true">        QGroupBox {
             border-color: rgb(0, 0, 0);
             border-width: 0px;
             border-style: solid;
             margin-top: 0.5ex;
         }</string>
-                        </property>
-                        <property name="title">
-                         <string/>
-                        </property>
-                        <layout class="QHBoxLayout" name="horizontalLayout_33">
-                         <item>
-                          <widget class="QLabel" name="label_22">
-                           <property name="text">
-                            <string>学期</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QComboBox" name="comboBox_16">
-                           <property name="styleSheet">
-                            <string notr="true">QComboBox{
+                    </property>
+                    <property name="title">
+                     <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_33">
+                     <item>
+                      <widget class="QLabel" name="label_22">
+                       <property name="text">
+                        <string>学期</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QComboBox" name="comboBox_16">
+                       <property name="styleSheet">
+                        <string notr="true">QComboBox{
   color:#1e222b;
   padding: 1px 15px 1px 3px;
   border:1px solid rgba(228,228,228,1);
@@ -1102,37 +1131,37 @@ QComboBox QScrollBar::sub-line::vertical{/*下箭头*/
     border:none;
 }
 </string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QGroupBox" name="groupBox_21">
-                        <property name="styleSheet">
-                         <string notr="true">        QGroupBox {
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_21">
+                    <property name="styleSheet">
+                     <string notr="true">        QGroupBox {
             border-color: rgb(0, 0, 0);
             border-width: 0px;
             border-style: solid;
             margin-top: 0.5ex;
         }</string>
-                        </property>
-                        <property name="title">
-                         <string/>
-                        </property>
-                        <layout class="QHBoxLayout" name="horizontalLayout_32">
-                         <item>
-                          <widget class="QLabel" name="label_21">
-                           <property name="text">
-                            <string>有无容量</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QComboBox" name="comboBox_15">
-                           <property name="styleSheet">
-                            <string notr="true">QComboBox{
+                    </property>
+                    <property name="title">
+                     <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_32">
+                     <item>
+                      <widget class="QLabel" name="label_21">
+                       <property name="text">
+                        <string>有无容量</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QComboBox" name="comboBox_15">
+                       <property name="styleSheet">
+                        <string notr="true">QComboBox{
   color:#1e222b;
   padding: 1px 15px 1px 3px;
   border:1px solid rgba(228,228,228,1);
@@ -1188,64 +1217,64 @@ QComboBox QScrollBar::sub-line::vertical{/*下箭头*/
     border:none;
 }
 </string>
-                           </property>
-                           <item>
-                            <property name="text">
-                             <string>有</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>无</string>
-                            </property>
-                           </item>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                     </layout>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QGroupBox" name="groupBox_23">
-                     <property name="styleSheet">
-                      <string notr="true">        QGroupBox {
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>有</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>无</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_23">
+                 <property name="styleSheet">
+                  <string notr="true">        QGroupBox {
             border-color: rgb(0, 0, 0);
             border-width: 0px;
             border-style: solid;
             margin-top: 0.5ex;
         }</string>
-                     </property>
-                     <property name="title">
-                      <string/>
-                     </property>
-                     <layout class="QHBoxLayout" name="horizontalLayout_36">
-                      <item>
-                       <widget class="QGroupBox" name="groupBox_24">
-                        <property name="styleSheet">
-                         <string notr="true">        QGroupBox {
+                 </property>
+                 <property name="title">
+                  <string/>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_36">
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_24">
+                    <property name="styleSheet">
+                     <string notr="true">        QGroupBox {
             border-color: rgb(0, 0, 0);
             border-width: 0px;
             border-style: solid;
             margin-top: 0.5ex;
         }</string>
-                        </property>
-                        <property name="title">
-                         <string/>
-                        </property>
-                        <layout class="QHBoxLayout" name="horizontalLayout_31">
-                         <item>
-                          <widget class="QLabel" name="label_23">
-                           <property name="text">
-                            <string>开课院系</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QComboBox" name="comboBox_17">
-                           <property name="styleSheet">
-                            <string notr="true">QComboBox{
+                    </property>
+                    <property name="title">
+                     <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_31">
+                     <item>
+                      <widget class="QLabel" name="label_23">
+                       <property name="text">
+                        <string>开课院系</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QComboBox" name="comboBox_17">
+                       <property name="styleSheet">
+                        <string notr="true">QComboBox{
   color:#1e222b;
   padding: 1px 15px 1px 3px;
   border:1px solid rgba(228,228,228,1);
@@ -1301,43 +1330,43 @@ QComboBox QScrollBar::sub-line::vertical{/*下箭头*/
     border:none;
 }
 </string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QGroupBox" name="groupBox_26">
-                        <property name="styleSheet">
-                         <string notr="true">        QGroupBox {
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_26">
+                    <property name="styleSheet">
+                     <string notr="true">        QGroupBox {
             border-color: rgb(0, 0, 0);
             border-width: 0px;
             border-style: solid;
             margin-top: 0.5ex;
         }</string>
-                        </property>
-                        <property name="title">
-                         <string/>
-                        </property>
-                        <layout class="QHBoxLayout" name="horizontalLayout_35">
-                         <item>
-                          <widget class="QLabel" name="label_25">
-                           <property name="text">
-                            <string>教师</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QLineEdit" name="lineEdit_2">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">QLineEdit {
+                    </property>
+                    <property name="title">
+                     <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_35">
+                     <item>
+                      <widget class="QLabel" name="label_25">
+                       <property name="text">
+                        <string>教师</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="lineEdit_2">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLineEdit {
     color: #1e222b;
     padding: 1px 3px;  /* 去掉右边的15px padding，因为LineEdit不需要下拉按钮的空间 */
     border: 1px solid rgba(228,228,228,1);
@@ -1375,43 +1404,43 @@ QLineEdit QScrollBar::add-line:vertical {
 QLineEdit QScrollBar::sub-line:vertical {
     border: none;
 }</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QGroupBox" name="groupBox_25">
-                        <property name="styleSheet">
-                         <string notr="true">        QGroupBox {
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_25">
+                    <property name="styleSheet">
+                     <string notr="true">        QGroupBox {
             border-color: rgb(0, 0, 0);
             border-width: 0px;
             border-style: solid;
             margin-top: 0.5ex;
         }</string>
-                        </property>
-                        <property name="title">
-                         <string/>
-                        </property>
-                        <layout class="QHBoxLayout" name="horizontalLayout_34">
-                         <item>
-                          <widget class="QLabel" name="label_24">
-                           <property name="text">
-                            <string>课程名称</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QLineEdit" name="lineEdit">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">QLineEdit {
+                    </property>
+                    <property name="title">
+                     <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_34">
+                     <item>
+                      <widget class="QLabel" name="label_24">
+                       <property name="text">
+                        <string>课程名称</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="lineEdit">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLineEdit {
     color: #1e222b;
     padding: 1px 3px;  /* 去掉右边的15px padding，因为LineEdit不需要下拉按钮的空间 */
     border: 1px solid rgba(228,228,228,1);
@@ -1449,41 +1478,41 @@ QLineEdit QScrollBar::add-line:vertical {
 QLineEdit QScrollBar::sub-line:vertical {
     border: none;
 }</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                     </layout>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QGroupBox" name="groupBox_19">
-                     <property name="title">
-                      <string/>
-                     </property>
-                     <layout class="QHBoxLayout" name="horizontalLayout_39">
-                      <item>
-                       <spacer name="horizontalSpacer_21">
-                        <property name="orientation">
-                         <enum>Qt::Orientation::Horizontal</enum>
-                        </property>
-                        <property name="sizeType">
-                         <enum>QSizePolicy::Policy::Expanding</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>549</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                      <item>
-                       <widget class="QPushButton" name="pushButton">
-                        <property name="styleSheet">
-                         <string notr="true">QPushButton {
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_19">
+                 <property name="title">
+                  <string/>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_39">
+                  <item>
+                   <spacer name="horizontalSpacer_21">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Policy::Expanding</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>549</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="pushButton">
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
     color: #1e222b;
     background-color: #ffffff;
     border: 1px solid rgba(228,228,228,1);
@@ -1515,28 +1544,24 @@ QPushButton:disabled {
 QPushButton:icon {
     padding: 1px 15px 1px 10px;  /* 左侧padding适当调整以适应图标 */
 }</string>
-                        </property>
-                        <property name="text">
-                         <string>查询</string>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </widget>
-                   </item>
-                   <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_38"/>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
+                    </property>
+                    <property name="text">
+                     <string>查询</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_38"/>
+               </item>
+              </layout>
              </widget>
             </item>
            </layout>
-          </item>
-         </layout>
+          </widget>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -2640,6 +2665,121 @@ QPushButton:icon {
         </item>
        </layout>
       </widget>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QToolButton" name="clockButton">
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+border: 0;</string>
+      </property>
+      <property name="text">
+       <string>时钟</string>
+      </property>
+      <property name="icon">
+       <iconset resource="img.qrc">
+        <normaloff>:/tab/img/clock.png</normaloff>:/tab/img/clock.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="autoExclusive">
+       <bool>true</bool>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QToolButton" name="homeButton">
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+border: 0;</string>
+      </property>
+      <property name="text">
+       <string>主页</string>
+      </property>
+      <property name="icon">
+       <iconset resource="img.qrc">
+        <normaloff>:/tab/img/home.png</normaloff>:/tab/img/home.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="autoExclusive">
+       <bool>true</bool>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="4">
+     <widget class="QToolButton" name="tasksButton">
+      <property name="styleSheet">
+       <string notr="true">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ui version=&quot;4.0&quot;&gt;
+ &lt;widget name=&quot;__qt_fake_top_level&quot;&gt;
+  &lt;widget class=&quot;QToolButton&quot; name=&quot;clockButton&quot;&gt;
+   &lt;property name=&quot;geometry&quot;&gt;
+    &lt;rect&gt;
+     &lt;x&gt;80&lt;/x&gt;
+     &lt;y&gt;6&lt;/y&gt;
+     &lt;width&gt;33&lt;/width&gt;
+     &lt;height&gt;49&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;styleSheet&quot;&gt;
+    &lt;string notr=&quot;true&quot;&gt;background-color: transparent;
+border: 0;&lt;/string&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;text&quot;&gt;
+    &lt;string&gt;时钟&lt;/string&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;icon&quot;&gt;
+    &lt;iconset resource=&quot;img.qrc&quot;&gt;
+     &lt;normaloff&gt;:/tab/img/clock.png&lt;/normaloff&gt;:/tab/img/clock.png&lt;/iconset&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;iconSize&quot;&gt;
+    &lt;size&gt;
+     &lt;width&gt;30&lt;/width&gt;
+     &lt;height&gt;30&lt;/height&gt;
+    &lt;/size&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;autoExclusive&quot;&gt;
+    &lt;bool&gt;true&lt;/bool&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;toolButtonStyle&quot;&gt;
+    &lt;enum&gt;Qt::ToolButtonStyle::ToolButtonTextUnderIcon&lt;/enum&gt;
+   &lt;/property&gt;
+  &lt;/widget&gt;
+ &lt;/widget&gt;
+ &lt;resources&gt;
+  &lt;include location=&quot;F:/school/7-seventh/software-architecture/ham/img.qrc&quot;/&gt;
+ &lt;/resources&gt;
+&lt;/ui&gt;
+</string>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+      <property name="icon">
+       <iconset resource="img.qrc">
+        <normaloff>:/tab/img/tasks.png</normaloff>:/tab/img/tasks.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
      </widget>
     </item>
    </layout>

@@ -240,7 +240,7 @@ bool NetDataAccess::getPersonalCourse(int week)
 {
     QNetworkRequest request;
     QString url = server;
-    url += "api/schedule/weekly/";
+    url += "schedule/weekly/";
     QUrl url_temp = QUrl(url);
     if(week >= 0)
     {
