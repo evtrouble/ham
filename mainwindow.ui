@@ -771,6 +771,11 @@ QPushButton:icon {
               </item>
               <item>
                <widget class="QComboBox" name="weekSelect">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
                 <item>
                  <property name="text">
                   <string>第一周</string>

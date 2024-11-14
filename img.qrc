@@ -13,5 +13,6 @@
     <qresource prefix="/icon">
         <file>img/icon.png</file>
         <file>img/people.png</file>
+        <file>img/down-arrow.png</file>
     </qresource>
 </RCC>

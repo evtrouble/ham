@@ -249,7 +249,7 @@ bool NetDataAccess::getPersonalCourse(int week)
         url_temp.setQuery(query.query());
 
     }
-    request.setUrl(QUrl(url));
+    request.setUrl(QUrl(url_temp));
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));
     request.setRawHeader("Authorization", "Bearer " + jwt.toUtf8());
