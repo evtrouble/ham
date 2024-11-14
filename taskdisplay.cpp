@@ -70,6 +70,11 @@ void TaskDisplay::itemChange(QListWidgetItem *currentItem, QDateTime &&deadline,
         QMessageBox::information(this, "注意!", "待办事项不能为空！");
         return;
     }
+    if(deadline < QDateTime::currentDateTime())
+    {
+        QMessageBox::information(this, "注意!", "截止时间不能早于当前时间！");
+        return;
+    }
     if(currentItem == nullptr) addTaskItem(deadline, text, priority);
     else updateTaskItem(currentItem, deadline, text, priority);
 }
@@ -212,7 +217,7 @@ void TaskDisplay::timerEvent(QTimerEvent *event)
         if(!iter->second->isfinish()){
             QString title = "距离截止日期还有";
 
-            int minutes = iter->second->getDeadline().secsTo(QDateTime::currentDateTime());
+            int minutes = QDateTime::currentDateTime().secsTo(iter->second->getDeadline()) / 60;
 
             title += QString::number(minutes) + "分钟！";
             trayIcon->showMessage(title, iter->second->getText());
