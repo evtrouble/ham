@@ -225,7 +225,7 @@ void PersonalCourseDisplay::mouseDoubleClickEvent(QMouseEvent *event)
         auto temp = itemAt(event->pos());
         if (temp != nullptr)
         {
-            QMessageBox::about(this, "课程详细信息", courses[temp->column() * MAX_TIME + temp->row()].toString());
+            QMessageBox::about(this, "课程详细信息", courses_[temp->column() * MAX_TIME + temp->row()].toString());
         }
     }
     QTableWidget::mouseDoubleClickEvent(event);

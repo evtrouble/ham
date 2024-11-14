@@ -1,5 +1,5 @@
 #include "coursecontrol.h"
-#include "ui_hamsystem.h"
+#include "ui_mainwindow.h"
 #include "personalcoursedisplay.h"
 #include <QPushButton>
 
