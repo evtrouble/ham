@@ -7,6 +7,7 @@ class CourseControl
 {
 public:
     CourseControl(Ui::MainWindow *ui);
+    void init();
 
 private:
     Ui::MainWindow *ui;

@@ -71,3 +71,8 @@ void TasksControl::disconnectTaskDisplay()
     QPushButton::disconnect(ui->addButton, 0, ui->textEdit, 0);//添加新代办
 }
 
+void TasksControl::init()
+{
+    ui->listWidget->init();
+    ui->editor->hide();
+}

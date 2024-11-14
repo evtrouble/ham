@@ -31,6 +31,9 @@ void TaskDisplay::mousePressEvent(QMouseEvent *event)
 
 void TaskDisplay::init()
 {
+    if(!once)return;
+    clear();
+
     //bool success = NetDataAccess::instance()->loadData(value);
     NetDataAccess::instance()->loadTaskData();
 
@@ -53,7 +56,7 @@ void TaskDisplay::init()
                 }
             }
         } else {
-            qWarning() << "Network error:" << reply->errorString();
+            QMessageBox::critical(this, "Network error!", reply->errorString());
         }
         reply->deleteLater();
         NetDataAccess::disconnect(NetDataAccess::instance().get(), &NetDataAccess::finish, this, 0);
@@ -170,8 +173,8 @@ void TaskDisplay::resizeEvent(QResizeEvent *event)
 {
     if(!once)
     {
-        init();
         once = true;
+        init();
     }
 
     for(int id = 0; id < count(); id++){

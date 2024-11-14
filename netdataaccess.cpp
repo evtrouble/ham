@@ -4,6 +4,7 @@
 #include <QJsonDocument>
 #include <QEventLoop>
 #include <QMessageBox>
+#include <QUrlQuery>
 
 NetDataAccess::NetDataAccess(QWidget* parent) : QWidget(parent), access(new QNetworkAccessManager) {}
 
@@ -51,7 +52,7 @@ bool NetDataAccess::addTaskItem(const QJsonObject& data, int& id)
             // }
             id = document.object()["id"].toInt();
         } else {
-            qWarning() << "Network error:" << reply->errorString();
+            QMessageBox::critical(this, "Network error!", reply->errorString());
         }
         reply->deleteLater();
         loop.quit();
@@ -136,7 +137,7 @@ bool NetDataAccess::userLogin(const QString& username, const QString& password, 
                 QMessageBox::critical(this, "error!", document.object()["error"].toString());
             }
         } else {
-            qWarning() << "Network error:" << reply->errorString();
+            QMessageBox::critical(this, "Network error!", reply->errorString());
         }
         reply->deleteLater();
         loop.quit();
@@ -180,7 +181,7 @@ bool NetDataAccess::userRegister(const QString& username, const QString& passwor
                 QMessageBox::critical(this, "error!", document.object()["error"].toString());
             }
         } else {
-            qWarning() << "Network error:" << reply->errorString();
+            QMessageBox::critical(this, "Network error!", reply->errorString());
         }
         reply->deleteLater();
         loop.quit();
@@ -223,7 +224,7 @@ bool NetDataAccess::changePassword(const QString& old_password, const QString& n
                 QMessageBox::critical(this, "error!", document.object()["error"].toString());
             }
         } else {
-            qWarning() << "Network error:" << reply->errorString();
+            QMessageBox::critical(this, "Network error!", reply->errorString());
         }
         reply->deleteLater();
         loop.quit();
@@ -233,4 +234,29 @@ bool NetDataAccess::changePassword(const QString& old_password, const QString& n
     loop.exec();
 
     return success;
+}
+
+bool NetDataAccess::getPersonalCourse(int week)
+{
+    QNetworkRequest request;
+    QString url = server;
+    url += "api/schedule/weekly/";
+    QUrl url_temp = QUrl(url);
+    if(week >= 0)
+    {
+        QUrlQuery query;
+        query.addQueryItem("week", QString::number((week)));
+        url_temp.setQuery(query.query());
+
+    }
+    request.setUrl(QUrl(url));
+
+    request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));
+    request.setRawHeader("Authorization", "Bearer " + jwt.toUtf8());
+    reply = access->get(request);
+    // 连接槽函数解析数据
+    QNetworkReply::connect(reply, &QNetworkReply::finished, this, [=]() {
+        emit finish(reply);
+    });
+    return true;
 }
