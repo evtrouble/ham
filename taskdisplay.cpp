@@ -31,7 +31,6 @@ void TaskDisplay::mousePressEvent(QMouseEvent *event)
 
 void TaskDisplay::init()
 {
-    if(!once)return;
     clear();
 
     //bool success = NetDataAccess::instance()->loadData(value);
@@ -171,12 +170,6 @@ void TaskDisplay::clear_and_get(QVector<QJsonObject> &list_set)
 
 void TaskDisplay::resizeEvent(QResizeEvent *event)
 {
-    if(!once)
-    {
-        once = true;
-        init();
-    }
-
     for(int id = 0; id < count(); id++){
         TaskItem* widget = static_cast<TaskItem*>(itemWidget(item(id)));
         if(widget == nullptr)continue;

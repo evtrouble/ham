@@ -28,9 +28,6 @@ private:
     void removeTask(QListWidgetItem* currentItem);
     void clear_and_get(QVector<QJsonObject> &list_set);
 
-private:
-    bool once = false;
-
 signals:
     void editorHide();
     void editorShow(QListWidgetItem*);

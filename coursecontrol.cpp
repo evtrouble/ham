@@ -4,11 +4,9 @@
 
 #include <QPushButton>
 
-CourseControl::CourseControl(Ui::MainWindow *ui)
+CourseControl::CourseControl(Ui::MainWindow *ui) : ui(ui)
 {
-    this->ui = ui;
     ui->stackedWidget_2->setCurrentIndex(0);
-
 
     QPushButton::connect(ui->btnPersonalCourse, &QPushButton::clicked, ui->stackedWidget_2, [=]{
         ui->stackedWidget_2->setCurrentIndex(0);
@@ -20,7 +18,7 @@ CourseControl::CourseControl(Ui::MainWindow *ui)
 
     PersonalCourseDisplay::connect(ui->personalCourseTable, &PersonalCourseDisplay::initFinish, ui->weekSelect, [=]{
         ui->weekSelect->setCurrentIndex(ui->personalCourseTable->getCurrentWeek());
-    });//学校课表
+    });//个人课表切换周数
 
     QComboBox::connect(ui->weekSelect, &QComboBox::currentIndexChanged, ui->personalCourseTable, [=](int currentWeek){
         ui->personalCourseTable->init(currentWeek);
