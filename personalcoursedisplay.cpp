@@ -51,8 +51,8 @@ void PersonalCourseDisplay::setData(const QJsonObject &data)
 void PersonalCourseDisplay::displayCourse(const QJsonArray &coursesArray)
 {
     clearContents();
-    courses.clear();
-    courses.resize(MAX_DAY * MAX_TIME);
+    courses_.clear();
+    courses_.resize(MAX_DAY * MAX_TIME);
 
     // 初始化所有单元格
     for (int i = 0; i < rowCount(); ++i)
@@ -134,7 +134,7 @@ void PersonalCourseDisplay::displayCourse(const QJsonArray &coursesArray)
 
             // 保存课程信息
             int index = dayOfWeek * MAX_TIME + startSlot;
-            courses[index] = course;
+            courses_[index] = course;
 
             // 合并单元格
             setSpan(startSlot, dayOfWeek, course.slotInterval, 1);

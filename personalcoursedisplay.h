@@ -24,10 +24,10 @@ struct Course
     QString toString()
     {
         QString text = "课程名：" + name + "\n";
-        text += "课程id:" + courseId + "\n";
-        text += "学分:" + QString::number(credit) + "\n";
-        text += "课程教师" + instructor + "\n";
-        text += "课程地点" + classroom + "\n";
+        text += "课程id：" + courseId + "\n";
+        text += "学分：" + QString::number(credit) + "\n";
+        text += "课程教师：" + instructor + "\n";
+        text += "课程地点：" + classroom + "\n";
 
         text += "课程时间：" + QString::number(weekStart) + "-" + QString::number(weekEnd) + "周，";//周数
         switch (weekType) {

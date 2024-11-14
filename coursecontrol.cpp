@@ -1,12 +1,11 @@
 #include "coursecontrol.h"
-#include "ui_mainwindow.h"
+#include "ui_hamsystem.h"
 #include "personalcoursedisplay.h"
 #include <QPushButton>
 
 CourseControl::CourseControl(Ui::MainWindow *ui) : ui(ui)
 {
     ui->stackedWidget_2->setCurrentIndex(0);
-    // ui->weekSelect = new WeekSelector();
 
     QPushButton::connect(ui->btnPersonalCourse, &QPushButton::clicked, ui->stackedWidget_2, [=]
                          { ui->stackedWidget_2->setCurrentIndex(0); }); // 个人课表
@@ -26,6 +25,7 @@ void CourseControl::init()
 {
     ui->personalCourseTable->init();
 }
+
 void CourseControl::setupWeekComboBox(QComboBox *comboBox)
 {
     comboBox->clear();
