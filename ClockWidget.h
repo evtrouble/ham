@@ -4,18 +4,18 @@
 #include <QWidget>
 #include <QTimer>
 #include <QTime>
-#include <QSound>  // 如果您打算播放声音
+#include<QTimeEdit>
+#include <QString>
+#include <QSoundEffect>  // 包含 QSoundEffect
 
-namespace Ui {
-    class MainWindow;
-}
+#include "hamsystem.h"
 
 class ClockWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit ClockWidget(Ui::MainWindow* ui, QWidget *parent = nullptr);
+    explicit ClockWidget(Ui::MainWindow* ui, QWidget* parent = nullptr);
 
 private slots:
     void onSetAlarmClicked();          // 设置闹钟
@@ -35,11 +35,12 @@ private:
     QTimer countdownTimer;             // 倒计时定时器
     QTimer stopwatchTimer;             // 计时器定时器
     QTime remainingTime;               // 倒计时的剩余时间
+    QTime initialTime;                 //最初设定时间
     QTime stopwatchTime;               // 计时器时间
-    QSound* alarmSound;                // 闹钟声音，如果您打算播放声音
+    QSoundEffect* alarmSound;          // 闹钟声音，使用 QSoundEffect
 
     void showNotification(const QString& message);  // 显示通知信息
-    void playAlarmSound();                           // 播放闹钟声音，如果您打算播放声音
+    void playAlarmSound();                           // 播放闹钟声音
 };
 
 #endif // CLOCKWIDGET_H

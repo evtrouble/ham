@@ -1837,8 +1837,7 @@ font-size: 20px;</string>
                    <item>
                     <widget class="QPushButton" name="addButton">
                      <property name="styleSheet">
-                      <string notr="true">background-color: transparent;
-border: 0;</string>
+                      <string notr="true">border: 0;</string>
                      </property>
                      <property name="text">
                       <string/>

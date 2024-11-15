@@ -83,6 +83,15 @@ void TaskDisplay::updateTaskItem(QListWidgetItem *currentItem, QDateTime &deadli
 {
     TaskItem* widget = static_cast<TaskItem*>(itemWidget(currentItem));
     widget->setData(deadline, text, priority);
+
+    int id = widget->getTimerId();
+    if(id != -1)
+    {
+        killTimer(id);
+        timerMap.erase(id);
+    }
+    setTimer(widget);
+
     currentItem->setSizeHint(QSize(widget->width(), widget->height()));
     NetDataAccess::instance()->updateTaskItem(widget->toJson());
 }

@@ -8,6 +8,7 @@
 class TasksControl;
 class CourseControl;
 class HomeDisplay;
+class ClockWidget;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -34,6 +35,7 @@ private:
     TasksControl *tasksControl;
     CourseControl *courseControl;
     HomeDisplay *homeDisplay;
+    ClockWidget *clockWidget;
 
     QVector<QToolButton*> btns;
     QSystemTrayIcon *SysIcon;

@@ -1,6 +1,6 @@
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets core network
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets core network multimedia
 CONFIG += c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -21,6 +21,7 @@ SOURCES += \
     taskdisplay.cpp \
     taskeditor.cpp \
     taskitem.cpp \
+    ClockWidget.cpp\
     taskscontrol.cpp
 
 HEADERS += \
@@ -36,6 +37,7 @@ HEADERS += \
     taskdisplay.h \
     taskeditor.h \
     taskitem.h \
+    ClockWidget.h\
     taskscontrol.h
 
 FORMS += \

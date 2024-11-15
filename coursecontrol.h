@@ -2,7 +2,9 @@
 #define COURSECONTROL_H
 
 #include "hamsystem.h"
-#include "qcombobox.h"
+
+#include <QComboBox>
+
 class HamSystem;
 
 class CourseControl

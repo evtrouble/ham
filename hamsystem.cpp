@@ -5,6 +5,8 @@
 #include "coursecontrol.h"
 #include "taskscontrol.h"
 #include "homedisplay.h"
+#include "ClockWidget.h"
+
 #include <QIcon>
 #include <QDebug>
 #include <QVBoxLayout>
@@ -12,14 +14,14 @@
 #include <QMenu>
 
 HamSystem::HamSystem(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     tasksControl = new TasksControl(ui);
     homeDisplay = new HomeDisplay(ui);
+    clockWidget = new ClockWidget(ui);
 
-    //最小化托盘
+    // 最小化托盘
     QMenu *menu = new QMenu(this);
     QIcon icon(":/icon/img/icon.png");
     SysIcon = new QSystemTrayIcon(this);
@@ -28,14 +30,14 @@ HamSystem::HamSystem(QWidget *parent)
     QAction *restor = new QAction("恢复", this);
     connect(restor, &QAction::triggered, this, &HamSystem::showNormal);
     QAction *quit = new QAction("退出", this);
-    connect(quit, &QAction::triggered, qApp, [=]{
+    connect(quit, &QAction::triggered, qApp, [=]
+            {
         this->hide();
-        QApplication::quit();
-    });
+        QApplication::quit(); });
     connect(SysIcon, &QSystemTrayIcon::activated, this, &HamSystem::on_activatedSysTrayIcon);
 
     menu->addAction(restor);
-    menu->addSeparator(); //分割
+    menu->addSeparator(); // 分割
     menu->addAction(quit);
     SysIcon->setContextMenu(menu);
     SysIcon->show();
@@ -45,9 +47,9 @@ HamSystem::HamSystem(QWidget *parent)
     btns.append(ui->tasksButton);
     btns.append(ui->clockButton);
 
-    //按钮均匀分布
+    // 按钮均匀分布
     QVBoxLayout *VLayout = new QVBoxLayout;
-    for(auto& btn : btns)
+    for (auto &btn : btns)
         VLayout->addWidget(btn);
 
     QWidget *widget = new QWidget(ui->tab);
@@ -67,7 +69,8 @@ HamSystem::HamSystem(QWidget *parent)
     ui->buttonBox_2->button(QDialogButtonBox::Cancel)->setText("取消");
     courseControl = new CourseControl(ui);
 
-    QDialogButtonBox::connect(ui->buttonBox_2, &QDialogButtonBox::accepted, ui->stackedWidget, [=]{
+    QDialogButtonBox::connect(ui->buttonBox_2, &QDialogButtonBox::accepted, ui->stackedWidget, [=]
+                              {
         bool isAdmin = false;
         if(!NetDataAccess::instance()->userLogin(ui->usernameEdit->text(), ui->passwordEdit->text(), isAdmin))return;
         homeDisplay->setUsername(ui->usernameEdit->text());
@@ -86,12 +89,12 @@ HamSystem::HamSystem(QWidget *parent)
         courseControl->init();
 
         ui->stackedWidget->setCurrentIndex(0);
-        ui->tab->show();
-    });
+        ui->tab->show(); });
 
-
-    QPushButton::connect(ui->registerBtn, &QPushButton::clicked, ui->stackedWidget, [=]{
+    QPushButton::connect(ui->registerBtn, &QPushButton::clicked, ui->stackedWidget, [=]
+                         {
         RegisterUser userRegister(ui->centralwidget);
+        userRegister.setWindowModality(Qt::ApplicationModal);
         RegisterUser::connect(&userRegister, &RegisterUser::registerUser, ui->centralwidget, [&](const QString& username, const QString& email, const QString& password)
                               {
                                   if(!NetDataAccess::instance()->userRegister(username, password, email))return;
@@ -99,12 +102,10 @@ HamSystem::HamSystem(QWidget *parent)
                                   userRegister.close();
                               });
         userRegister.show();
-        userRegister.exec();
-    });//注册
+        userRegister.exec(); }); // 注册
 
     ui->tab->hide();
     ui->stackedWidget->setCurrentIndex(btns.size());
-
 }
 
 HamSystem::~HamSystem()
@@ -112,13 +113,15 @@ HamSystem::~HamSystem()
     delete homeDisplay;
     delete courseControl;
     delete tasksControl;
+    delete clockWidget;
     delete ui;
 }
 
 void HamSystem::navConnect(int id)
 {
-    QToolButton* btn_changed = btns.at(id);
-    QToolButton::connect(btn_changed, &QToolButton::clicked, ui->stackedWidget, [=]{
+    QToolButton *btn_changed = btns.at(id);
+    QToolButton::connect(btn_changed, &QToolButton::clicked, ui->stackedWidget, [=]
+                         {
         //切换页面
         if(ui->stackedWidget->currentIndex() < btns.size())
             btns.at(ui->stackedWidget->currentIndex())->setPalette(ui->centralwidget->palette().color(QPalette::Window));
@@ -129,27 +132,27 @@ void HamSystem::navConnect(int id)
         pal.setColor(QPalette::ButtonText, color);
         btn_changed->setPalette(pal);
 
-        ui->stackedWidget->setCurrentIndex(id);
-    });
+        ui->stackedWidget->setCurrentIndex(id); });
 }
 
-
-void HamSystem::closeEvent(QCloseEvent * event)
+void HamSystem::closeEvent(QCloseEvent *event)
 {
-    if(SysIcon->isVisible())
+    if (SysIcon->isVisible())
     {
         this->hide();
-        SysIcon->showMessage("Ham","已最小化到托盘");
+        SysIcon->showMessage("Ham", "已最小化到托盘");
         event->ignore();
     }
-    else {
+    else
+    {
         event->accept();
     }
 }
 
 void HamSystem::on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason)
 {
-    switch (reason) {
+    switch (reason)
+    {
 
     case QSystemTrayIcon::Trigger:
         break;
