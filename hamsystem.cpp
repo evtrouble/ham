@@ -5,7 +5,6 @@
 #include "coursecontrol.h"
 #include "taskscontrol.h"
 #include "homedisplay.h"
-
 #include <QIcon>
 #include <QDebug>
 #include <QVBoxLayout>
@@ -18,7 +17,6 @@ HamSystem::HamSystem(QWidget *parent)
 {
     ui->setupUi(this);
     tasksControl = new TasksControl(ui);
-    courseControl = new CourseControl(ui);
     homeDisplay = new HomeDisplay(ui);
 
     //最小化托盘
@@ -67,6 +65,8 @@ HamSystem::HamSystem(QWidget *parent)
 
     ui->buttonBox_2->button(QDialogButtonBox::Ok)->setText("登录");
     ui->buttonBox_2->button(QDialogButtonBox::Cancel)->setText("取消");
+    courseControl = new CourseControl(ui);
+
     QDialogButtonBox::connect(ui->buttonBox_2, &QDialogButtonBox::accepted, ui->stackedWidget, [=]{
         bool isAdmin = false;
         if(!NetDataAccess::instance()->userLogin(ui->usernameEdit->text(), ui->passwordEdit->text(), isAdmin))return;
@@ -82,11 +82,13 @@ HamSystem::HamSystem(QWidget *parent)
 
         homeDisplay->setUsername(ui->usernameEdit->text());
         tasksControl->init();
+        // 登录成功后初始化课程控制器并获取课程数据
         courseControl->init();
 
         ui->stackedWidget->setCurrentIndex(0);
         ui->tab->show();
-    });//登录
+    });
+
 
     QPushButton::connect(ui->registerBtn, &QPushButton::clicked, ui->stackedWidget, [=]{
         RegisterUser userRegister(ui->centralwidget);
@@ -102,6 +104,7 @@ HamSystem::HamSystem(QWidget *parent)
 
     ui->tab->hide();
     ui->stackedWidget->setCurrentIndex(btns.size());
+
 }
 
 HamSystem::~HamSystem()

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>799</width>
-    <height>573</height>
+    <width>839</width>
+    <height>637</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -88,7 +88,7 @@ border: 0;</string>
        </size>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="home">
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -877,70 +877,6 @@ QPushButton:icon {
           </widget>
           <widget class="QWidget" name="SchoolCourse">
            <layout class="QGridLayout" name="gridLayout_10">
-            <item row="1" column="0">
-             <widget class="SchoolCourseDisplay" name="schoolCourseTable">
-              <column>
-               <property name="text">
-                <string>课程id</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>课程名</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>课程教师</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>课程地点</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>学分</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>周日</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>周一</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>周二</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>新建列</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>周四</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>周五</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>周六</string>
-               </property>
-              </column>
-             </widget>
-            </item>
             <item row="0" column="0">
              <widget class="QGroupBox" name="groupBox">
               <property name="styleSheet">
@@ -985,13 +921,18 @@ QPushButton:icon {
                     <layout class="QHBoxLayout" name="horizontalLayout_30">
                      <item>
                       <widget class="QLabel" name="label_20">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>学年</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QComboBox" name="comboBox_14">
+                      <widget class="QComboBox" name="academicYearCombo">
                        <property name="styleSheet">
                         <string notr="true">QComboBox{
   color:#1e222b;
@@ -1072,13 +1013,18 @@ QComboBox QScrollBar::sub-line::vertical{/*下箭头*/
                     <layout class="QHBoxLayout" name="horizontalLayout_33">
                      <item>
                       <widget class="QLabel" name="label_22">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>学期</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QComboBox" name="comboBox_16">
+                      <widget class="QComboBox" name="semesterCombo">
                        <property name="styleSheet">
                         <string notr="true">QComboBox{
   color:#1e222b;
@@ -1158,13 +1104,18 @@ QComboBox QScrollBar::sub-line::vertical{/*下箭头*/
                     <layout class="QHBoxLayout" name="horizontalLayout_32">
                      <item>
                       <widget class="QLabel" name="label_21">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>有无容量</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QComboBox" name="comboBox_15">
+                      <widget class="QComboBox" name="hasCapacityCombo">
                        <property name="styleSheet">
                         <string notr="true">QComboBox{
   color:#1e222b;
@@ -1223,16 +1174,6 @@ QComboBox QScrollBar::sub-line::vertical{/*下箭头*/
 }
 </string>
                        </property>
-                       <item>
-                        <property name="text">
-                         <string>有</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>无</string>
-                        </property>
-                       </item>
                       </widget>
                      </item>
                     </layout>
@@ -1271,13 +1212,18 @@ QComboBox QScrollBar::sub-line::vertical{/*下箭头*/
                     <layout class="QHBoxLayout" name="horizontalLayout_31">
                      <item>
                       <widget class="QLabel" name="label_23">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>开课院系</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QComboBox" name="comboBox_17">
+                      <widget class="QComboBox" name="departmentCombo">
                        <property name="styleSheet">
                         <string notr="true">QComboBox{
   color:#1e222b;
@@ -1357,13 +1303,18 @@ QComboBox QScrollBar::sub-line::vertical{/*下箭头*/
                     <layout class="QHBoxLayout" name="horizontalLayout_35">
                      <item>
                       <widget class="QLabel" name="label_25">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>教师</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="lineEdit_2">
+                      <widget class="QLineEdit" name="instructorEdit">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -1431,13 +1382,18 @@ QLineEdit QScrollBar::sub-line:vertical {
                     <layout class="QHBoxLayout" name="horizontalLayout_34">
                      <item>
                       <widget class="QLabel" name="label_24">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>课程名称</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="lineEdit">
+                      <widget class="QLineEdit" name="courseNameEdit">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -1515,7 +1471,7 @@ QLineEdit QScrollBar::sub-line:vertical {
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton">
+                   <widget class="QPushButton" name="btnSearchCourse">
                     <property name="styleSheet">
                      <string notr="true">QPushButton {
     color: #1e222b;
@@ -1560,6 +1516,158 @@ QPushButton:icon {
                </item>
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_38"/>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="SchoolCourseDisplay" name="schoolCourseTable">
+              <column>
+               <property name="text">
+                <string>课程id</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>课程名</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>课程教师</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>课程地点</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>学分</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>周日</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>周一</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>周二</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>周三</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>周四</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>周五</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>周六</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QGroupBox" name="groupBox_2">
+              <property name="title">
+               <string/>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_15">
+               <item>
+                <spacer name="horizontalSpacer_24">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="prevButton">
+                 <property name="text">
+                  <string>上一页</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_26">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Policy::Preferred</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="pageLabel">
+                 <property name="text">
+                  <string>TextLabel</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_27">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Policy::Preferred</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="nextButton">
+                 <property name="text">
+                  <string>下一页</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_25">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>

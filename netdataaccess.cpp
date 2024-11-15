@@ -22,7 +22,7 @@ bool NetDataAccess::loadTaskData()
     reply = access->get(request);
     // 连接槽函数解析数据
     QNetworkReply::connect(reply, &QNetworkReply::finished, this, [=]()
-                           { emit finish(reply); });
+                           { emit TaskFinish(reply); });
     return true;
 }
 
@@ -133,6 +133,8 @@ bool NetDataAccess::userLogin(const QString &username, const QString &password, 
                 jwt = obj["token"].toString();
                 isAdmin = obj["user"].toObject()["isAdmin"].toBool();
                 success = true;
+                emit loginSuccess();
+
             } else {
                 QMessageBox::critical(this, "error!", document.object()["error"].toString());
             }
@@ -254,6 +256,77 @@ bool NetDataAccess::getPersonalCourse(int week)
     reply = access->get(request);
     // 连接槽函数解析数据
     QNetworkReply::connect(reply, &QNetworkReply::finished, this, [=]()
+                           { emit personalCourseFinish(reply); });
+    return true;
+}
+bool NetDataAccess::getCurrentWeek()
+{
+    QNetworkRequest request;
+    QString url = server;
+    url += "schedule/current-week/";
+    request.setUrl(QUrl(url));
+
+    request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));
+    request.setRawHeader("Authorization", "Bearer " + jwt.toUtf8());
+    reply = access->get(request);
+    QNetworkReply::connect(reply, &QNetworkReply::finished, this, [=]()
                            { emit finish(reply); });
+    return true;
+}
+bool NetDataAccess::searchCourse(
+    const int academicYear,
+    const int semester,
+    const QString& instructor,
+    const QString& name,
+    const QString& department,
+    const int hasCapacity
+    )
+{
+    qDebug()<<"hasCapacity"<<" "<<hasCapacity;
+
+    QNetworkRequest request;
+    QString url = server;
+    url += "schedule/search/";
+
+    QUrlQuery query;
+
+    // Skip default/placeholder values
+    if (academicYear > 0) {
+        query.addQueryItem("academicYear", QString::number(academicYear));
+    }
+    if (semester != 0) {
+        query.addQueryItem("semester", QString::number(semester));
+    }
+    if (!instructor.isEmpty() && instructor != "请选择教师") {
+        query.addQueryItem("instructor", instructor);
+    }
+    if (!name.isEmpty() && name != "请输入课程名") {
+        query.addQueryItem("name", name);
+    }
+    if (!department.isEmpty() && department != "请选择院系") {
+        query.addQueryItem("department", department);
+    }
+    qDebug()<<"hasCapacity"<<" "<<hasCapacity;
+
+    if (hasCapacity != -1) {
+        query.addQueryItem("hasCapacity", hasCapacity == 1 ? "true" : "false");
+    }
+    QUrl urlWithQuery(url);
+    qDebug()<<"query"<<query.toString();
+    if (!query.isEmpty()) {
+        urlWithQuery.setQuery(query);
+    }
+    request.setUrl(urlWithQuery);
+
+    request.setHeader(QNetworkRequest::ContentTypeHeader,
+                      QVariant("application/json;charset=utf-8"));
+    request.setRawHeader("Authorization", "Bearer " + jwt.toUtf8());
+
+    reply = access->get(request);
+
+    QNetworkReply::connect(reply, &QNetworkReply::finished, this, [=]() {
+        emit schoolCourseFinish(reply);
+    });
+
     return true;
 }

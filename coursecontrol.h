@@ -11,9 +11,15 @@ public:
     CourseControl(Ui::MainWindow *ui);
     void init();
     void setupWeekComboBox(QComboBox *comboBox);
+    void initializeCustomComboBox();
+    void initWithoutCourse();
+
 
 private:
     Ui::MainWindow *ui;
+
+
+
 };
 
 #endif // COURSECONTROL_H

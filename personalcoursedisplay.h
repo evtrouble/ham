@@ -90,10 +90,12 @@ private:
     QVector<QString> colors{"#762E38", "#780C20", "#4C3778", "#133A7A", "#3D2302", "#786E01", "#646464"};
     void displayCourse(const QJsonArray& courses);
     Course& setCourseItem(const QJsonObject& course);
+    bool isFirstInit = true;  // 添加标志位
+
 
 signals:
     void initFinish();
-
+    void weekUpdated(int index);
 private:
     int currentWeek = 0;
     bool once = false;

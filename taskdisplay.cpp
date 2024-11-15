@@ -37,7 +37,7 @@ void TaskDisplay::init()
     //bool success = NetDataAccess::instance()->loadData(value);
     NetDataAccess::instance()->loadTaskData();
 
-    NetDataAccess::connect(NetDataAccess::instance().get(), &NetDataAccess::finish, this, [=](QNetworkReply* reply){
+    NetDataAccess::connect(NetDataAccess::instance().get(), &NetDataAccess::TaskFinish, this, [=](QNetworkReply* reply){
         if (reply->error() == QNetworkReply::NoError) {
             QByteArray data = reply->readAll();
             QJsonParseError parseJsonErr;
@@ -59,7 +59,7 @@ void TaskDisplay::init()
             QMessageBox::critical(this, "Network error!", reply->errorString());
         }
         reply->deleteLater();
-        NetDataAccess::disconnect(NetDataAccess::instance().get(), &NetDataAccess::finish, this, 0);
+        NetDataAccess::disconnect(NetDataAccess::instance().get(), &NetDataAccess::TaskFinish, this, 0);
     });
 }
 

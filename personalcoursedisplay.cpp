@@ -6,13 +6,14 @@
 #include <QJsonArray>
 #include <QRandomGenerator>
 #include <QJsonDocument>
-#include <QMessageBox>
 #include <QJsonParseError>
+#include <QMessageBox>
 #include <QMouseEvent>
 #include <QMessageBox>
 
 PersonalCourseDisplay::PersonalCourseDisplay(QWidget *parent) : QTableWidget(parent), courses_(MAX_DAY * MAX_TIME)
 {
+
     horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     verticalHeader()->setMinimumSectionSize(80);
     verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -42,10 +43,15 @@ PersonalCourseDisplay::PersonalCourseDisplay(QWidget *parent) : QTableWidget(par
 
 void PersonalCourseDisplay::setData(const QJsonObject &data)
 {
+    if (!data["success"].toBool()) {
+        return;
+    }
     QJsonObject innerData = data["data"].toObject(); // 获取 data 对象
     currentWeek = innerData["week"].toInt();         // 从 innerData 获取 week 值
-
     displayCourse(innerData["courses"].toArray()); // 从 innerData 获取 courses 数组
+    // 发出初始化完成的信号
+    emit initFinish();
+
 }
 
 void PersonalCourseDisplay::displayCourse(const QJsonArray &coursesArray)
@@ -197,25 +203,44 @@ void PersonalCourseDisplay::displayCourse(const QJsonArray &coursesArray)
 
 void PersonalCourseDisplay::init(int week)
 {
+    // If week is -1, we're initializing for the first time
+    // Otherwise, we're switching weeks
+    bool isInitialLoad = (week == -1);
+
+    // 检查是否已经有授权令牌
+    if (NetDataAccess::instance()->getJwt().isEmpty()) {
+        qDebug() << "未登录" ;
+
+        return;  // 未登录时不发送请求
+    }
+
     NetDataAccess::instance()->getPersonalCourse(week);
 
-    NetDataAccess::connect(NetDataAccess::instance().get(), &NetDataAccess::finish, this, [=](QNetworkReply *reply)
+    NetDataAccess::connect(NetDataAccess::instance().get(), &NetDataAccess::personalCourseFinish, this, [=](QNetworkReply *reply)
                            {
         if (reply->error() == QNetworkReply::NoError) {
             QByteArray data = reply->readAll();
+            qDebug() << "收到的原始数据:" << data;
+
             QJsonParseError parseJsonErr;
             QJsonDocument document = QJsonDocument::fromJson(data, &parseJsonErr);
+            qDebug() << "解析结果:" << document;
 
-            if(parseJsonErr.error == QJsonParseError::NoError && document.isObject()) {
+            qDebug()<<"parseJsonErr.error="<<parseJsonErr.error;
+            qDebug()<<"QJsonParseError::NoError="<<QJsonParseError::NoError;
+            if(parseJsonErr.error == QJsonParseError::NoError ) {
+
                 setData(document.object());
+
             }
         } else {
             QMessageBox::critical(this, "Network error!", reply->errorString());
         }
 
         reply->deleteLater();
-        if(week == -1) emit initFinish();
-        NetDataAccess::disconnect(NetDataAccess::instance().get(), &NetDataAccess::finish, this, 0); });
+               // 只在首次初始化时发送信号
+        NetDataAccess::disconnect(NetDataAccess::instance().get(), &NetDataAccess::personalCourseFinish, this, 0); });
+
 }
 
 void PersonalCourseDisplay::mouseDoubleClickEvent(QMouseEvent *event)

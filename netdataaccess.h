@@ -23,8 +23,17 @@ public:
     bool userLogin(const QString& username, const QString& password, bool& isAdmin);
     bool userRegister(const QString& username, const QString& password, const QString& email);
     bool changePassword(const QString& old_password, const QString& new_password);
+    bool getCurrentWeek();
 
-    bool getPersonalCourse(int week = -1);
+    bool getPersonalCourse(int week = 1);
+    bool searchCourse(const int academicYear = -1,
+                      const int semester = -1,
+                      const QString& instructor = QString(),
+                      const QString& name = QString(),
+                      const QString& department = QString(),
+                      const int hasCapacity = -1
+                      );
+    QString getJwt() const { return jwt; }
 
     static std::unique_ptr<NetDataAccess>& instance();
 
@@ -35,7 +44,13 @@ private:
     QString jwt;
 
 signals:
-    void finish(QNetworkReply*);
+    // void initFinish(QNetworkReply*);
+    void TaskFinish(QNetworkReply*);
+    void personalCourseFinish(QNetworkReply *reply);
+    void schoolCourseFinish(QNetworkReply *reply);
+    void finish(QNetworkReply *reply);
+    void loginSuccess();  // 新增登录成功信号
+
     void tokenError();
 };
 
