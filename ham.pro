@@ -20,6 +20,7 @@ SOURCES += \
     taskdisplay.cpp \
     taskeditor.cpp \
     taskitem.cpp \
+    ClockWidget.cpp\
     taskscontrol.cpp
 
 HEADERS += \
@@ -34,6 +35,7 @@ HEADERS += \
     taskdisplay.h \
     taskeditor.h \
     taskitem.h \
+    ClockWidget.h\
     taskscontrol.h
 
 FORMS += \
