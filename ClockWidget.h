@@ -4,12 +4,11 @@
 #include <QWidget>
 #include <QTimer>
 #include <QTime>
-#include<QString>
+#include<QTimeEdit>
+#include <QString>
 #include <QSoundEffect>  // 包含 QSoundEffect
 
-namespace Ui {
-    class MainWindow;
-}
+#include "hamsystem.h"
 
 class ClockWidget : public QWidget
 {
@@ -36,6 +35,7 @@ private:
     QTimer countdownTimer;             // 倒计时定时器
     QTimer stopwatchTimer;             // 计时器定时器
     QTime remainingTime;               // 倒计时的剩余时间
+    QTime initialTime;                 //最初设定时间
     QTime stopwatchTime;               // 计时器时间
     QSoundEffect* alarmSound;          // 闹钟声音，使用 QSoundEffect
 
