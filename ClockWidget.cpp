@@ -2,8 +2,11 @@
 #include "ui_mainwindow.h"
 
 ClockWidget::ClockWidget(Ui::MainWindow* ui, QWidget *parent) 
-    : QWidget(parent), ui(ui), alarmSound(new QSound("music.ogg"))  // 假设您的声音文件位于资源文件中
+    : QWidget(parent), ui(ui), alarmSound(new QSoundEffect(this))
 {
+    // 设置声音文件路径，使用相对路径
+    alarmSound->setSource(QUrl::fromLocalFile("music.ogg"));
+
     // 连接按钮点击信号到槽函数
     connect(ui->setAlarmBtn, &QPushButton::clicked, this, &ClockWidget::onSetAlarmClicked);
     connect(ui->startCountdownBtn, &QPushButton::clicked, this, &ClockWidget::onStartCountdownClicked);
@@ -69,11 +72,8 @@ void ClockWidget::updateStopwatch()
 void ClockWidget::showNotification(const QString& message)
 {
     ui->notificationLabel->setText(message);
-    // 可选：设置样式
     ui->notificationLabel->setStyleSheet("QLabel { background-color : yellow; color : black; }");
-    // 可选：确保标签是可见的
     ui->notificationLabel->setVisible(true);
-    // 可选：设置一段时间后隐藏通知
     QTimer::singleShot(5000, this, [=]{
         ui->notificationLabel->setVisible(false);
     });

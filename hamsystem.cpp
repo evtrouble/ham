@@ -5,6 +5,7 @@
 #include "coursecontrol.h"
 #include "taskscontrol.h"
 #include "homedisplay.h"
+#include"ClockWidget.h"
 
 #include <QIcon>
 #include <QDebug>
@@ -20,6 +21,7 @@ HamSystem::HamSystem(QWidget *parent)
     tasksControl = new TasksControl(ui);
     courseControl = new CourseControl(ui);
     homeDisplay = new HomeDisplay(ui);
+    clockWidget = new ClockWidget(ui);
 
     //最小化托盘
     QMenu *menu = new QMenu(this);
@@ -110,6 +112,7 @@ HamSystem::~HamSystem()
     delete homeDisplay;
     delete courseControl;
     delete tasksControl;
+    delete clockWidget;
     delete ui;
 }
 
