@@ -1,5 +1,6 @@
 #include "ClockWidget.h"
 #include "ui_hamsystem.h"
+#include <QDebug>
 ClockWidget::ClockWidget(Ui::MainWindow* ui, QWidget *parent)
     : QWidget(parent), ui(ui), alarmSound(new QSoundEffect(this))
 {

@@ -1,6 +1,6 @@
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets core network
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets core network multimedia
 CONFIG += c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.
