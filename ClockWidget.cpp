@@ -1,5 +1,5 @@
 #include "ClockWidget.h"
-#include "ui_mainwindow.h"
+#include "ui_hamsystem.h"
 
 ClockWidget::ClockWidget(Ui::MainWindow* ui, QWidget *parent) 
     : QWidget(parent), ui(ui), alarmSound(new QSoundEffect(this))
@@ -26,7 +26,7 @@ ClockWidget::ClockWidget(Ui::MainWindow* ui, QWidget *parent)
 
 void ClockWidget::onSetAlarmClicked()
 {
-    QDateTime alarmDateTime = ui->alarmDateTimeEdit->dateTime();
+    QDateTime alarmDateTime = ui->alarmTimeEdit->dateTime();
     QDateTime currentDateTime = QDateTime::currentDateTime();
     qint64 msecToAlarm = currentDateTime.msecsTo(alarmDateTime);
     if (msecToAlarm < 0) {
@@ -93,7 +93,7 @@ void ClockWidget::onResetCountdownClicked()
 {
     countdownTimer.stop();
     remainingTime = ui->countdownTimeEdit->time();
-    ui->countdownDisplay->setText(remainingTime.toString("mm:ss"));
+    ui->countdownTimeEdit->setTime(remainingTime);
 }
 
 void ClockWidget::onStopStopwatchClicked()

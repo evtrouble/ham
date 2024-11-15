@@ -4,12 +4,10 @@
 #include <QWidget>
 #include <QTimer>
 #include <QTime>
-#include<QString>
+#include <QString>
 #include <QSoundEffect>  // 包含 QSoundEffect
 
-namespace Ui {
-    class MainWindow;
-}
+#include "hamsystem.h"
 
 class ClockWidget : public QWidget
 {
