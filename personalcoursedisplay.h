@@ -97,7 +97,7 @@ signals:
     void initFinish();
     void weekUpdated(int index);
 private:
-    int currentWeek = 0;
+    int currentWeek = -1;
     bool once = false;
     QVector<Course> courses_;
 };

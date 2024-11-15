@@ -20,7 +20,6 @@ void SchoolCourseDisplay::setupTable()
     // 设置表格属性
     horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    setEditTriggers(QAbstractItemView::NoEditTriggers);
     setSelectionBehavior(QAbstractItemView::SelectRows);
     setAlternatingRowColors(true);
 }

@@ -229,7 +229,8 @@ bool NetDataAccess::changePassword(const QString &old_password, const QString &n
             QMessageBox::critical(this, "Network error!", reply->errorString());
         }
         reply->deleteLater();
-        loop.quit(); });
+        loop.quit();
+    });
 
     // 阻塞等待网络请求完成
     loop.exec();

@@ -38,7 +38,7 @@ PersonalCourseDisplay::PersonalCourseDisplay(QWidget *parent) : QTableWidget(par
         "#FBE9E7", // 浅红
         "#F1F8E9"  // 浅黄绿
     };
-    setMouseTracking(true);
+    //setMouseTracking(true);
 }
 
 void PersonalCourseDisplay::setData(const QJsonObject &data)
@@ -49,9 +49,6 @@ void PersonalCourseDisplay::setData(const QJsonObject &data)
     QJsonObject innerData = data["data"].toObject(); // 获取 data 对象
     currentWeek = innerData["week"].toInt();         // 从 innerData 获取 week 值
     displayCourse(innerData["courses"].toArray()); // 从 innerData 获取 courses 数组
-    // 发出初始化完成的信号
-    emit initFinish();
-
 }
 
 void PersonalCourseDisplay::displayCourse(const QJsonArray &coursesArray)
@@ -70,7 +67,7 @@ void PersonalCourseDisplay::displayCourse(const QJsonArray &coursesArray)
                 setItem(i, j, new QTableWidgetItem());
             }
             item(i, j)->setTextAlignment(Qt::AlignCenter);
-            item(i, j)->setBackground(QColor("#ffffff"));
+            item(i, j)->setBackground(QColor(0xff, 0xff, 0xff));
         }
     }
 
@@ -162,9 +159,8 @@ void PersonalCourseDisplay::displayCourse(const QJsonArray &coursesArray)
             tableItem->setBackground(QColor(courseColor));
             // 设置显示文本
             QString displayText = QString("%1\n%2\n%3")
-                                      .arg(name)
-                                      .arg(classroom)
-                                      .arg(instructor);
+                                      .arg(name, classroom, instructor);
+
             tableItem->setText(displayText);
 
             // 设置工具提示
@@ -187,14 +183,9 @@ void PersonalCourseDisplay::displayCourse(const QJsonArray &coursesArray)
                                       "教室：%2\n"
                                       "教师：%3\n"
                                       "周次：%4-%5周 (%6)\n"
-                                      "学分：%7")
-                                      .arg(name)
-                                      .arg(classroom)
-                                      .arg(instructor)
-                                      .arg(course.weekStart)
-                                      .arg(course.weekEnd)
-                                      .arg(weekType)
-                                      .arg(credit);
+                                      "学分：%7").arg(name, classroom, instructor, QString::number(course.weekStart),
+                                           QString::number(course.weekEnd),
+                                           weekType, QString::number(credit));
 
             tableItem->setToolTip(tooltipText);
         }
@@ -205,7 +196,7 @@ void PersonalCourseDisplay::init(int week)
 {
     // If week is -1, we're initializing for the first time
     // Otherwise, we're switching weeks
-    bool isInitialLoad = (week == -1);
+    //bool isInitialLoad = (week == -1);
 
     // 检查是否已经有授权令牌
     if (NetDataAccess::instance()->getJwt().isEmpty()) {
@@ -228,10 +219,9 @@ void PersonalCourseDisplay::init(int week)
 
             qDebug()<<"parseJsonErr.error="<<parseJsonErr.error;
             qDebug()<<"QJsonParseError::NoError="<<QJsonParseError::NoError;
-            if(parseJsonErr.error == QJsonParseError::NoError ) {
-
+            if(parseJsonErr.error == QJsonParseError::NoError) {
                 setData(document.object());
-
+                if(week == -1)emit initFinish();   // 发出初始化完成的信号
             }
         } else {
             QMessageBox::critical(this, "Network error!", reply->errorString());
@@ -239,7 +229,8 @@ void PersonalCourseDisplay::init(int week)
 
         reply->deleteLater();
                // 只在首次初始化时发送信号
-        NetDataAccess::disconnect(NetDataAccess::instance().get(), &NetDataAccess::personalCourseFinish, this, 0); });
+        NetDataAccess::disconnect(NetDataAccess::instance().get(), &NetDataAccess::personalCourseFinish, this, 0);
+    });
 
 }
 

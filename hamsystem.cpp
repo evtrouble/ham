@@ -20,6 +20,7 @@ HamSystem::HamSystem(QWidget *parent)
     tasksControl = new TasksControl(ui);
     homeDisplay = new HomeDisplay(ui);
     clockWidget = new ClockWidget(ui);
+    courseControl = new CourseControl(ui);
 
     // 最小化托盘
     QMenu *menu = new QMenu(this);
@@ -67,7 +68,6 @@ HamSystem::HamSystem(QWidget *parent)
 
     ui->buttonBox_2->button(QDialogButtonBox::Ok)->setText("登录");
     ui->buttonBox_2->button(QDialogButtonBox::Cancel)->setText("取消");
-    courseControl = new CourseControl(ui);
 
     QDialogButtonBox::connect(ui->buttonBox_2, &QDialogButtonBox::accepted, ui->stackedWidget, [=]
                               {
@@ -89,7 +89,8 @@ HamSystem::HamSystem(QWidget *parent)
         courseControl->init();
 
         ui->stackedWidget->setCurrentIndex(0);
-        ui->tab->show(); });
+        ui->tab->show();
+    });
 
     QPushButton::connect(ui->registerBtn, &QPushButton::clicked, ui->stackedWidget, [=]
                          {
@@ -102,10 +103,21 @@ HamSystem::HamSystem(QWidget *parent)
                                   userRegister.close();
                               });
         userRegister.show();
-        userRegister.exec(); }); // 注册
+        userRegister.exec();
+    }); // 注册
 
     ui->tab->hide();
     ui->stackedWidget->setCurrentIndex(btns.size());
+
+    ui->stackedWidget->setCurrentIndex(0);
+    ui->tab->show();
+    homeDisplay->setuserType(UserType::ORDINARY);
+
+    QColor color;
+    color.setRgb(0xff, 0xa5, 0x00);
+    QPalette pal = ui->homeButton->palette();
+    pal.setColor(QPalette::ButtonText, color);
+    ui->homeButton->setPalette(pal);
 }
 
 HamSystem::~HamSystem()
@@ -132,7 +144,8 @@ void HamSystem::navConnect(int id)
         pal.setColor(QPalette::ButtonText, color);
         btn_changed->setPalette(pal);
 
-        ui->stackedWidget->setCurrentIndex(id); });
+        ui->stackedWidget->setCurrentIndex(id);
+    });
 }
 
 void HamSystem::closeEvent(QCloseEvent *event)

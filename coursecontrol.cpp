@@ -19,16 +19,16 @@ CourseControl::CourseControl(Ui::MainWindow *ui) : ui(ui)
     PersonalCourseDisplay::connect(ui->personalCourseTable, &PersonalCourseDisplay::initFinish, ui->weekSelect, [=]
                                    {
                                        // 临时阻止信号
-                                       bool oldState = ui->weekSelect->blockSignals(true);
+                                       //bool oldState = ui->weekSelect->blockSignals(true);
                                        ui->weekSelect->setCurrentIndex(ui->personalCourseTable->getCurrentWeek() - 1);
-                                       ui->weekSelect->blockSignals(oldState);
+                                       //ui->weekSelect->blockSignals(oldState);
                                    });
 
 
-    QComboBox::connect(ui->weekSelect, &QComboBox::currentIndexChanged, ui->personalCourseTable, [=](int currentWeek)
-                       {
-                           ui->personalCourseTable->init(currentWeek + 1);
-                       });
+    QComboBox::connect(ui->weekSelect, &QComboBox::currentIndexChanged, ui->personalCourseTable, [=](int currentWeek){
+        if(ui->personalCourseTable->getCurrentWeek() - 1 != currentWeek)
+            ui->personalCourseTable->init(currentWeek + 1);
+    });
 
 
     // 查询按钮连接
@@ -81,6 +81,7 @@ void CourseControl::init()
     ui->personalCourseTable->init(-1);
     initWithoutCourse();
 }
+
 // void CourseControl::init()
 // {
 //     ui->personalCourseTable->init(-1);
@@ -104,6 +105,7 @@ void CourseControl::init()
 
 
 // }
+
 void CourseControl::initWithoutCourse()
 {
     ui->schoolCourseTable->init();
@@ -122,6 +124,7 @@ void CourseControl::initWithoutCourse()
         ui->pageLabel
         );
 }
+
 // 如果需要添加自定义下拉框，可以这样做：
 void CourseControl::initializeCustomComboBox()
 {
@@ -143,8 +146,8 @@ void CourseControl::initializeCustomComboBox()
     };
     manager.updateComboBoxData(ComboBoxType::Custom, newData);
 
-
 }
+
 void CourseControl::setupWeekComboBox(QComboBox *comboBox)
 {
     comboBox->clear();
@@ -201,4 +204,5 @@ void CourseControl::setupWeekComboBox(QComboBox *comboBox)
     // 设置默认选中项，阻止信号
     bool oldState = comboBox->blockSignals(true);
     comboBox->setCurrentIndex(0);
-    comboBox->blockSignals(oldState);}
+    comboBox->blockSignals(oldState);
+}

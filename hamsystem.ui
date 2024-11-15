@@ -88,7 +88,7 @@ border: 0;</string>
        </size>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="home">
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1522,6 +1522,9 @@ QPushButton:icon {
             </item>
             <item row="1" column="0">
              <widget class="SchoolCourseDisplay" name="schoolCourseTable">
+              <property name="editTriggers">
+               <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+              </property>
               <column>
                <property name="text">
                 <string>课程id</string>
