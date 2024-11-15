@@ -31,6 +31,7 @@ HomeDisplay::HomeDisplay(Ui::MainWindow* ui) : ui(ui)
 
     QPushButton::connect(ui->changePasswordBtn, &QPushButton::clicked, ui->stackedWidget, [=]{
         PassWordChange passwordChange(ui->centralwidget);
+        passwordChange.setWindowModality(Qt::ApplicationModal);
         PassWordChange::connect(&passwordChange, &PassWordChange::changePassword, ui->centralwidget, [&](const QString& old_password, const QString& new_password)
                               {
                                   if(!NetDataAccess::instance()->changePassword(old_password, new_password))return;

@@ -90,6 +90,7 @@ HamSystem::HamSystem(QWidget *parent)
 
     QPushButton::connect(ui->registerBtn, &QPushButton::clicked, ui->stackedWidget, [=]{
         RegisterUser userRegister(ui->centralwidget);
+        userRegister.setWindowModality(Qt::ApplicationModal);
         RegisterUser::connect(&userRegister, &RegisterUser::registerUser, ui->centralwidget, [&](const QString& username, const QString& email, const QString& password)
                               {
                                   if(!NetDataAccess::instance()->userRegister(username, password, email))return;
