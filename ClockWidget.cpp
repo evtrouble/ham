@@ -5,7 +5,9 @@ ClockWidget::ClockWidget(Ui::MainWindow* ui, QWidget *parent)
     : QWidget(parent), ui(ui), alarmSound(new QSoundEffect(this))
 {
     // 设置声音文件路径，使用相对路径
-    alarmSound->setSource(QUrl::fromLocalFile("music.ogg"));
+    alarmSound->setSource(QUrl::fromLocalFile(":/music/music/music.WAV"));
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    ui->alarmTimeEdit->setDateTime(currentDateTime);
 
     // 连接按钮点击信号到槽函数
     connect(ui->setAlarmBtn, &QPushButton::clicked, this, &ClockWidget::onSetAlarmClicked);
@@ -15,6 +17,8 @@ ClockWidget::ClockWidget(Ui::MainWindow* ui, QWidget *parent)
     connect(ui->startStopwatchBtn, &QPushButton::clicked, this, &ClockWidget::onStartStopwatchClicked);
     connect(ui->stopStopwatchBtn, &QPushButton::clicked, this, &ClockWidget::onStopStopwatchClicked);
     connect(ui->resetStopwatchBtn, &QPushButton::clicked, this, &ClockWidget::onResetStopwatchClicked);
+    connect(ui->continueCountdownBtn, &QPushButton::clicked, this, &ClockWidget::onContinueCountdownClicked);
+    connect(ui->continueStopwatchBtn, &QPushButton::clicked, this, &ClockWidget::onContinueStopwatchClicked);
 
     // 配置倒计时和计时器的定时器
     countdownTimer.setInterval(20);  // 设置计时器每秒触发一次
@@ -58,6 +62,7 @@ void ClockWidget::onStartCountdownClicked()
         return;
     }
     remainingTime = initialTime; // 初始化剩余时间
+    originalCountdownTime =initialTime;
 
     countdownTimer.start(); // 开始定时器
 }
@@ -120,7 +125,7 @@ void ClockWidget::onStopCountdownClicked()
 void ClockWidget::onResetCountdownClicked()
 {
     countdownTimer.stop(); // 停止定时器
-    remainingTime = QTime(0, 0); // 重置时间
+    remainingTime = originalCountdownTime; // 重置时间
     ui->countdownTimeEdit->setTime(remainingTime); // 更新 UI
     showNotification("倒计时已重置！");
 }
@@ -137,4 +142,17 @@ void ClockWidget::onResetStopwatchClicked()
     stopwatchTime = QTime(0, 0);  // 重置计时器时间为0
     ui->stopwatchTimeEdit->setTime(stopwatchTime);  // 重置显示
     showNotification("计时已重置！");
+}
+void ClockWidget::onContinueCountdownClicked() {
+    if (!countdownTimer.isActive()) {
+        countdownTimer.start(); // 继续定时器
+        showNotification("倒计时继续！");
+    }
+}
+
+void ClockWidget::onContinueStopwatchClicked() {
+    if (!stopwatchTimer.isActive()) {
+        stopwatchTimer.start();
+        showNotification("计时继续！");
+    }
 }

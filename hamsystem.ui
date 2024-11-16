@@ -2156,140 +2156,114 @@ padding: 3px;</string>
           <property name="frameShadow">
            <enum>QFrame::Shadow::Raised</enum>
           </property>
-          <widget class="QPushButton" name="setAlarmBtn">
-           <property name="geometry">
-            <rect>
-             <x>260</x>
-             <y>30</y>
-             <width>93</width>
-             <height>31</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>设置闹钟</string>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="startCountdownBtn">
-           <property name="geometry">
-            <rect>
-             <x>150</x>
-             <y>90</y>
-             <width>93</width>
-             <height>28</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>开始倒计时</string>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="startStopwatchBtn">
-           <property name="geometry">
-            <rect>
-             <x>150</x>
-             <y>150</y>
-             <width>93</width>
-             <height>28</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>开始计时</string>
-           </property>
-          </widget>
-          <widget class="QTimeEdit" name="countdownTimeEdit">
-           <property name="geometry">
-            <rect>
-             <x>20</x>
-             <y>90</y>
-             <width>118</width>
-             <height>25</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="resetCountdownBtn">
-           <property name="geometry">
-            <rect>
-             <x>370</x>
-             <y>90</y>
-             <width>93</width>
-             <height>28</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>重置</string>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="resetStopwatchBtn">
-           <property name="geometry">
-            <rect>
-             <x>370</x>
-             <y>150</y>
-             <width>93</width>
-             <height>28</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>重置</string>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="stopCountdownBtn">
-           <property name="geometry">
-            <rect>
-             <x>260</x>
-             <y>90</y>
-             <width>93</width>
-             <height>28</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>停止</string>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="stopStopwatchBtn">
-           <property name="geometry">
-            <rect>
-             <x>260</x>
-             <y>150</y>
-             <width>93</width>
-             <height>28</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>停止</string>
-           </property>
-          </widget>
-          <widget class="QDateTimeEdit" name="alarmTimeEdit">
-           <property name="geometry">
-            <rect>
-             <x>20</x>
-             <y>30</y>
-             <width>194</width>
-             <height>25</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QTimeEdit" name="stopwatchTimeEdit">
-           <property name="geometry">
-            <rect>
-             <x>20</x>
-             <y>150</y>
-             <width>118</width>
-             <height>25</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QLabel" name="notificationLabel">
-           <property name="geometry">
-            <rect>
-             <x>20</x>
-             <y>200</y>
-             <width>101</width>
-             <height>31</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>消息通知</string>
-           </property>
-          </widget>
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_8">
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#00aaff;&quot;&gt;闹钟&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="5">
+            <widget class="QPushButton" name="resetCountdownBtn">
+             <property name="text">
+              <string>重置</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="4">
+            <widget class="QPushButton" name="stopCountdownBtn">
+             <property name="text">
+              <string>停止</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="3">
+            <widget class="QPushButton" name="continueCountdownBtn">
+             <property name="text">
+              <string>继续</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QPushButton" name="startStopwatchBtn">
+             <property name="text">
+              <string>开始计时</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="3">
+            <widget class="QPushButton" name="continueStopwatchBtn">
+             <property name="text">
+              <string>继续</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="5">
+            <widget class="QPushButton" name="resetStopwatchBtn">
+             <property name="text">
+              <string>重置</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="4">
+            <widget class="QPushButton" name="stopStopwatchBtn">
+             <property name="text">
+              <string>停止</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QDateTimeEdit" name="alarmTimeEdit"/>
+           </item>
+           <item row="1" column="2">
+            <widget class="QPushButton" name="startCountdownBtn">
+             <property name="text">
+              <string>开始倒计时</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QTimeEdit" name="countdownTimeEdit"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_9">
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#aa55ff;&quot;&gt;倒计时&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QTimeEdit" name="stopwatchTimeEdit"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_10">
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#00aa00;&quot;&gt;秒表&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="setAlarmBtn">
+             <property name="text">
+              <string>设置闹钟</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="4">
+            <widget class="QLabel" name="notificationLabel">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>595</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ff0000;&quot;&gt;消息通知&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
