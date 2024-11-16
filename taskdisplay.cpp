@@ -33,13 +33,19 @@ void TaskDisplay::mousePressEvent(QMouseEvent *event)
 void TaskDisplay::init()
 {
     clear();
-
+    // 检查是否已登录（可以通过检查jwt token是否存在）
+    if(NetDataAccess::instance()->getJwt().isEmpty()) {
+        qDebug() << "Warning: Attempting to load tasks before login";
+        return;
+    }
     //bool success = NetDataAccess::instance()->loadData(value);
     NetDataAccess::instance()->loadTaskData();
-
+    qDebug()<<"111";
     NetDataAccess::connect(NetDataAccess::instance().get(), &NetDataAccess::TaskFinish, this, [=](QNetworkReply* reply){
         if (reply->error() == QNetworkReply::NoError) {
+
             QByteArray data = reply->readAll();
+
             QJsonParseError parseJsonErr;
             QJsonDocument document = QJsonDocument::fromJson(data, &parseJsonErr);
 

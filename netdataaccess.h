@@ -41,11 +41,13 @@ private:
     static std::unique_ptr<NetDataAccess> dataAccess;
     std::unique_ptr<QNetworkAccessManager> access;
     QNetworkReply* reply;
+    QNetworkReply* nreply;
+
     QString jwt;
 
 signals:
     // void initFinish(QNetworkReply*);
-    void TaskFinish(QNetworkReply*);
+    void TaskFinish(QNetworkReply* reply);
     void personalCourseFinish(QNetworkReply *reply);
     void schoolCourseFinish(QNetworkReply *reply);
     void finish(QNetworkReply *reply);

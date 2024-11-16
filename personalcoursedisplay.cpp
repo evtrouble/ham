@@ -209,7 +209,13 @@ void PersonalCourseDisplay::init(int week)
 
     NetDataAccess::connect(NetDataAccess::instance().get(), &NetDataAccess::personalCourseFinish, this, [=](QNetworkReply *reply)
                            {
+
+        int httpStatus = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+
+        qDebug() << "Course-----HTTP Status Code:" << httpStatus;
+
         if (reply->error() == QNetworkReply::NoError) {
+            qDebug() << "Course-----HTTP Status Code:" << httpStatus;
             QByteArray data = reply->readAll();
             qDebug() << "收到的原始数据:" << data;
 

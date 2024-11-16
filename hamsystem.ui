@@ -88,7 +88,7 @@ border: 0;</string>
        </size>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="home">
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1894,8 +1894,44 @@ font-size: 20px;</string>
                   <item>
                    <widget class="QPushButton" name="sortByDeadlineBtn">
                     <property name="styleSheet">
-                     <string notr="true">font-size: 10px;
-padding: 3px;</string>
+                     <string notr="true">
+QPushButton {
+    color: #1e222b;
+    background-color: #ffffff;
+    border: 1px solid rgba(228,228,228,1);
+    border-radius: 8px;
+    font-family: Microsoft YaHei;
+    font-size: 10px;
+    padding: 1px 12px;
+    min-height: 20px;
+    outline: none;  /* 添加这行去除焦点边框 */
+}
+
+QPushButton:focus {  /* 添加focus状态样式 */
+    outline: none;
+    border: 1px solid rgba(228,228,228,1);
+}
+
+QPushButton:hover {
+    background-color: rgba(30, 34, 43, 0.05);
+    border: 1px solid rgba(30, 34, 43, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: rgba(30, 34, 43, 0.1);
+    border: 1px solid rgba(30, 34, 43, 0.3);
+    padding: 2px 15px 0px 15px;
+}
+
+QPushButton:disabled {
+    color: rgba(30, 34, 43, 0.3);
+    background-color: rgba(228,228,228,0.3);
+    border: 1px solid rgba(228,228,228,0.5);
+}
+
+QPushButton:icon {
+    padding: 1px 15px 1px 10px;
+}</string>
                     </property>
                     <property name="text">
                      <string>按截止时间排序</string>
@@ -1918,8 +1954,43 @@ padding: 3px;</string>
                   <item>
                    <widget class="QPushButton" name="sortByPriorityBtn">
                     <property name="styleSheet">
-                     <string notr="true">font-size: 10px;
-padding: 3px;</string>
+                     <string notr="true">QPushButton {
+    color: #1e222b;
+    background-color: #ffffff;
+    border: 1px solid rgba(228,228,228,1);
+    border-radius: 8px;
+    font-family: Microsoft YaHei;
+    font-size: 10px;
+    padding: 1px 12px;
+    min-height: 20px;
+    outline: none;  /* 添加这行去除焦点边框 */
+}
+
+QPushButton:focus {  /* 添加focus状态样式 */
+    outline: none;
+    border: 1px solid rgba(228,228,228,1);
+}
+
+QPushButton:hover {
+    background-color: rgba(30, 34, 43, 0.05);
+    border: 1px solid rgba(30, 34, 43, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: rgba(30, 34, 43, 0.1);
+    border: 1px solid rgba(30, 34, 43, 0.3);
+    padding: 2px 15px 0px 15px;
+}
+
+QPushButton:disabled {
+    color: rgba(30, 34, 43, 0.3);
+    background-color: rgba(228,228,228,0.3);
+    border: 1px solid rgba(228,228,228,0.5);
+}
+
+QPushButton:icon {
+    padding: 1px 15px 1px 10px;
+}</string>
                     </property>
                     <property name="text">
                      <string>按优先级排序</string>

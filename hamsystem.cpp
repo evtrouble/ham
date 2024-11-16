@@ -109,15 +109,15 @@ HamSystem::HamSystem(QWidget *parent)
     ui->tab->hide();
     ui->stackedWidget->setCurrentIndex(btns.size());
 
-    ui->stackedWidget->setCurrentIndex(0);
-    ui->tab->show();
-    homeDisplay->setuserType(UserType::ORDINARY);
+    // ui->stackedWidget->setCurrentIndex(0);
+    // ui->tab->show();
+    // homeDisplay->setuserType(UserType::ORDINARY);
 
-    QColor color;
-    color.setRgb(0xff, 0xa5, 0x00);
-    QPalette pal = ui->homeButton->palette();
-    pal.setColor(QPalette::ButtonText, color);
-    ui->homeButton->setPalette(pal);
+    // QColor color;
+    // color.setRgb(0xff, 0xa5, 0x00);
+    // QPalette pal = ui->homeButton->palette();
+    // pal.setColor(QPalette::ButtonText, color);
+    // ui->homeButton->setPalette(pal);
 }
 
 HamSystem::~HamSystem()

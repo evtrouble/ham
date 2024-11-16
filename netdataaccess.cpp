@@ -16,13 +16,34 @@ bool NetDataAccess::loadTaskData()
     QString url = server;
     url += "tasks/";
     request.setUrl(QUrl(url));
-
+    qDebug() << "Full request URL:" << url;  // 打印完整的请求URL
+    qDebug() << "Server base URL:" << server; // 打印基础服务器地址
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));
     request.setRawHeader("Authorization", "Bearer " + jwt.toUtf8());
-    reply = access->get(request);
+
+    // 打印请求信息
+    qDebug() << "Request headers:";
+    qDebug() << "Content-Type:" << request.header(QNetworkRequest::ContentTypeHeader).toString();
+    qDebug() << "Authorization:" << "Bearer " + jwt.left(10) + "..."; // 只显示token的前一部分
+    QNetworkReply* reply = access->get(request);
+
+
     // 连接槽函数解析数据
     QNetworkReply::connect(reply, &QNetworkReply::finished, this, [=]()
-                           { emit TaskFinish(reply); });
+                           {
+                               // 在请求完成后获取状态码
+                                QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+                               int httpStatus = statusCode.toInt();
+                               qDebug() << "LoadTaskData-----HTTP Status Code:" << httpStatus;
+                               if (reply->error() == QNetworkReply::NoError) {
+                                   // 请求成功
+                                   emit TaskFinish(reply);
+                               } else {
+                                   // 请求失败，输出错误信息
+                                   qDebug() << "Network Error:" << reply->errorString();
+                                   qDebug() << "Error Code:" << reply->error();
+                               }
+                           });
     return true;
 }
 
@@ -89,6 +110,7 @@ bool NetDataAccess::deleteTaskItem(const QJsonObject &data)
     request.setRawHeader("Authorization", "Bearer " + jwt.toUtf8());
 
     reply = access->deleteResource(request);
+
     return true;
 }
 
@@ -115,9 +137,11 @@ bool NetDataAccess::userLogin(const QString &username, const QString &password, 
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));
 
     QByteArray data = QString(QJsonDocument(json).toJson()).toUtf8();
-    reply = access->post(request, data);
+    QNetworkReply* reply = access->post(request, data);
 
     QEventLoop loop;
+    qDebug() << "Authorization:" << "Bearer " + jwt.left(10) + "..."; // 只显示token的前一部分
+
     // 连接槽函数解析数据
     bool success = false;
     QNetworkReply::connect(reply, &QNetworkReply::finished, this, [&]()
@@ -165,7 +189,7 @@ bool NetDataAccess::userRegister(const QString &username, const QString &passwor
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));
 
     QByteArray data = QString(QJsonDocument(json).toJson()).toUtf8();
-    reply = access->post(request, data);
+    QNetworkReply* reply = access->post(request, data);
 
     QEventLoop loop;
     // 连接槽函数解析数据
@@ -208,7 +232,7 @@ bool NetDataAccess::changePassword(const QString &old_password, const QString &n
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));
 
     QByteArray data = QString(QJsonDocument(json).toJson()).toUtf8();
-    reply = access->post(request, data);
+    QNetworkReply* reply = access->post(request, data);
 
     QEventLoop loop;
     // 连接槽函数解析数据
@@ -254,7 +278,7 @@ bool NetDataAccess::getPersonalCourse(int week)
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));
     request.setRawHeader("Authorization", "Bearer " + jwt.toUtf8());
-    reply = access->get(request);
+    QNetworkReply* reply = access->get(request);
     // 连接槽函数解析数据
     QNetworkReply::connect(reply, &QNetworkReply::finished, this, [=]()
                            { emit personalCourseFinish(reply); });
@@ -269,7 +293,7 @@ bool NetDataAccess::getCurrentWeek()
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));
     request.setRawHeader("Authorization", "Bearer " + jwt.toUtf8());
-    reply = access->get(request);
+    QNetworkReply* reply = access->get(request);
     QNetworkReply::connect(reply, &QNetworkReply::finished, this, [=]()
                            { emit finish(reply); });
     return true;
@@ -323,7 +347,7 @@ bool NetDataAccess::searchCourse(
                       QVariant("application/json;charset=utf-8"));
     request.setRawHeader("Authorization", "Bearer " + jwt.toUtf8());
 
-    reply = access->get(request);
+    QNetworkReply* reply = access->get(request);
 
     QNetworkReply::connect(reply, &QNetworkReply::finished, this, [=]() {
         emit schoolCourseFinish(reply);
