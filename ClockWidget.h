@@ -25,6 +25,8 @@ private slots:
     void onStartStopwatchClicked();    // 启动计时器
     void onStopStopwatchClicked();     // 停止计时器
     void onResetStopwatchClicked();    // 重置计时器
+    void onContinueCountdownClicked(); // 新增槽函数
+    void onContinueStopwatchClicked(); // 新增槽函数
 
     void updateCountdown();            // 更新倒计时显示
     void updateStopwatch();            // 更新计时器显示
@@ -36,6 +38,7 @@ private:
     QTimer stopwatchTimer;             // 计时器定时器
     QTime remainingTime;               // 倒计时的剩余时间
     QTime initialTime;                 //最初设定时间
+    QTime originalCountdownTime;
     QTime stopwatchTime;               // 计时器时间
     QSoundEffect* alarmSound;          // 闹钟声音，使用 QSoundEffect
 
