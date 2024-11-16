@@ -19,6 +19,8 @@ ClockWidget::ClockWidget(Ui::MainWindow* ui, QWidget *parent)
     connect(ui->resetStopwatchBtn, &QPushButton::clicked, this, &ClockWidget::onResetStopwatchClicked);
     connect(ui->continueCountdownBtn, &QPushButton::clicked, this, &ClockWidget::onContinueCountdownClicked);
     connect(ui->continueStopwatchBtn, &QPushButton::clicked, this, &ClockWidget::onContinueStopwatchClicked);
+    connect(ui->stopSoundBtn, &QPushButton::clicked, this, &ClockWidget::onStopSoundClicked);
+
 
     // 配置倒计时和计时器的定时器
     countdownTimer.setInterval(20);  // 设置计时器每秒触发一次
@@ -65,6 +67,7 @@ void ClockWidget::onStartCountdownClicked()
     originalCountdownTime =initialTime;
 
     countdownTimer.start(); // 开始定时器
+    showNotification("倒计时开始！");
 }
 
 
@@ -155,4 +158,10 @@ void ClockWidget::onContinueStopwatchClicked() {
         stopwatchTimer.start();
         showNotification("计时继续！");
     }
+}
+void ClockWidget::onStopSoundClicked()
+{
+    // 停止闹钟声音
+    alarmSound->stop();
+    showNotification("铃声已关闭");
 }
