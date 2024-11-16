@@ -2361,7 +2361,14 @@ padding: 3px;</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="4">
+           <item row="0" column="3">
+            <widget class="QPushButton" name="stopSoundBtn">
+             <property name="text">
+              <string>关闭铃声</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="5">
             <widget class="QLabel" name="notificationLabel">
              <property name="maximumSize">
               <size>
@@ -2370,7 +2377,14 @@ padding: 3px;</string>
               </size>
              </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ff0000;&quot;&gt;消息通知&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="4">
+            <widget class="QLabel" name="label_11">
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ff0000;&quot;&gt;消息通知：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>

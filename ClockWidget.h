@@ -27,6 +27,7 @@ private slots:
     void onResetStopwatchClicked();    // 重置计时器
     void onContinueCountdownClicked(); // 新增槽函数
     void onContinueStopwatchClicked(); // 新增槽函数
+    void onStopSoundClicked();         //关闭铃声
 
     void updateCountdown();            // 更新倒计时显示
     void updateStopwatch();            // 更新计时器显示
