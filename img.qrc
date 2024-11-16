@@ -17,4 +17,5 @@
     </qresource>
      <qresource prefix="/music">
         <file>music/music.WAV</file>
+        </qresource>
 </RCC>
