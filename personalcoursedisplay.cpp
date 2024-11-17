@@ -204,13 +204,10 @@ void PersonalCourseDisplay::displayCourse(const QJsonArray &coursesArray)
 
 void PersonalCourseDisplay::init(int week)
 {
-    // If week is -1, we're initializing for the first time
-    // Otherwise, we're switching weeks
-    //bool isInitialLoad = (week == -1);
+
 
     // 检查是否已经有授权令牌
     if (NetDataAccess::instance()->getJwt().isEmpty()) {
-        qDebug() << "未登录" ;
 
         return;  // 未登录时不发送请求
     }
@@ -220,21 +217,15 @@ void PersonalCourseDisplay::init(int week)
     NetDataAccess::connect(NetDataAccess::instance().get(), &NetDataAccess::personalCourseFinish, this, [=](QNetworkReply *reply)
                            {
 
-        int httpStatus = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
 
-        qDebug() << "Course-----HTTP Status Code:" << httpStatus;
 
         if (reply->error() == QNetworkReply::NoError) {
-            qDebug() << "Course-----HTTP Status Code:" << httpStatus;
             QByteArray data = reply->readAll();
-            qDebug() << "收到的原始数据:" << data;
 
             QJsonParseError parseJsonErr;
             QJsonDocument document = QJsonDocument::fromJson(data, &parseJsonErr);
-            qDebug() << "解析结果:" << document;
 
-            qDebug()<<"parseJsonErr.error="<<parseJsonErr.error;
-            qDebug()<<"QJsonParseError::NoError="<<QJsonParseError::NoError;
+
             if(parseJsonErr.error == QJsonParseError::NoError) {
                 setData(document.object());
                 if(week == -1)emit initFinish();   // 发出初始化完成的信号

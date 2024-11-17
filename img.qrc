@@ -20,5 +20,6 @@
     </qresource>
     <qresource prefix="/">
         <file>img/logo.png</file>
+        <file>img/reg_bg_min.jpg</file>
     </qresource>
 </RCC>

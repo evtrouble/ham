@@ -61,10 +61,23 @@ QList<ComboBoxConfig> ComboBoxManager::getDefaultConfigs(ComboBoxType type) {
 
     case ComboBoxType::Department: {
         configs = {
-            {"请选择院系", "", true},  // Add default empty option
-            {"计算机学院", "CS", false},
+            {"请选择院系", "", true},  // 默认空选项
+            {"计算机科学与技术学院", "CS", false},
             {"电子工程学院", "EE", false},
-            // ... other departments
+            {"数学与统计学院", "MATH", false},
+            {"物理科学与技术学院", "PHY", false},
+            {"化学与分子工程学院", "CHEM", false},
+            {"生命科学学院", "BIO", false},
+            {"外国语学院", "ENG", false},
+            {"历史文化学院", "HIST", false},
+            {"法学院", "LAW", false},
+            {"经济学院", "ECON", false},
+            {"管理学院", "MANAGE", false},
+            {"医学院", "MED", false},
+            {"艺术学院", "ART", false},
+            {"教育学院", "EDU", false},
+            {"环境科学与工程学院", "ENV", false},
+            {"建筑学院", "ARCH", false}
         };
         break;
     }

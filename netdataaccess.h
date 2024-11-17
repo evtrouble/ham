@@ -15,6 +15,9 @@ private:
     constexpr static char server[] = "http://localhost:3000/";
 
 public:
+    bool exportTable(const QString& model, const QString& dirPath);
+    bool exportAllTables(const QString& dirPath, QStringList& errors);
+
     bool loadTaskData();
     bool addTaskItem(const QJsonObject& data, int& id);
     bool updateTaskItem(const QJsonObject& data);

@@ -7,19 +7,19 @@ ClockWidget::ClockWidget(Ui::MainWindow* ui, QWidget *parent)
     // 设置声音文件路径，使用相对路径
     alarmSound->setSource(QUrl::fromLocalFile(":/music/music/music.WAV"));
     QDateTime currentDateTime = QDateTime::currentDateTime();
-    ui->alarmTimeEdit->setDateTime(currentDateTime);
+    ui-> alarmTimeEdit_4->setDateTime(currentDateTime);
 
     // 连接按钮点击信号到槽函数
-    connect(ui->setAlarmBtn, &QPushButton::clicked, this, &ClockWidget::onSetAlarmClicked);
-    connect(ui->startCountdownBtn, &QPushButton::clicked, this, &ClockWidget::onStartCountdownClicked);
-    connect(ui->stopCountdownBtn, &QPushButton::clicked, this, &ClockWidget::onStopCountdownClicked);
-    connect(ui->resetCountdownBtn, &QPushButton::clicked, this, &ClockWidget::onResetCountdownClicked);
+    connect(ui->setAlarmBtn_4, &QPushButton::clicked, this, &ClockWidget::onSetAlarmClicked);
+    connect(ui->startCountdownBtn_2, &QPushButton::clicked, this, &ClockWidget::onStartCountdownClicked);
+    connect(ui->stopCountdownBtn_2, &QPushButton::clicked, this, &ClockWidget::onStopCountdownClicked);
+    connect(ui->resetCountdownBtn_2, &QPushButton::clicked, this, &ClockWidget::onResetCountdownClicked);
     connect(ui->startStopwatchBtn, &QPushButton::clicked, this, &ClockWidget::onStartStopwatchClicked);
     connect(ui->stopStopwatchBtn, &QPushButton::clicked, this, &ClockWidget::onStopStopwatchClicked);
     connect(ui->resetStopwatchBtn, &QPushButton::clicked, this, &ClockWidget::onResetStopwatchClicked);
-    connect(ui->continueCountdownBtn, &QPushButton::clicked, this, &ClockWidget::onContinueCountdownClicked);
+    connect(ui->continueCountdownBtn_4, &QPushButton::clicked, this, &ClockWidget::onContinueCountdownClicked);
     connect(ui->continueStopwatchBtn, &QPushButton::clicked, this, &ClockWidget::onContinueStopwatchClicked);
-    connect(ui->stopSoundBtn, &QPushButton::clicked, this, &ClockWidget::onStopSoundClicked);
+    connect(ui->stopSoundBtn_2, &QPushButton::clicked, this, &ClockWidget::onStopSoundClicked);
 
 
     // 配置倒计时和计时器的定时器
@@ -35,7 +35,7 @@ ClockWidget::ClockWidget(Ui::MainWindow* ui, QWidget *parent)
 
 void ClockWidget::onSetAlarmClicked()
 {
-    QDateTime alarmDateTime = ui->alarmTimeEdit->dateTime();
+    QDateTime alarmDateTime = ui->alarmTimeEdit_4->dateTime();
     QDateTime currentDateTime = QDateTime::currentDateTime();
     if (alarmDateTime < currentDateTime) {
         showNotification("闹钟设置失败，请设置一个合理的时间");
@@ -56,7 +56,7 @@ void ClockWidget::onSetAlarmClicked()
 
 void ClockWidget::onStartCountdownClicked()
 {
-    QTime initialTime = ui->countdownTimeEdit->time();
+    QTime initialTime = ui->countdownTimeEdit_2->time();
 
     // 检查初始时间是否有效
     if (initialTime == QTime(0, 0)) {
@@ -82,7 +82,7 @@ void ClockWidget::onStartStopwatchClicked()
 void ClockWidget::updateCountdown()
 {
     remainingTime = remainingTime.addSecs(-1); // 每秒减1秒
-    ui->countdownTimeEdit->setTime(remainingTime); // 更新 UI 显示
+    ui->countdownTimeEdit_2->setTime(remainingTime); // 更新 UI 显示
 
 
 
@@ -102,12 +102,12 @@ void ClockWidget::updateStopwatch()
 
 void ClockWidget::showNotification(const QString& message)
 {
-    ui->notificationLabel->setText(message);
-    ui->notificationLabel->setVisible(true);
+    ui->notificationLabel_2->setText(message);
+    ui->notificationLabel_2->setVisible(true);
 
     // 使用QTimer在5秒后将通知标签的文本设置为空字符串
     QTimer::singleShot(5000, this, [=]{
-        ui->notificationLabel->setText(""); // 将文本设置为空字符串
+        ui->notificationLabel_2->setText(""); // 将文本设置为空字符串
     });
 }
 
@@ -129,7 +129,7 @@ void ClockWidget::onResetCountdownClicked()
 {
     countdownTimer.stop(); // 停止定时器
     remainingTime = originalCountdownTime; // 重置时间
-    ui->countdownTimeEdit->setTime(remainingTime); // 更新 UI
+    ui->countdownTimeEdit_2->setTime(remainingTime); // 更新 UI
     showNotification("倒计时已重置！");
 }
 

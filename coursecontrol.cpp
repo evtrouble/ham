@@ -33,7 +33,6 @@ CourseControl::CourseControl(Ui::MainWindow *ui) : ui(ui)
 
     // 查询按钮连接
     QPushButton::connect(ui->btnSearchCourse, &QPushButton::clicked, ui->schoolCourseTable, [=]() {
-        qDebug() << "Search button clicked";  // 调试输出
 
         // 获取搜索条件
         int academicYear = ui->academicYearCombo->currentText().toInt();
@@ -101,29 +100,6 @@ void CourseControl::init()
     initWithoutCourse();
 }
 
-// void CourseControl::init()
-// {
-//     ui->personalCourseTable->init(-1);
-//     ui->schoolCourseTable->init();
-
-//     // 使用ComboBoxManager初始化所有下拉框
-//     auto& manager = ComboBoxManager::instance();
-
-//     // 初始化学年下拉框
-//     manager.initializeComboBox(ui->academicYearCombo, ComboBoxType::AcademicYear);
-//     // 初始化学期下拉框
-//     manager.initializeComboBox(ui->semesterCombo, ComboBoxType::Semester);
-//     manager.initializeComboBox(ui->departmentCombo, ComboBoxType::Department);
-//     manager.initializeComboBox(ui->hasCapacityCombo, ComboBoxType::Capacity);
-//     // 设置分页控件
-//     ui->schoolCourseTable->setPageControls(
-//         ui->prevButton,     // 前一页按钮
-//         ui->nextButton,     // 后一页按钮
-//         ui->pageLabel       // 页码标签
-//         );
-
-
-// }
 
 void CourseControl::initWithoutCourse()
 {

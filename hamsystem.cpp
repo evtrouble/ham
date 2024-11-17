@@ -78,12 +78,6 @@ void HamSystem::setupNavigationButtons()
         VLayout->addWidget(btn);
     }
 
-    // 如果已经存在widget，先删除
-    // QWidget* oldWidget = ui->tab->widget(0);
-    // if (oldWidget) {
-    //     ui->tab->removeWidget(oldWidget);
-    //     delete oldWidget;
-    // }
 
     QWidget *widget = new QWidget(ui->tab);
     widget->setLayout(VLayout);
@@ -111,6 +105,9 @@ void HamSystem::setupLoginUI()
         if(!NetDataAccess::instance()->userLogin(ui->usernameEdit->text(), ui->passwordEdit->text(), isAdmin))
             return;
 
+
+        this->setStyleSheet("#MainWindow { background-image: none; background-color: white; }");
+
         homeDisplay->setUsername(ui->usernameEdit->text());
         if(isAdmin)
             homeDisplay->setuserType(UserType::ADMINISTRATOR);
@@ -122,6 +119,7 @@ void HamSystem::setupLoginUI()
         QPalette pal = ui->homeButton->palette();
         pal.setColor(QPalette::ButtonText, color);
         ui->homeButton->setPalette(pal);
+        this->showMaximized();
 
         homeDisplay->setUsername(ui->usernameEdit->text());
         tasksControl->init();
@@ -151,19 +149,10 @@ void HamSystem::setupLoginUI()
     ui->stackedWidget->setCurrentIndex(btns.size());
     ui->usernameEdit->clear();
     ui->passwordEdit->clear();
+
 }
 
-// void HamSystem::logout()
-// {
-//     // 清理现有状态
-//     // homeDisplay->reset();
-//     courseControl->reset();
-//     tasksControl->reset();
-//     // clockWidget->reset();
 
-//     // 重新初始化系统
-//     initializeSystem();
-// }
 
 HamSystem::~HamSystem()
 {
@@ -216,6 +205,9 @@ void HamSystem::logout()
 
     // 重置UI状态
     resetUIState();
+    this->showNormal();  // 添加这一行
+
+    this->setStyleSheet("#MainWindow { background-image: url(:/img/reg_bg_min.jpg); }");
 
     // 切换到登录页面
     ui->stackedWidget->setCurrentIndex(btns.size());
@@ -224,7 +216,7 @@ void HamSystem::logout()
     // 清空登录表单
     ui->usernameEdit->clear();
     ui->passwordEdit->clear();
-    initializeSystem();
+    // initializeSystem();
 }
 void HamSystem::resetUIState()
 {

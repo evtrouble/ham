@@ -30,7 +30,7 @@
     <normaloff>:/icon/img/icon.png</normaloff>:/icon/img/icon.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">#MainWindow{background-image: url(:/img/reg_bg_min.jpg);}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
@@ -45,8 +45,8 @@
      <height>0</height>
     </size>
    </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
      <widget class="QToolButton" name="classButton">
       <property name="styleSheet">
        <string notr="true">background-color: transparent;
@@ -73,7 +73,85 @@ border: 0;</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="3">
+    <item row="0" column="1">
+     <widget class="QToolButton" name="homeButton">
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+border: 0;</string>
+      </property>
+      <property name="text">
+       <string>主页</string>
+      </property>
+      <property name="icon">
+       <iconset resource="img.qrc">
+        <normaloff>:/tab/img/home.png</normaloff>:/tab/img/home.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="autoExclusive">
+       <bool>true</bool>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QToolButton" name="clockButton">
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+border: 0;</string>
+      </property>
+      <property name="text">
+       <string>时钟</string>
+      </property>
+      <property name="icon">
+       <iconset resource="img.qrc">
+        <normaloff>:/tab/img/clock.png</normaloff>:/tab/img/clock.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="autoExclusive">
+       <bool>true</bool>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QToolButton" name="tasksButton">
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+border: 0;</string>
+      </property>
+      <property name="text">
+       <string>任务</string>
+      </property>
+      <property name="icon">
+       <iconset resource="img.qrc">
+        <normaloff>:/tab/img/tasks.png</normaloff>:/tab/img/tasks.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2" colspan="2">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -88,7 +166,7 @@ border: 0;</string>
        </size>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="home">
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1688,6 +1766,10 @@ QPushButton:icon {
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="styleSheet">
+        <string notr="true">    background-color: #F9FAFB;
+ </string>
+       </property>
        <layout class="QGridLayout" name="gridLayout_6">
         <property name="leftMargin">
          <number>0</number>
@@ -1713,7 +1795,7 @@ QPushButton:icon {
            </sizepolicy>
           </property>
           <property name="autoFillBackground">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <property name="styleSheet">
            <string notr="true"/>
@@ -1770,287 +1852,315 @@ QPushButton:icon {
              <property name="frameShadow">
               <enum>QFrame::Shadow::Raised</enum>
              </property>
-             <layout class="QGridLayout" name="gridLayout_7">
-              <item row="0" column="0">
-               <layout class="QVBoxLayout" name="verticalLayout_3">
-                <property name="sizeConstraint">
-                 <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <item>
+               <spacer name="verticalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
                 </property>
-                <item>
-                 <spacer name="verticalSpacer_2">
-                  <property name="orientation">
-                   <enum>Qt::Orientation::Vertical</enum>
-                  </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Policy::Preferred</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>13</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QFrame" name="frame_4">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="frameShape">
-                   <enum>QFrame::Shape::NoFrame</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Shadow::Raised</enum>
-                  </property>
-                  <layout class="QHBoxLayout" name="horizontalLayout_9">
-                   <property name="leftMargin">
-                    <number>9</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>0</number>
-                   </property>
-                   <item>
-                    <widget class="QLabel" name="tasksDisplay">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">background-color: transparent;
-border: 0;
-font-size: 20px;</string>
-                     </property>
-                     <property name="text">
-                      <string>待办</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignmentFlag::AlignCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="addButton">
-                     <property name="styleSheet">
-                      <string notr="true">border: 0;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="img.qrc">
-                       <normaloff>:/more/img/add.png</normaloff>:/more/img/add.png</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>25</width>
-                       <height>25</height>
-                      </size>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="verticalSpacer_1">
-                  <property name="orientation">
-                   <enum>Qt::Orientation::Vertical</enum>
-                  </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Policy::Preferred</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>13</width>
-                    <height>13</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_1">
-                  <item>
-                   <spacer name="horizontalSpacer_1">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="sortByDeadlineBtn">
-                    <property name="styleSheet">
-                     <string notr="true">
-QPushButton {
-    color: #1e222b;
-    background-color: #ffffff;
-    border: 1px solid rgba(228,228,228,1);
-    border-radius: 8px;
-    font-family: Microsoft YaHei;
-    font-size: 10px;
-    padding: 1px 12px;
-    min-height: 20px;
-    outline: none;  /* 添加这行去除焦点边框 */
-}
-
-QPushButton:focus {  /* 添加focus状态样式 */
-    outline: none;
-    border: 1px solid rgba(228,228,228,1);
-}
-
-QPushButton:hover {
-    background-color: rgba(30, 34, 43, 0.05);
-    border: 1px solid rgba(30, 34, 43, 0.2);
-}
-
-QPushButton:pressed {
-    background-color: rgba(30, 34, 43, 0.1);
-    border: 1px solid rgba(30, 34, 43, 0.3);
-    padding: 2px 15px 0px 15px;
-}
-
-QPushButton:disabled {
-    color: rgba(30, 34, 43, 0.3);
-    background-color: rgba(228,228,228,0.3);
-    border: 1px solid rgba(228,228,228,0.5);
-}
-
-QPushButton:icon {
-    padding: 1px 15px 1px 10px;
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Preferred</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>13</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QFrame" name="frame_4">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QWidget#centralWidget {
+    background-color: #F9FAFB;
+    padding: 20px;
 }</string>
-                    </property>
-                    <property name="text">
-                     <string>按截止时间排序</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_5">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="sortByPriorityBtn">
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton {
-    color: #1e222b;
-    background-color: #ffffff;
-    border: 1px solid rgba(228,228,228,1);
-    border-radius: 8px;
-    font-family: Microsoft YaHei;
-    font-size: 10px;
-    padding: 1px 12px;
-    min-height: 20px;
-    outline: none;  /* 添加这行去除焦点边框 */
-}
-
-QPushButton:focus {  /* 添加focus状态样式 */
-    outline: none;
-    border: 1px solid rgba(228,228,228,1);
-}
-
-QPushButton:hover {
-    background-color: rgba(30, 34, 43, 0.05);
-    border: 1px solid rgba(30, 34, 43, 0.2);
-}
-
-QPushButton:pressed {
-    background-color: rgba(30, 34, 43, 0.1);
-    border: 1px solid rgba(30, 34, 43, 0.3);
-    padding: 2px 15px 0px 15px;
-}
-
-QPushButton:disabled {
-    color: rgba(30, 34, 43, 0.3);
-    background-color: rgba(228,228,228,0.3);
-    border: 1px solid rgba(228,228,228,0.5);
-}
-
-QPushButton:icon {
-    padding: 1px 15px 1px 10px;
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Shape::NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_9">
+                 <item>
+                  <widget class="QLabel" name="tasksDisplay">
+                   <property name="font">
+                    <font>
+                     <family>Microsoft YaHei UI</family>
+                     <pointsize>24</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLabel#titleLabel {
+    color: #1F2937;
+    font-weight: bold;
+    font-size: 24px;
+    font-family: &quot;Microsoft YaHei UI&quot;;
 }</string>
-                    </property>
-                    <property name="text">
-                     <string>按优先级排序</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_6">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <widget class="TaskDisplay" name="listWidget">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="autoFillBackground">
-                   <bool>false</bool>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">padding: 5px;</string>
-                  </property>
-                  <property name="editTriggers">
-                   <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
-                  </property>
-                  <property name="sortingEnabled">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="verticalSpacer_9">
-                  <property name="orientation">
-                   <enum>Qt::Orientation::Vertical</enum>
-                  </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Policy::Preferred</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>13</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-               </layout>
+                   </property>
+                   <property name="text">
+                    <string>任务清单</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_28">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Policy::Preferred</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="addButton">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Microsoft YaHei UI</family>
+                     <pointsize>9</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton#addButton {
+    background-color: #3B82F6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: bold;
+}
+QPushButton#addButton:hover {
+    background-color: #2563EB;
+}
+QPushButton#addButton:pressed {
+    background-color: #1D4ED8;
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>新建任务</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="img.qrc">
+                     <normaloff>:/more/img/add.png</normaloff>:/more/img/add.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>16</width>
+                     <height>16</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="sortButtonsContainer" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_16">
+                 <item>
+                  <widget class="QLabel" name="filterLabel_2">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel {
+    color: #6B7280;
+    font-size: 14px;
+    font-family: &quot;Microsoft YaHei UI&quot;;
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>筛选：</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_29">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Policy::Preferred</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="sortByDeadlineBtn">
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
+    background-color: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 6px 12px;
+    color: #374151;
+    font-family: &quot;Microsoft YaHei UI&quot;;
+    font-size: 13px;
+}
+QPushButton:hover {
+    background-color: #F3F4F6;
+    border-color: #D1D5DB;
+}
+QPushButton:pressed {
+    background-color: #E5E7EB;
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>按截止时间排序</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>:/more/img/time.png</normaloff>:/more/img/time.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>14</width>
+                     <height>14</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_30">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Policy::Preferred</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>21</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="sortByPriorityBtn">
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
+    background-color: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 6px 12px;
+    color: #374151;
+    font-family: &quot;Microsoft YaHei UI&quot;;
+    font-size: 13px;
+}
+QPushButton:hover {
+    background-color: #F3F4F6;
+    border-color: #D1D5DB;
+}
+QPushButton:pressed {
+    background-color: #E5E7EB;
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>按优先级排序</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>:/more/img/priority.png</normaloff>:/more/img/priority.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>14</width>
+                     <height>14</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_1">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Preferred</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>13</width>
+                  <height>13</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="TaskDisplay" name="listWidget">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="autoFillBackground">
+                 <bool>false</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">padding: 5px;</string>
+                </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+                </property>
+                <property name="sortingEnabled">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_9">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Preferred</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>13</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </widget>
@@ -2108,6 +2218,9 @@ QPushButton:icon {
            </item>
            <item>
             <widget class="TaskEditor" name="editor">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                <horstretch>0</horstretch>
@@ -2123,186 +2236,410 @@ QPushButton:icon {
              <property name="frameShadow">
               <enum>QFrame::Shadow::Raised</enum>
              </property>
-             <layout class="QGridLayout" name="gridLayout_2">
-              <item row="0" column="0">
-               <layout class="QVBoxLayout" name="verticalLayout_4">
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <spacer name="verticalSpacer_4">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Preferred</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>97</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QWidget" name="taskEditContainer" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_4">
+                 <item>
+                  <widget class="QLabel" name="taskLabel">
+                   <property name="font">
+                    <font>
+                     <family>Microsoft YaHei UI</family>
+                     <pointsize>-1</pointsize>
+                     <fontweight>Medium</fontweight>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLabel#taskLabel {
+    color: #374151;
+    font-family: &quot;Microsoft YaHei UI&quot;;
+    font-size: 14px;
+    font-weight: 500;
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>待办事项：</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="textEdit">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                     <horstretch>0</horstretch>
+                     <verstretch>6</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Microsoft YaHei UI</family>
+                     <pointsize>9</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit#taskInput {
+    background-color: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: #1F2937;
+    font-family: &quot;Microsoft YaHei UI&quot;;
+    font-size: 14px;
+}
+
+QLineEdit#taskInput:focus {
+    border: 2px solid #3B82F6;
+    outline: none;
+}
+
+QLineEdit#taskInput:hover {
+    border: 1px solid #D1D5DB;
+}
+
+QLineEdit#taskInput:disabled {
+    background-color: #F3F4F6;
+    color: #6B7280;
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>running</string>
+                   </property>
+                   <property name="maxLength">
+                    <number>100</number>
+                   </property>
+                   <property name="placeholderText">
+                    <string>请输入待办事项...</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_6">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>49</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_3">
+                <property name="spacing">
+                 <number>12</number>
+                </property>
+                <property name="leftMargin">
+                 <number>20</number>
+                </property>
                 <item>
-                 <spacer name="verticalSpacer_3">
-                  <property name="orientation">
-                   <enum>Qt::Orientation::Vertical</enum>
-                  </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Policy::Preferred</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
+                 <widget class="QLabel" name="label_6">
+                  <property name="minimumSize">
                    <size>
-                    <width>20</width>
-                    <height>40</height>
+                    <width>80</width>
+                    <height>36</height>
                    </size>
                   </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_4">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <pointsize>11</pointsize>
+                    <fontweight>Medium</fontweight>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel {
+    color: #374151;
+    font-weight: 500;
+}</string>
                   </property>
                   <property name="text">
-                   <string>待办事项：</string>
+                   <string>截止日期：</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <spacer name="verticalSpacer_4">
-                  <property name="orientation">
-                   <enum>Qt::Orientation::Vertical</enum>
-                  </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Policy::Preferred</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
+                 <widget class="QDateTimeEdit" name="dateTimeEdit">
+                  <property name="minimumSize">
                    <size>
-                    <width>20</width>
-                    <height>40</height>
+                    <width>200</width>
+                    <height>36</height>
                    </size>
                   </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QTextEdit" name="textEdit">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <pointsize>11</pointsize>
+                   </font>
                   </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="verticalSpacer_5">
-                  <property name="orientation">
-                   <enum>Qt::Orientation::Vertical</enum>
+                  <property name="styleSheet">
+                   <string notr="true">QDateTimeEdit {
+    background-color: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: #1F2937;
+}
+
+QDateTimeEdit:hover {
+    border: 1px solid #D1D5DB;
+}
+
+QDateTimeEdit:focus {
+    border: 2px solid #3B82F6;
+}
+
+QDateTimeEdit::drop-down {
+    border: none;
+    width: 20px;
+}
+
+QDateTimeEdit::down-arrow {
+    image: url(:/more/img/calendar.png);
+    width: 12px;
+    height: 12px;
+}
+
+QCalendarWidget {
+    background-color: white;
+    selection-background-color: #3B82F6;
+    selection-color: white;
+}
+
+QCalendarWidget QToolButton {
+    color: #1F2937;
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+QCalendarWidget QToolButton:hover {
+    background-color: #F3F4F6;
+}
+
+QCalendarWidget QMenu {
+    background-color: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+}
+
+QCalendarWidget QSpinBox {
+    background-color: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 4px;
+    padding: 2px;
+}</string>
                   </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Policy::Preferred</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_2">
-                  <item>
-                   <widget class="QLabel" name="label_5">
-                    <property name="text">
-                     <string>优先级：</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="comboBox">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <item>
-                     <property name="text">
-                      <string>低</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>中</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>高</string>
-                     </property>
-                    </item>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <spacer name="verticalSpacer_6">
-                  <property name="orientation">
-                   <enum>Qt::Orientation::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_3">
-                  <item>
-                   <widget class="QLabel" name="label_6">
-                    <property name="text">
-                     <string>截止日期：</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QDateTimeEdit" name="dateTimeEdit"/>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <spacer name="verticalSpacer_7">
-                  <property name="orientation">
-                   <enum>Qt::Orientation::Vertical</enum>
-                  </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Policy::Preferred</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QDialogButtonBox" name="buttonBox">
-                  <property name="autoFillBackground">
-                   <bool>false</bool>
-                  </property>
-                  <property name="standardButtons">
-                   <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
-                  </property>
-                  <property name="centerButtons">
+                  <property name="calendarPopup">
                    <bool>true</bool>
                   </property>
                  </widget>
                 </item>
+               </layout>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Preferred</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <property name="spacing">
+                 <number>12</number>
+                </property>
+                <property name="leftMargin">
+                 <number>20</number>
+                </property>
                 <item>
-                 <spacer name="verticalSpacer_8">
-                  <property name="orientation">
-                   <enum>Qt::Orientation::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
+                 <widget class="QLabel" name="label_5">
+                  <property name="minimumSize">
                    <size>
-                    <width>20</width>
-                    <height>40</height>
+                    <width>80</width>
+                    <height>36</height>
                    </size>
                   </property>
-                 </spacer>
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <pointsize>11</pointsize>
+                    <fontweight>Medium</fontweight>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel {
+    color: #374151;
+    font-weight: 500;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>优先级：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox">
+                  <property name="minimumSize">
+                   <size>
+                    <width>200</width>
+                    <height>36</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox {
+    background-color: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: #1F2937;
+}
+
+QComboBox:hover {
+    border: 1px solid #D1D5DB;
+}
+
+QComboBox:focus {
+    border: 2px solid #3B82F6;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 20px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/more/img/down-arrow.png);
+    width: 12px;
+    height: 12px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 4px;
+    selection-background-color: #EFF6FF;
+    selection-color: #1F2937;
+}</string>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>低</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>中</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>高</string>
+                   </property>
+                  </item>
+                 </widget>
                 </item>
                </layout>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_7">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Preferred</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>67</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QDialogButtonBox" name="buttonBox">
+                <property name="autoFillBackground">
+                 <bool>false</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">
+    QPushButton {
+      background-color: white;
+      border: 1px solid #E5E7EB;
+      color: #374151;
+      border-radius: 6px;
+      padding: 8px 24px;
+      min-width: 80px;
+    }
+    QPushButton:hover {
+      background-color: #F3F4F6;
+    }
+</string>
+                </property>
+                <property name="standardButtons">
+                 <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+                </property>
+                <property name="centerButtons">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_8">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>107</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </widget>
@@ -2332,115 +2669,264 @@ QPushButton:icon {
        <layout class="QGridLayout" name="gridLayout_11">
         <item row="0" column="0">
          <widget class="QFrame" name="frame_8">
+          <property name="styleSheet">
+           <string notr="true">/* 主框架样式 */
+QFrame#frame_8 {
+    background-color: #f5f5f5;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+}
+QPushButton {
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 10pt;
+    min-width: 80px;
+    color: white;
+    border: none;
+}
+QPushButton#stopCountdownBtn_2:hover,
+QPushButton#stopStopwatchBtn:hover {
+    background-color: #ee5555;
+}
+
+QPushButton#continueCountdownBtn_2:hover,
+QPushButton#continueStopwatchBtn:hover {
+    background-color: #449944;
+}
+
+QPushButton#resetCountdownBtn_2:hover,
+QPushButton#resetStopwatchBtn:hover {
+    background-color: #777777;
+}
+/* 按钮禁用状态 */
+QPushButton:disabled {
+    background-color: #cccccc;
+    color: #888888;
+}
+
+/* 消息通知标签样式 */
+QLabel#notificationLabel_2 {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 11pt;
+}
+</string>
+          </property>
           <property name="frameShape">
            <enum>QFrame::Shape::StyledPanel</enum>
           </property>
           <property name="frameShadow">
            <enum>QFrame::Shadow::Raised</enum>
           </property>
-          <layout class="QGridLayout" name="gridLayout_4">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_8">
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#00aaff;&quot;&gt;闹钟&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="1" column="1">
+            <widget class="QLabel" name="label_13">
+             <property name="styleSheet">
+              <string notr="true">QLabel#label_13 {
+    color: #aa55ff;
+    font-size: 16pt;
+    font-weight: bold;
+    padding: 10px;
+    background-color: rgba(170, 85, 255, 0.1);
+    border-radius: 5px;
+}</string>
              </property>
-            </widget>
-           </item>
-           <item row="1" column="5">
-            <widget class="QPushButton" name="resetCountdownBtn">
              <property name="text">
-              <string>重置</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="4">
-            <widget class="QPushButton" name="stopCountdownBtn">
-             <property name="text">
-              <string>停止</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="3">
-            <widget class="QPushButton" name="continueCountdownBtn">
-             <property name="text">
-              <string>继续</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#aa55ff;&quot;&gt;倒计时&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
            <item row="2" column="2">
-            <widget class="QPushButton" name="startStopwatchBtn">
-             <property name="text">
-              <string>开始计时</string>
+            <widget class="QTimeEdit" name="stopwatchTimeEdit">
+             <property name="styleSheet">
+              <string notr="true">QTimeEdit, QDateTimeEdit {
+    background-color: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 5px;
+    min-height: 30px;
+    font-size: 12pt;
+}
+
+QTimeEdit:hover, QDateTimeEdit:hover {
+    border-color: #00aaff;
+}
+
+QTimeEdit:focus, QDateTimeEdit:focus {
+    border-color: #00aaff;
+    background-color: #f8f8f8;
+}</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="3">
-            <widget class="QPushButton" name="continueStopwatchBtn">
+           <item row="2" column="1">
+            <widget class="QLabel" name="label_14">
+             <property name="styleSheet">
+              <string notr="true">QLabel#label_14 {
+    color: #00aa00;
+    font-size: 16pt;
+    font-weight: bold;
+    padding: 10px;
+    background-color: rgba(0, 170, 0, 0.1);
+    border-radius: 5px;
+}</string>
+             </property>
              <property name="text">
-              <string>继续</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#00aa00;&quot;&gt;秒表&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="5">
-            <widget class="QPushButton" name="resetStopwatchBtn">
-             <property name="text">
-              <string>重置</string>
+           <item row="1" column="5">
+            <widget class="QPushButton" name="stopCountdownBtn_2">
+             <property name="styleSheet">
+              <string notr="true">QPushButton#startCountdownBtn_2 {
+    background-color: #aa55ff;
+}
+
+QPushButton#startCountdownBtn_2:hover {
+    background-color: #9944ee;
+}
+
+QPushButton#stopCountdownBtn_2 {
+    background-color: #ff6666;
+}
+
+QPushButton#continueCountdownBtn_2 {
+    background-color: #55aa55;
+}
+
+QPushButton#resetCountdownBtn_2 {
+    background-color: #888888;
+}</string>
              </property>
-            </widget>
-           </item>
-           <item row="2" column="4">
-            <widget class="QPushButton" name="stopStopwatchBtn">
              <property name="text">
               <string>停止</string>
              </property>
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QDateTimeEdit" name="alarmTimeEdit"/>
-           </item>
-           <item row="1" column="2">
-            <widget class="QPushButton" name="startCountdownBtn">
+            <widget class="QLabel" name="label_12">
+             <property name="styleSheet">
+              <string notr="true">QLabel#label_12 {
+    color: #00aaff;
+    font-size: 16pt;
+    font-weight: bold;
+    padding: 10px;
+    background-color: rgba(0, 170, 255, 0.1);
+    border-radius: 5px;
+}</string>
+             </property>
              <property name="text">
-              <string>开始倒计时</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#00aaff;&quot;&gt;闹钟&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
-            <widget class="QTimeEdit" name="countdownTimeEdit"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_9">
+           <item row="1" column="6">
+            <widget class="QPushButton" name="resetCountdownBtn_2">
+             <property name="styleSheet">
+              <string notr="true">QPushButton#startCountdownBtn_2 {
+    background-color: #aa55ff;
+}
+
+QPushButton#startCountdownBtn_2:hover {
+    background-color: #9944ee;
+}
+
+QPushButton#stopCountdownBtn_2 {
+    background-color: #ff6666;
+}
+
+QPushButton#continueCountdownBtn_2 {
+    background-color: #55aa55;
+}
+
+QPushButton#resetCountdownBtn_2 {
+    background-color: #888888;
+}</string>
+             </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#aa55ff;&quot;&gt;倒计时&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>重置</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="1">
-            <widget class="QTimeEdit" name="stopwatchTimeEdit"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_10">
+           <item row="2" column="6">
+            <widget class="QPushButton" name="resetStopwatchBtn">
+             <property name="styleSheet">
+              <string notr="true">QPushButton#startStopwatchBtn {
+    background-color: #00aa00;
+}
+
+QPushButton#startStopwatchBtn:hover {
+    background-color: #008800;
+}
+
+QPushButton#stopStopwatchBtn {
+    background-color: #ff6666;
+}
+
+QPushButton#continueStopwatchBtn {
+    background-color: #55aa55;
+}
+
+QPushButton#resetStopwatchBtn {
+    background-color: #888888;
+}
+</string>
+             </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#00aa00;&quot;&gt;秒表&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>重置</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="2">
-            <widget class="QPushButton" name="setAlarmBtn">
+           <item row="0" column="0">
+            <spacer name="horizontalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Preferred</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="2" column="5">
+            <widget class="QPushButton" name="stopStopwatchBtn">
+             <property name="styleSheet">
+              <string notr="true">QPushButton#startStopwatchBtn {
+    background-color: #00aa00;
+}
+
+QPushButton#startStopwatchBtn:hover {
+    background-color: #008800;
+}
+
+QPushButton#stopStopwatchBtn {
+    background-color: #ff6666;
+}
+
+QPushButton#continueStopwatchBtn {
+    background-color: #55aa55;
+}
+
+QPushButton#resetStopwatchBtn {
+    background-color: #888888;
+}
+</string>
+             </property>
              <property name="text">
-              <string>设置闹钟</string>
+              <string>停止</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="3">
-            <widget class="QPushButton" name="stopSoundBtn">
-             <property name="text">
-              <string>关闭铃声</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="5">
-            <widget class="QLabel" name="notificationLabel">
+           <item row="0" column="6">
+            <widget class="QLabel" name="notificationLabel_2">
              <property name="maximumSize">
               <size>
                <width>16777215</width>
@@ -2452,12 +2938,304 @@ QPushButton:icon {
              </property>
             </widget>
            </item>
+           <item row="1" column="4">
+            <widget class="QPushButton" name="continueCountdownBtn_4">
+             <property name="styleSheet">
+              <string notr="true">QPushButton#startCountdownBtn_2 {
+    background-color: #aa55ff;
+}
+
+QPushButton#startCountdownBtn_2:hover {
+    background-color: #9944ee;
+}
+
+QPushButton#stopCountdownBtn_2 {
+    background-color: #ff6666;
+}
+
+QPushButton#continueCountdownBtn_4 {
+    background-color: #55aa55;
+}
+
+QPushButton#resetCountdownBtn_2 {
+    background-color: #888888;
+}</string>
+             </property>
+             <property name="text">
+              <string>继续</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QDateTimeEdit" name="alarmTimeEdit_4">
+             <property name="styleSheet">
+              <string notr="true">QTimeEdit, QDateTimeEdit {
+    background-color: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 5px;
+    min-height: 30px;
+    font-size: 12pt;
+}
+
+QTimeEdit:hover, QDateTimeEdit:hover {
+    border-color: #00aaff;
+}
+
+QTimeEdit:focus, QDateTimeEdit:focus {
+    border-color: #00aaff;
+    background-color: #f8f8f8;
+}
+</string>
+             </property>
+            </widget>
+           </item>
            <item row="0" column="4">
-            <widget class="QLabel" name="label_11">
+            <widget class="QPushButton" name="stopSoundBtn_2">
+             <property name="styleSheet">
+              <string notr="true">QPushButton#setAlarmBtn_2 {
+    background-color: #00aaff;
+}
+
+QPushButton#setAlarmBtn_2:hover {
+    background-color: #0088cc;
+}
+
+QPushButton#stopSoundBtn_2 {
+    background-color: #ff4444;
+}
+
+QPushButton#stopSoundBtn_2:hover {
+    background-color: #cc3333;
+}
+</string>
+             </property>
+             <property name="text">
+              <string>关闭铃声</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="3">
+            <widget class="QPushButton" name="startCountdownBtn_2">
+             <property name="styleSheet">
+              <string notr="true">QPushButton#startCountdownBtn_2 {
+    background-color: #aa55ff;
+}
+
+QPushButton#startCountdownBtn_2:hover {
+    background-color: #9944ee;
+}
+
+QPushButton#stopCountdownBtn_2 {
+    background-color: #ff6666;
+}
+
+QPushButton#continueCountdownBtn_2 {
+    background-color: #55aa55;
+}
+
+QPushButton#resetCountdownBtn_2 {
+    background-color: #888888;
+}</string>
+             </property>
+             <property name="text">
+              <string>开始倒计时</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="4">
+            <widget class="QPushButton" name="continueStopwatchBtn">
+             <property name="styleSheet">
+              <string notr="true">QPushButton#startStopwatchBtn {
+    background-color: #00aa00;
+}
+
+QPushButton#startStopwatchBtn:hover {
+    background-color: #008800;
+}
+
+QPushButton#stopStopwatchBtn {
+    background-color: #ff6666;
+}
+
+QPushButton#continueStopwatchBtn {
+    background-color: #55aa55;
+}
+
+QPushButton#resetStopwatchBtn {
+    background-color: #888888;
+}
+</string>
+             </property>
+             <property name="text">
+              <string>继续</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="5">
+            <widget class="QLabel" name="label_15">
+             <property name="styleSheet">
+              <string notr="true">QLabel#label_15 {
+    color: #ff0000;
+    font-size: 12pt;
+    font-weight: bold;
+    padding: 5px;
+}</string>
+             </property>
              <property name="text">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ff0000;&quot;&gt;消息通知：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
+           </item>
+           <item row="2" column="3">
+            <widget class="QPushButton" name="startStopwatchBtn">
+             <property name="styleSheet">
+              <string notr="true">QPushButton#startStopwatchBtn {
+    background-color: #00aa00;
+}
+
+QPushButton#startStopwatchBtn:hover {
+    background-color: #008800;
+}
+
+QPushButton#stopStopwatchBtn {
+    background-color: #ff6666;
+}
+
+QPushButton#continueStopwatchBtn {
+    background-color: #55aa55;
+}
+
+QPushButton#resetStopwatchBtn {
+    background-color: #888888;
+}
+</string>
+             </property>
+             <property name="text">
+              <string>开始计时</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QTimeEdit" name="countdownTimeEdit_2">
+             <property name="styleSheet">
+              <string notr="true">QTimeEdit, QDateTimeEdit {
+    background-color: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 5px;
+    min-height: 30px;
+    font-size: 12pt;
+}
+
+QTimeEdit:hover, QDateTimeEdit:hover {
+    border-color: #00aaff;
+}
+
+QTimeEdit:focus, QDateTimeEdit:focus {
+    border-color: #00aaff;
+    background-color: #f8f8f8;
+}</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QPushButton" name="setAlarmBtn_4">
+             <property name="styleSheet">
+              <string notr="true">QPushButton#setAlarmBtn_4 {
+    background-color: #00aaff;
+}
+
+QPushButton#setAlarmBtn_4:hover {
+    background-color: #0088cc;
+}
+
+</string>
+             </property>
+             <property name="text">
+              <string>设置闹钟</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="7">
+            <spacer name="horizontalSpacer_6">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Preferred</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="1" column="0">
+            <spacer name="horizontalSpacer_31">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Preferred</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="1" column="7">
+            <spacer name="horizontalSpacer_32">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Preferred</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="2" column="0">
+            <spacer name="horizontalSpacer_33">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Preferred</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="2" column="7">
+            <spacer name="horizontalSpacer_34">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Preferred</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
            </item>
           </layout>
          </widget>
@@ -2473,6 +3251,22 @@ QPushButton:icon {
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">/* 主框架样式 */
+QFrame#frame_2 {
+    background-color: rgba(255, 255, 255, 0.85);  /* 85%透明度的白色背景 */
+    border: 1px solid rgba(230, 230, 230, 0.5);   /* 半透明的边框 */
+    border-radius: 15px;
+    /* 添加玻璃模糊效果的阴影 */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* 如果需要毛玻璃效果，可以添加以下样式 */
+QFrame#frame_2 {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::Shape::StyledPanel</enum>
@@ -2496,6 +3290,54 @@ QPushButton:icon {
            </item>
            <item>
             <widget class="QFrame" name="frame_5">
+             <property name="styleSheet">
+              <string notr="true">/* 内部框架样式 */
+QFrame#frame_5 {
+    background-color: transparent;
+}
+/* 账号密码标签样式 */
+QLabel#label, QLabel#label_2 {
+    color: #333333;
+    font-size: 18px;
+    font-family: &quot;Microsoft YaHei&quot;;
+    padding: 5px;
+}
+QLineEdit {
+    color: #333333;
+    background-color: #f5f7fa;
+    border: 2px solid #f5f7fa;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-family: &quot;Microsoft YaHei&quot;;
+    min-height: 20px;
+}
+
+QLineEdit:hover {
+    background-color: #eef0f6;
+    border: 2px solid #eef0f6;
+}
+
+QLineEdit:focus {
+    background-color: #ffffff;
+    border: 2px solid #4a7eff;
+    outline: none;
+}
+/* 账号输入框特定样式 */
+QLineEdit#usernameEdit {
+    margin-bottom: 5px;
+}
+
+/* 密码输入框特定样式 */
+QLineEdit#passwordEdit {
+    margin-bottom: 5px;
+}
+/* 输入框占位符文本样式 */
+QLineEdit::placeholder {
+    color: #999999;
+    font-size: 13px;
+}</string>
+             </property>
              <property name="frameShape">
               <enum>QFrame::Shape::NoFrame</enum>
              </property>
@@ -2522,8 +3364,14 @@ QPushButton:icon {
               <item>
                <widget class="QLabel" name="label_3">
                 <property name="styleSheet">
-                 <string notr="true">font-size:25px;
-font: bold;</string>
+                 <string notr="true">/* 欢迎登录标题样式 */
+QLabel#label_3 {
+    color: #333333;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: &quot;Microsoft YaHei&quot;;
+    padding: 10px;
+}</string>
                 </property>
                 <property name="text">
                  <string>欢迎登录</string>
@@ -2713,17 +3561,98 @@ QLineEdit QScrollBar::sub-line:vertical {
                   <property name="palette">
                    <palette>
                     <active>
+                     <colorrole role="WindowText">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>74</red>
+                        <green>126</green>
+                        <blue>255</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Button">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Text">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>74</red>
+                        <green>126</green>
+                        <blue>255</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
                      <colorrole role="ButtonText">
                       <brush brushstyle="SolidPattern">
                        <color alpha="255">
                         <red>77</red>
                         <green>105</green>
                         <blue>245</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Base">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Window">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="PlaceholderText">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="128">
+                        <red>74</red>
+                        <green>126</green>
+                        <blue>255</blue>
                        </color>
                       </brush>
                      </colorrole>
                     </active>
                     <inactive>
+                     <colorrole role="WindowText">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>74</red>
+                        <green>126</green>
+                        <blue>255</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Button">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Text">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>74</red>
+                        <green>126</green>
+                        <blue>255</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
                      <colorrole role="ButtonText">
                       <brush brushstyle="SolidPattern">
                        <color alpha="255">
@@ -2733,13 +3662,127 @@ QLineEdit QScrollBar::sub-line:vertical {
                        </color>
                       </brush>
                      </colorrole>
+                     <colorrole role="Base">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Window">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="PlaceholderText">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="128">
+                        <red>74</red>
+                        <green>126</green>
+                        <blue>255</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
                     </inactive>
-                    <disabled/>
+                    <disabled>
+                     <colorrole role="WindowText">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>74</red>
+                        <green>126</green>
+                        <blue>255</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Button">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Text">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>74</red>
+                        <green>126</green>
+                        <blue>255</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="ButtonText">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>74</red>
+                        <green>126</green>
+                        <blue>255</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Base">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Window">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="PlaceholderText">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="128">
+                        <red>74</red>
+                        <green>126</green>
+                        <blue>255</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </disabled>
                    </palette>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font-size:12px;
-padding:3px;</string>
+                   <string notr="true">
+/* 注册提示文本样式 */
+QLabel#label_7 {
+    color: #888888;
+    font-size: 12px;
+}
+
+/* 注册按钮样式 */
+QPushButton#registerBtn {
+    color: #4a7eff;
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+    padding: 3px 8px;
+    font-family: &quot;Microsoft YaHei&quot;;
+}
+
+QPushButton#registerBtn:hover {
+    color: #2b5ada;
+    text-decoration: underline;
+}
+
+QPushButton#registerBtn:pressed {
+    color: #1e3c99;
+}</string>
                   </property>
                   <property name="text">
                    <string>注册</string>
@@ -2795,7 +3838,52 @@ QPushButton:disabled {
 /* 如果按钮包含图标 */
 QPushButton:icon {
     padding: 1px 15px 1px 10px;  /* 左侧padding适当调整以适应图标 */
-}</string>
+}
+/* 确认和取消按钮样式 */
+QDialogButtonBox {
+    spacing: 10px;
+}
+
+QDialogButtonBox QPushButton {
+    min-width: 90px;
+    min-height: 35px;
+    border-radius: 8px;
+    font-family: &quot;Microsoft YaHei&quot;;
+    font-size: 14px;
+    padding: 5px 20px;
+}
+/* OK按钮样式 */
+QDialogButtonBox QPushButton[text=&quot;OK&quot;] {
+    color: white;
+    background-color: #4a7eff;
+    border: none;
+}
+
+QDialogButtonBox QPushButton[text=&quot;OK&quot;]:hover {
+    background-color: #2b5ada;
+}
+
+QDialogButtonBox QPushButton[text=&quot;OK&quot;]:pressed {
+    background-color: #1e3c99;
+}
+
+/* Cancel按钮样式 */
+QDialogButtonBox QPushButton[text=&quot;Cancel&quot;] {
+    color: #666666;
+    background-color: #f5f7fa;
+    border: 1px solid #e6e6e6;
+}
+
+QDialogButtonBox QPushButton[text=&quot;Cancel&quot;]:hover {
+    background-color: #eef0f6;
+    color: #333333;
+}
+
+QDialogButtonBox QPushButton[text=&quot;Cancel&quot;]:pressed {
+    background-color: #e6e8f0;
+    color: #333333;
+}
+</string>
                 </property>
                 <property name="standardButtons">
                  <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
@@ -2839,84 +3927,6 @@ QPushButton:icon {
         </item>
        </layout>
       </widget>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <widget class="QToolButton" name="clockButton">
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-border: 0;</string>
-      </property>
-      <property name="text">
-       <string>时钟</string>
-      </property>
-      <property name="icon">
-       <iconset resource="img.qrc">
-        <normaloff>:/tab/img/clock.png</normaloff>:/tab/img/clock.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>30</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="autoExclusive">
-       <bool>true</bool>
-      </property>
-      <property name="toolButtonStyle">
-       <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QToolButton" name="homeButton">
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-border: 0;</string>
-      </property>
-      <property name="text">
-       <string>主页</string>
-      </property>
-      <property name="icon">
-       <iconset resource="img.qrc">
-        <normaloff>:/tab/img/home.png</normaloff>:/tab/img/home.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>30</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="autoExclusive">
-       <bool>true</bool>
-      </property>
-      <property name="toolButtonStyle">
-       <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="4">
-     <widget class="QToolButton" name="tasksButton">
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-border: 0;</string>
-      </property>
-      <property name="text">
-       <string>任务</string>
-      </property>
-      <property name="icon">
-       <iconset resource="img.qrc">
-        <normaloff>:/tab/img/tasks.png</normaloff>:/tab/img/tasks.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>30</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="toolButtonStyle">
-       <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
-      </property>
      </widget>
     </item>
    </layout>

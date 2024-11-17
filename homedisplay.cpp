@@ -18,16 +18,30 @@ HomeDisplay::HomeDisplay(Ui::MainWindow* ui) : ui(ui)
     ui->userImageDisplay->setPixmap(fitpixmap);//头像
 
     QPushButton::connect(ui->logoutBtn, &QPushButton::clicked, ui->stackedWidget, [=]{
+        HamSystem* hamSystem = qobject_cast<HamSystem*>(ui->centralwidget->window());
+        if (hamSystem) {
+            hamSystem->logout();  // 调用完整的 logout 函数
+        }
         ui->stackedWidget->setCurrentIndex(ui->stackedWidget->count() - 1);//登出
         ui->tab->hide();
     });
 
-    QPushButton::connect(ui->exportLogBtn, &QPushButton::clicked, ui->stackedWidget, [=]{
-        QString dir_path=QFileDialog::getExistingDirectory(ui->home,"选择导出目录", QDir::currentPath());
-        QFile file(dir_path);
-        //bool ok = file.open(QIODevice::ReadWrite);
+    QPushButton::connect(ui->exportLogBtn, &QPushButton::clicked, ui->stackedWidget, [=] {
+        QString dirPath = QFileDialog::getExistingDirectory(ui->home, "选择导出目录", QDir::currentPath());
+        if (dirPath.isEmpty()) {
+            QMessageBox::information(ui->home, "提示", "未选择目录");
+            return;
+        }
 
-    });//导出报表
+        QStringList errors;
+        if (NetDataAccess::instance()->exportAllTables(dirPath, errors)) {
+            QMessageBox::information(ui->home, "导出完成", "所有数据表已成功导出到目录: " + dirPath);
+        } else {
+            QMessageBox::warning(ui->home, "部分导出失败", "以下表导出失败: " + errors.join(", "));
+        }
+    });
+
+
 
     QPushButton::connect(ui->changePasswordBtn, &QPushButton::clicked, ui->stackedWidget, [=]{
         PassWordChange passwordChange(ui->centralwidget);

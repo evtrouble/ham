@@ -23,7 +23,7 @@ class HamSystem : public QMainWindow
 public:
     HamSystem(QWidget *parent = nullptr);
     ~HamSystem();
-
+    void logout();
 private:
     void navConnect(int id);
     void closeEvent(QCloseEvent *event) override;
@@ -32,7 +32,7 @@ private:
     void initializeSystem();
     void setupTrayIcon();
     void on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason);
-    void logout();
+
     void resetUIState();
     void resetControllers();
 

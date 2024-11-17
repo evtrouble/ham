@@ -40,7 +40,6 @@ void TaskDisplay::init()
     }
     //bool success = NetDataAccess::instance()->loadData(value);
     NetDataAccess::instance()->loadTaskData();
-    qDebug()<<"111";
     NetDataAccess::connect(NetDataAccess::instance().get(), &NetDataAccess::TaskFinish, this, [=](QNetworkReply* reply){
         if (reply->error() == QNetworkReply::NoError) {
 

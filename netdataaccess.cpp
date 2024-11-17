@@ -5,12 +5,60 @@
 #include <QEventLoop>
 #include <QMessageBox>
 #include <QUrlQuery>
-
+#include <QFile>
 NetDataAccess::NetDataAccess(QWidget *parent) : QWidget(parent), access(new QNetworkAccessManager) {}
 
 std::unique_ptr<NetDataAccess> NetDataAccess::dataAccess = nullptr;
 bool NetDataAccess::clearJwt(){
     jwt = "";
+}
+bool NetDataAccess::exportTable(const QString& model, const QString& dirPath)
+{
+    QNetworkRequest request;
+    QString url = QString("%1export?model=%2&format=csv").arg(server).arg(model);
+    request.setUrl(QUrl(url));
+    request.setRawHeader("Authorization", "Bearer " + jwt.toUtf8());
+
+    QNetworkReply* reply = access->get(request);
+
+    QEventLoop loop;
+    bool success = false;
+
+    QObject::connect(reply, &QNetworkReply::finished, this, [&]() {
+        if (reply->error() == QNetworkReply::NoError) {
+            // 保存文件
+            QString filePath = dirPath + "/" + model + ".csv";
+            QFile file(filePath);
+            if (file.open(QIODevice::WriteOnly)) {
+                file.write(reply->readAll());
+                file.close();
+                success = true;
+            } else {
+                qDebug() << "文件打开失败: " << filePath;
+            }
+        } else {
+            qDebug() << "导出失败: " << model << ", 错误: " << reply->errorString();
+        }
+        reply->deleteLater();
+        loop.quit();
+    });
+
+    loop.exec(); // 阻塞等待请求完成
+    return success;
+}
+
+bool NetDataAccess::exportAllTables(const QString& dirPath, QStringList& errors)
+{
+    QStringList models = {"course", "task", "log", "user", "courseschedule", "studentcourse"};
+    errors.clear();
+
+    for (const QString& model : models) {
+        if (!exportTable(model, dirPath)) {
+            errors.append(model); // 记录失败的表名
+        }
+    }
+
+    return errors.isEmpty();
 }
 
 bool NetDataAccess::loadTaskData()
@@ -19,15 +67,11 @@ bool NetDataAccess::loadTaskData()
     QString url = server;
     url += "tasks/";
     request.setUrl(QUrl(url));
-    qDebug() << "Full request URL:" << url;  // 打印完整的请求URL
-    qDebug() << "Server base URL:" << server; // 打印基础服务器地址
+
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json;charset=utf-8"));
     request.setRawHeader("Authorization", "Bearer " + jwt.toUtf8());
 
-    // 打印请求信息
-    qDebug() << "Request headers:";
-    qDebug() << "Content-Type:" << request.header(QNetworkRequest::ContentTypeHeader).toString();
-    qDebug() << "Authorization:" << "Bearer " + jwt.left(10) + "..."; // 只显示token的前一部分
+
     QNetworkReply* reply = access->get(request);
 
 
@@ -143,7 +187,6 @@ bool NetDataAccess::userLogin(const QString &username, const QString &password, 
     QNetworkReply* reply = access->post(request, data);
 
     QEventLoop loop;
-    qDebug() << "Authorization:" << "Bearer " + jwt.left(10) + "..."; // 只显示token的前一部分
 
     // 连接槽函数解析数据
     bool success = false;

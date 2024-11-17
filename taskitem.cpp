@@ -9,10 +9,23 @@
 TaskItem::TaskItem(QWidget *parent) : QWidget(parent), deleteButton(new QPushButton(this))
 {
     setAttribute(Qt::WA_StyledBackground);
+
+    // 设置删除按钮样式
     deleteButton->setIcon(QIcon(":/more/img/delete.png"));
     deleteButton->setIconSize(QSize(20, 20));
-    deleteButton->setStyleSheet("border: 0;");
+    deleteButton->setStyleSheet(R"(
+        QPushButton {
+            border: none;
+            background: transparent;
+        }
+        QPushButton:hover {
+            background-color: rgba(239, 68, 68, 0.1);
+            border-radius: 4px;
+        }
+    )");
+    deleteButton->setCursor(Qt::PointingHandCursor);
 
+    // 连接删除信号
     QPushButton::connect(deleteButton, &QPushButton::clicked, this, [=]{
         emit remove(item);
     });
@@ -21,24 +34,70 @@ TaskItem::TaskItem(QWidget *parent) : QWidget(parent), deleteButton(new QPushBut
 void TaskItem::paintEvent(QPaintEvent* Event)
 {
     QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing);
 
-    checkBox->setGeometry(0, height() / 2 - 14, 25, 25);
+    // 先绘制整体背景
+    painter.fillRect(rect(), QColor(232, 245, 253));  // 使用淡蓝色填充整个背景
+
+
+    // 绘制卡片背景
+    QPainterPath path;
+    path.addRoundedRect(QRectF(0, 0, width(), height()), 10, 10);
+    painter.fillPath(path, QColor(255, 255, 255));
+
+
+    checkBox->setGeometry(4, height() / 2 - 14, 28, 28);  // 调整整体大小为28x28
+    checkBox->setStyleSheet(R"(
+        QCheckBox {
+            spacing: 0px;         // 将spacing改为0，去除额外间距
+        }
+        QCheckBox::indicator {
+            width: 24px;          // 宽高保持一致
+            height: 24px;         // 宽高保持一致
+            border: 2px solid #E5E7EB;
+            border-radius: 4px;
+            background-color: white;
+        }
+        QCheckBox::indicator:checked {
+            background-color: #3B82F6;
+            border-color: #3B82F6;
+            image: url(:/more/img/check.png);
+        }
+        QCheckBox::indicator:hover {
+            border-color: #3B82F6;
+        }
+    )");
+
     checkBox->show();//选框
 
     if(checkBox->checkState() == Qt::Checked){
-        text->setStyleSheet("text-decoration: line-through");
-
+        text->setStyleSheet(R"(
+            QLabel {
+                color: #9CA3AF;
+                text-decoration: line-through;
+                font-family: "Microsoft YaHei UI";
+                padding: 2px;
+            }
+        )");
         QColor color;
         color.setRgb(0x88, 0x88, 0x88);
         QPalette pal = text->palette();
         pal.setColor(QPalette::Text, color);
         text->setPalette(pal);
     }
-    else text->setStyleSheet("text-decoration: none");
-    text->move(25, 3);
+    else {
+        text->setStyleSheet(R"(
+            QLabel {
+                color: #1F2937;
+                font-family: "Microsoft YaHei UI";
+                padding: 4px;
+            }
+        )");
+    }
+    text->move(40, 3);
     text->show();//待办事项
 
-    deleteButton->move(width() - 30, height() / 2 - 12);
+    deleteButton->move(width() - 35, height() / 2 - 12);  // 从30改为35，让按钮往右移一点
     deleteButton->show();//删除
 
     painter.drawLine(QPointF(5, height()), QPointF(width() - 5, height()));
@@ -129,7 +188,7 @@ void TaskItem::setText(const QString& text)
 
 void TaskItem::setWidth(int width)
 {
-    text->setFixedWidth(width - 50);
+    text->setFixedWidth(width - 70);  // 从50改为70，给右边留更多空间
     text->adjustSize();
     resize(width, text->height() + 5);
 }

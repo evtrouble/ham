@@ -46,7 +46,7 @@ void TasksControl::connectTaskDisplay()
 
     QDialogButtonBox::connect(ui->buttonBox, &QDialogButtonBox::accepted, ui->listWidget, [=]{
         ui->listWidget->itemChange(ui->editor->currentItem(), ui->dateTimeEdit->dateTime(),
-                                   ui->textEdit->toPlainText(), ui->comboBox->currentIndex());
+                                   ui->textEdit->text(), ui->comboBox->currentIndex());
     });//确认修改
 
     TaskDisplay::connect(ui->listWidget, &TaskDisplay::editorShow, ui->editor, [=](QListWidgetItem *currentItem){
