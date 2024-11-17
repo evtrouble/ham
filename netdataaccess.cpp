@@ -9,6 +9,9 @@
 NetDataAccess::NetDataAccess(QWidget *parent) : QWidget(parent), access(new QNetworkAccessManager) {}
 
 std::unique_ptr<NetDataAccess> NetDataAccess::dataAccess = nullptr;
+bool NetDataAccess::clearJwt(){
+    jwt = "";
+}
 
 bool NetDataAccess::loadTaskData()
 {

@@ -235,7 +235,7 @@ void TaskDisplay::timerEvent(QTimerEvent *event)
             int minutes = QDateTime::currentDateTime().secsTo(iter->second->getDeadline()) / 60;
 
             title += QString::number(minutes) + "分钟！";
-            trayIcon->showMessage(title, iter->second->getText());
+            trayIcon->showMessage(title, iter->second->getText(),QIcon(":/img/logo.png"));
         }
 
         timerMap.erase(iter);

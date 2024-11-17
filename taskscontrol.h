@@ -11,11 +11,11 @@ class TasksControl
 public:
     TasksControl(Ui::MainWindow* ui);
     void init();
+    void reset();
 
 private:
     void connectTaskDisplay();
     void disconnectTaskDisplay();
-
 private:
     Ui::MainWindow *ui;
 };

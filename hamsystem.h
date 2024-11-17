@@ -27,8 +27,14 @@ public:
 private:
     void navConnect(int id);
     void closeEvent(QCloseEvent *event) override;
-
+    void setupLoginUI();
+    void setupNavigationButtons();
+    void initializeSystem();
+    void setupTrayIcon();
     void on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason);
+    void logout();
+    void resetUIState();
+    void resetControllers();
 
 private:
     Ui::MainWindow *ui;

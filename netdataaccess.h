@@ -34,7 +34,7 @@ public:
                       const int hasCapacity = -1
                       );
     QString getJwt() const { return jwt; }
-
+    bool clearJwt();
     static std::unique_ptr<NetDataAccess>& instance();
 
 private:

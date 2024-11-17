@@ -12,37 +12,61 @@
 #include <QVBoxLayout>
 #include <QMessageBox>
 #include <QMenu>
+#include <QFile>
 
 HamSystem::HamSystem(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
     tasksControl = new TasksControl(ui);
     homeDisplay = new HomeDisplay(ui);
     clockWidget = new ClockWidget(ui);
     courseControl = new CourseControl(ui);
 
-    // 最小化托盘
+    initializeSystem();
+    this->setWindowIcon(QIcon(":/img/logo.png"));
+
+}
+
+void HamSystem::initializeSystem()
+{
+    setupTrayIcon();
+    setupNavigationButtons();
+    setupLoginUI();
+}
+
+void HamSystem::setupTrayIcon()
+{
     QMenu *menu = new QMenu(this);
-    QIcon icon(":/icon/img/icon.png");
+    QIcon icon(":/img/logo.png");
     SysIcon = new QSystemTrayIcon(this);
     SysIcon->setIcon(icon);
     SysIcon->setToolTip("Ham");
+
     QAction *restor = new QAction("恢复", this);
     connect(restor, &QAction::triggered, this, &HamSystem::showNormal);
+
     QAction *quit = new QAction("退出", this);
-    connect(quit, &QAction::triggered, qApp, [=]
-            {
+    connect(quit, &QAction::triggered, qApp, [=] {
         this->hide();
-        QApplication::quit(); });
+        QApplication::quit();
+    });
+
     connect(SysIcon, &QSystemTrayIcon::activated, this, &HamSystem::on_activatedSysTrayIcon);
 
     menu->addAction(restor);
-    menu->addSeparator(); // 分割
+    menu->addSeparator();
     menu->addAction(quit);
     SysIcon->setContextMenu(menu);
     SysIcon->show();
 
+    ui->listWidget->setSystemTrayIcon(SysIcon);
+}
+
+void HamSystem::setupNavigationButtons()
+{
+    btns.clear();  // 清空现有按钮列表
     btns.append(ui->homeButton);
     btns.append(ui->classButton);
     btns.append(ui->tasksButton);
@@ -50,32 +74,48 @@ HamSystem::HamSystem(QWidget *parent)
 
     // 按钮均匀分布
     QVBoxLayout *VLayout = new QVBoxLayout;
-    for (auto &btn : btns)
+    for (auto &btn : btns) {
         VLayout->addWidget(btn);
+    }
+
+    // 如果已经存在widget，先删除
+    // QWidget* oldWidget = ui->tab->widget(0);
+    // if (oldWidget) {
+    //     ui->tab->removeWidget(oldWidget);
+    //     delete oldWidget;
+    // }
 
     QWidget *widget = new QWidget(ui->tab);
     widget->setLayout(VLayout);
     widget->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
-
     ui->tab->addWidget(widget);
-    ui->listWidget->setSystemTrayIcon(SysIcon);
 
-    for (int id = 0; id < btns.size(); id++)
-    {
+    for (int id = 0; id < btns.size(); id++) {
         btns.at(id)->setFixedSize(50, 50);
         navConnect(id);
     }
+}
 
+void HamSystem::setupLoginUI()
+{
     ui->buttonBox_2->button(QDialogButtonBox::Ok)->setText("登录");
     ui->buttonBox_2->button(QDialogButtonBox::Cancel)->setText("取消");
 
-    QDialogButtonBox::connect(ui->buttonBox_2, &QDialogButtonBox::accepted, ui->stackedWidget, [=]
-                              {
+    // 断开之前的连接（如果有的话）
+    QDialogButtonBox::disconnect(ui->buttonBox_2, &QDialogButtonBox::accepted, nullptr, nullptr);
+    QPushButton::disconnect(ui->registerBtn, &QPushButton::clicked, nullptr, nullptr);
+
+    // 重新建立登录连接
+    QDialogButtonBox::connect(ui->buttonBox_2, &QDialogButtonBox::accepted, ui->stackedWidget, [=] {
         bool isAdmin = false;
-        if(!NetDataAccess::instance()->userLogin(ui->usernameEdit->text(), ui->passwordEdit->text(), isAdmin))return;
+        if(!NetDataAccess::instance()->userLogin(ui->usernameEdit->text(), ui->passwordEdit->text(), isAdmin))
+            return;
+
         homeDisplay->setUsername(ui->usernameEdit->text());
-        if(isAdmin) homeDisplay->setuserType(UserType::ADMINISTRATOR);
-        else homeDisplay->setuserType(UserType::ORDINARY);
+        if(isAdmin)
+            homeDisplay->setuserType(UserType::ADMINISTRATOR);
+        else
+            homeDisplay->setuserType(UserType::ORDINARY);
 
         QColor color;
         color.setRgb(0xff, 0xa5, 0x00);
@@ -85,40 +125,45 @@ HamSystem::HamSystem(QWidget *parent)
 
         homeDisplay->setUsername(ui->usernameEdit->text());
         tasksControl->init();
-        // 登录成功后初始化课程控制器并获取课程数据
         courseControl->init();
 
         ui->stackedWidget->setCurrentIndex(0);
         ui->tab->show();
     });
 
-    QPushButton::connect(ui->registerBtn, &QPushButton::clicked, ui->stackedWidget, [=]
-                         {
+    // 重新建立注册连接
+    QPushButton::connect(ui->registerBtn, &QPushButton::clicked, ui->stackedWidget, [=] {
         RegisterUser userRegister(ui->centralwidget);
         userRegister.setWindowModality(Qt::ApplicationModal);
-        RegisterUser::connect(&userRegister, &RegisterUser::registerUser, ui->centralwidget, [&](const QString& username, const QString& email, const QString& password)
-                              {
-                                  if(!NetDataAccess::instance()->userRegister(username, password, email))return;
+        RegisterUser::connect(&userRegister, &RegisterUser::registerUser, ui->centralwidget,
+                              [&](const QString& username, const QString& email, const QString& password) {
+                                  if(!NetDataAccess::instance()->userRegister(username, password, email))
+                                      return;
                                   QMessageBox::information(ui->centralwidget, "注册成功!", "注册成功");
                                   userRegister.close();
                               });
         userRegister.show();
         userRegister.exec();
-    }); // 注册
+    });
 
+    // 重置UI状态
     ui->tab->hide();
     ui->stackedWidget->setCurrentIndex(btns.size());
-
-    // ui->stackedWidget->setCurrentIndex(0);
-    // ui->tab->show();
-    // homeDisplay->setuserType(UserType::ORDINARY);
-
-    // QColor color;
-    // color.setRgb(0xff, 0xa5, 0x00);
-    // QPalette pal = ui->homeButton->palette();
-    // pal.setColor(QPalette::ButtonText, color);
-    // ui->homeButton->setPalette(pal);
+    ui->usernameEdit->clear();
+    ui->passwordEdit->clear();
 }
+
+// void HamSystem::logout()
+// {
+//     // 清理现有状态
+//     // homeDisplay->reset();
+//     courseControl->reset();
+//     tasksControl->reset();
+//     // clockWidget->reset();
+
+//     // 重新初始化系统
+//     initializeSystem();
+// }
 
 HamSystem::~HamSystem()
 {
@@ -153,7 +198,7 @@ void HamSystem::closeEvent(QCloseEvent *event)
     if (SysIcon->isVisible())
     {
         this->hide();
-        SysIcon->showMessage("Ham", "已最小化到托盘");
+        SysIcon->showMessage("Ham", "已最小化到托盘",QIcon(":/img/logo.png"));
         event->ignore();
     }
     else
@@ -161,7 +206,45 @@ void HamSystem::closeEvent(QCloseEvent *event)
         event->accept();
     }
 }
+void HamSystem::logout()
+{
+    // 清除用户登录状态
+    NetDataAccess::instance()->clearJwt();
 
+    // 重置控制器状态
+    resetControllers();
+
+    // 重置UI状态
+    resetUIState();
+
+    // 切换到登录页面
+    ui->stackedWidget->setCurrentIndex(btns.size());
+    ui->tab->hide();
+
+    // 清空登录表单
+    ui->usernameEdit->clear();
+    ui->passwordEdit->clear();
+    initializeSystem();
+}
+void HamSystem::resetUIState()
+{
+    // 重置所有导航按钮的样式
+    for (auto& btn : btns) {
+        btn->setPalette(ui->centralwidget->palette());
+    }
+
+    // 清空用户输入相关的字段
+    ui->usernameEdit->clear();
+    ui->passwordEdit->clear();
+}
+void HamSystem::resetControllers()
+{
+    // 重置各个控制器
+    // homeDisplay->reset();
+    courseControl->reset();
+    tasksControl->reset();
+    // clockWidget->reset();
+}
 void HamSystem::on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason)
 {
     switch (reason)

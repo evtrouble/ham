@@ -15,7 +15,7 @@ public:
     void setupWeekComboBox(QComboBox *comboBox);
     void initializeCustomComboBox();
     void initWithoutCourse();
-
+    void reset();
 
 private:
     Ui::MainWindow *ui;

@@ -70,7 +70,26 @@ CourseControl::CourseControl(Ui::MainWindow *ui) : ui(ui)
     setupWeekComboBox(ui->weekSelect);
 
 }
+void CourseControl::reset()
+{
+    // 重置课程表显示
+    ui->personalCourseTable->clear();
+    ui->schoolCourseTable->clear();
 
+    // 重置搜索条件
+    ui->academicYearCombo->setCurrentIndex(0);
+    ui->semesterCombo->setCurrentIndex(0);
+    ui->departmentCombo->setCurrentIndex(0);
+    ui->hasCapacityCombo->setCurrentIndex(0);
+    ui->instructorEdit->clear();
+    ui->courseNameEdit->clear();
+
+    // 重置周选择
+    ui->weekSelect->setCurrentIndex(0);
+
+    // 重置页面到第一个
+    ui->stackedWidget_2->setCurrentIndex(0);
+}
 // 保留原有init()方法以保持兼容性
 void CourseControl::init()
 {

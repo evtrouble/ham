@@ -15,7 +15,10 @@
         <file>img/people.png</file>
         <file>img/down-arrow.png</file>
     </qresource>
-     <qresource prefix="/music">
+    <qresource prefix="/music">
         <file>music/music.WAV</file>
-        </qresource>
+    </qresource>
+    <qresource prefix="/">
+        <file>img/logo.png</file>
+    </qresource>
 </RCC>

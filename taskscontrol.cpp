@@ -22,7 +22,24 @@ TasksControl::TasksControl(Ui::MainWindow* ui) : ui(ui)
 
     ui->addButton->setToolTip("添加新代办");
 }
+void TasksControl::reset()
+{
+    // 重置任务列表显示
+    ui->listWidget->reset();
 
+    // 隐藏编辑器
+    ui->editor->hide();
+
+    // 重置编辑器状态
+    ui->dateTimeEdit->setDateTime(QDateTime::currentDateTime());
+    ui->textEdit->clear();
+    ui->comboBox->setCurrentIndex(0);
+
+    // 断开所有信号连接后重新连接
+    // 这样可以确保没有残留的连接
+    disconnectTaskDisplay();
+    connectTaskDisplay();
+}
 void TasksControl::connectTaskDisplay()
 {
     TaskDisplay::connect(ui->listWidget, &TaskDisplay::editorHide, ui->editor, &QFrame::hide);//隐藏编辑页面

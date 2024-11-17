@@ -55,3 +55,5 @@ RESOURCES += \
 
 DISTFILES += \
     img/down-arrow.png
+
+RC_ICONS = img/logo.ico

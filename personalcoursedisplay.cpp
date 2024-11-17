@@ -53,6 +53,16 @@ void PersonalCourseDisplay::setData(const QJsonObject &data)
 
 void PersonalCourseDisplay::displayCourse(const QJsonArray &coursesArray)
 {
+    for (int row = 0; row < rowCount(); ++row)
+    {
+        for (int col = 0; col < columnCount(); ++col)
+        {
+            if (rowSpan(row, col) > 1 || columnSpan(row, col) > 1)
+            {
+                setSpan(row, col, 1, 1);
+            }
+        }
+    }
     clearContents();
     courses_.clear();
     courses_.resize(MAX_DAY * MAX_TIME);
