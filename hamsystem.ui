@@ -166,7 +166,7 @@ border: 0;</string>
        </size>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="home">
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -2551,7 +2551,7 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow {
-    image: url(:/more/img/down-arrow.png);
+    image: url(:/icon/img/down-arrow.png);
     width: 12px;
     height: 12px;
 }
