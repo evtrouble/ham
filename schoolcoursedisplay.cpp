@@ -159,11 +159,9 @@ void SchoolCourseDisplay::showCurrentPage()
 
             // 构建时间信息字符串
             QString timeInfo = QString("%1\n%2\n%3-%4周\n%5")
-                                   .arg(classroom)
-                                   .arg(getTimeSlotString(schedule["startSlot"].toInt(), schedule["endSlot"].toInt()))
-                                   .arg(schedule["weekStart"].toInt())
-                                   .arg(schedule["weekEnd"].toInt())
-                                   .arg(schedule["weekType"].toString() == "all" ? "每周" :
+                                   .arg(classroom, getTimeSlotString(schedule["startSlot"].toInt(), schedule["endSlot"].toInt()),
+                                   schedule["weekStart"].toString(), schedule["weekEnd"].toString(),
+                                   schedule["weekType"].toString() == "all" ? "每周" :
                                             schedule["weekType"].toString() == "odd" ? "单周" : "双周");
 
             // 更新对应星期的单元格
@@ -289,7 +287,7 @@ QString SchoolCourseDisplay::getTimeSlotString(int startSlot, int endSlot) const
     if(startSlot >= 1 && startSlot <= timeSlots.size() &&
         endSlot >= 1 && endSlot <= timeSlots.size() &&
         startSlot <= endSlot) {
-        return QString("%1-%2").arg(timeSlots[startSlot-1],timeSlots[endSlot-1]);
+        return QString("%1-%2").arg(timeSlots[startSlot-1], timeSlots[endSlot-1]);
     }
 
     return "";
