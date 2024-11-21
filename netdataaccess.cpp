@@ -9,8 +9,9 @@
 NetDataAccess::NetDataAccess(QWidget *parent) : QWidget(parent), access(new QNetworkAccessManager) {}
 
 std::unique_ptr<NetDataAccess> NetDataAccess::dataAccess = nullptr;
-bool NetDataAccess::clearJwt(){
+void NetDataAccess::clearJwt(){
     jwt = "";
+
 }
 bool NetDataAccess::exportTable(const QString& model, const QString& dirPath)
 {
