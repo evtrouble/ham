@@ -16,7 +16,7 @@ void NetDataAccess::clearJwt(){
 bool NetDataAccess::exportTable(const QString& model, const QString& dirPath)
 {
     QNetworkRequest request;
-    QString url = QString("%1export?model=%2&format=csv").arg(server).arg(model);
+    QString url = QString("%1export?model=%2&format=csv").arg(server, model);
     request.setUrl(QUrl(url));
     request.setRawHeader("Authorization", "Bearer " + jwt.toUtf8());
 
