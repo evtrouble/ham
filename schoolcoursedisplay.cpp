@@ -3,6 +3,11 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QDebug>
+#include<QEvent>
+#include<QToolTip>
+#include <QHelpEvent>
+
+
 SchoolCourseDisplay::SchoolCourseDisplay(QWidget *parent)
     : QTableWidget(parent)
 {
@@ -10,6 +15,74 @@ SchoolCourseDisplay::SchoolCourseDisplay(QWidget *parent)
     // 连接NetDataAccess的响应信号
     connect(&*NetDataAccess::instance(), &NetDataAccess::schoolCourseFinish,
             this, &SchoolCourseDisplay::handleSearchResponse);
+}
+bool SchoolCourseDisplay::event(QEvent *event)
+{
+    if (event->type() == QEvent::ToolTip) {
+        QHelpEvent *helpEvent = static_cast<QHelpEvent *>(event);
+        QPoint pos = helpEvent->pos();
+        QTableWidgetItem *item = itemAt(pos);
+
+        if (item && !item->text().isEmpty()) {
+            // 只对星期几的单元格（第5列开始）显示工具提示
+            int column = columnAt(pos.x());
+            if (column >= 5) {
+                QString tooltipText = formatTooltipContent(item->text());
+                if (!tooltipText.isEmpty()) {
+                    QToolTip::showText(helpEvent->globalPos(), tooltipText);
+                } else {
+                    QToolTip::hideText();
+                }
+            }
+        } else {
+            QToolTip::hideText();
+        }
+        return true;
+    }
+    return QTableWidget::event(event);
+}
+
+QString SchoolCourseDisplay::formatTooltipContent(const QString &cellContent) const
+{
+    if (cellContent.isEmpty()) {
+        return QString();
+    }
+
+    // 分割多个时间段
+    QStringList sections = cellContent.split("---------");
+    QStringList formattedSections;
+
+    for (const QString &section : sections) {
+        if (section.trimmed().isEmpty()) continue;
+
+        // 分析每个时间段的信息
+        QStringList lines = section.trimmed().split('\n');
+        if (lines.size() >= 4) {
+            QString classroom = lines[0];
+            QString timeSlot = lines[1];
+            QString weeks = lines[2];
+            QString weekType = lines[3];
+
+            // 格式化显示
+            QString formattedSection = QString(
+                                           "<div style='margin-bottom: 5px;'>"
+                                           "<b>教室：</b>%1<br>"
+                                           "<b>时间：</b>%2<br>"
+                                           "<b>周次：</b>%3<br>"
+                                           "<b>类型：</b>%4"
+                                           "</div>")
+                                           .arg(classroom)
+                                           .arg(timeSlot)
+                                           .arg(weeks)
+                                           .arg(weekType);
+
+            formattedSections.append(formattedSection);
+        }
+    }
+
+    // 如果有多个时间段，用分隔线分开
+    return QString("<div style='color: black; background-color: white; padding: 5px;'>%1</div>")
+        .arg(formattedSections.join("<hr style='margin: 5px 0;'>"));
 }
 
 void SchoolCourseDisplay::setupTable()
@@ -114,6 +187,10 @@ void SchoolCourseDisplay::showCurrentPage()
         for(int col = 0; col < columnCount(); col++) {
             if(item(i, col)) {
                 item(i, col)->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+                if(QTableWidgetItem *tableItem = item(i, col)) {
+                    // 启用工具提示
+                    tableItem->setToolTip("");  // 设置空工具提示以启用工具提示事件
+                }
             }
         }
     }

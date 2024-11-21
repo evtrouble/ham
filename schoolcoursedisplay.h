@@ -36,6 +36,8 @@ public:
         const QString& department,
         const int hasCapacity
         );
+    bool event(QEvent *event) override;
+
 
 private slots:
     void handleSearchResponse(QNetworkReply *reply);
@@ -46,6 +48,7 @@ private:
     void updateTableContent(const QJsonArray &courses);
     void clearTable();
     QString getTimeSlotString(int startSlot, int endSlot) const;
+    QString formatTooltipContent(const QString &cellContent) const;
 
     const QStringList headerLabels = {
         "课程ID", "课程名", "课程教师", "课程地点",
