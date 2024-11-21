@@ -16,39 +16,13 @@ void SchoolCourseDisplay::setupTable()
 {
     setColumnCount(headerLabels.size());
     setHorizontalHeaderLabels(headerLabels);
-    setupPagination();
     // 设置表格属性
     horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     setSelectionBehavior(QAbstractItemView::SelectRows);
     setAlternatingRowColors(true);
 }
-void SchoolCourseDisplay::setupPagination()
-{
-    // QWidget* container = new QWidget(this);
-    // paginationLayout = new QHBoxLayout(container);
 
-    // prevButton = new QPushButton("上一页", container);
-    // nextButton = new QPushButton("下一页", container);
-    // pageLabel = new QLabel(container);
-
-    // paginationLayout->addStretch();
-    // paginationLayout->addWidget(prevButton);
-    // paginationLayout->addWidget(pageLabel);
-    // paginationLayout->addWidget(nextButton);
-    // paginationLayout->addStretch();
-
-    // Add pagination controls below the table
-    // QVBoxLayout* mainLayout = new QVBoxLayout(this->parentWidget());
-    // mainLayout->addWidget(this);
-    // mainLayout->addWidget(container);
-
-    // connect(prevButton, &QPushButton::clicked, this, &SchoolCourseDisplay::previousPage);
-    // connect(nextButton, &QPushButton::clicked, this, &SchoolCourseDisplay::nextPage);
-
-    // updatePageDisplay();
-}
-// schoolcoursedisplay.cpp
 void SchoolCourseDisplay::setPageControls(QPushButton *prev, QPushButton *next, QLabel *label)
 {
     prevButton = prev;
@@ -220,44 +194,7 @@ void SchoolCourseDisplay::handleSearchResponse(QNetworkReply *reply)
     reply->deleteLater();
 }
 
-// void SchoolCourseDisplay::updateTableContent(const QJsonArray &courses)
-// {
-//     clearTable();
 
-//     setRowCount(courses.size());
-
-//     for(int row = 0; row < courses.size(); ++row) {
-//         QJsonObject course = courses[row].toObject();
-//         QJsonArray schedules = course["schedules"].toArray();
-
-//         // 设置基本信息列
-//         setItem(row, 0, new QTableWidgetItem(course["courseId"].toString()));
-//         setItem(row, 1, new QTableWidgetItem(course["name"].toString()));
-//         setItem(row, 2, new QTableWidgetItem(course["instructor"].toString()));
-//         setItem(row, 3, new QTableWidgetItem("")); // 课程地点会在后面根据时间表填充
-//         setItem(row, 4, new QTableWidgetItem(QString::number(course["credit"].toDouble())));
-
-//         // 处理每个时间段
-//         for(const QJsonValue &scheduleValue : schedules) {
-//             QJsonObject schedule = scheduleValue.toObject();
-//             int dayOfWeek = schedule["dayOfWeek"].toInt();
-//             QString timeInfo = QString("%1\n%2\n%3-%4周\n%5")
-//                                    .arg(schedule["classroom"].toString())
-//                                    .arg(getTimeSlotString(schedule["startSlot"].toInt(), schedule["endSlot"].toInt()))
-//                                    .arg(schedule["weekStart"].toInt())
-//                                    .arg(schedule["weekEnd"].toInt())
-//                                    .arg(schedule["weekType"].toString() == "all" ? "每周" :
-//                                             schedule["weekType"].toString() == "odd" ? "单周" : "双周");
-
-//             QTableWidgetItem *tableItem = item(row, 5 + dayOfWeek);
-//             if(!tableItem) {
-//                 tableItem = new QTableWidgetItem();
-//                 setItem(row, 5 + dayOfWeek, tableItem);
-//             }
-//             tableItem->setText(timeInfo);
-//         }
-//     }
-// }
 
 void SchoolCourseDisplay::clearTable()
 {
@@ -275,7 +212,7 @@ QString SchoolCourseDisplay::getTimeSlotString(int startSlot, int endSlot) const
     if(startSlot >= 1 && startSlot <= timeSlots.size() &&
         endSlot >= 1 && endSlot <= timeSlots.size() &&
         startSlot <= endSlot) {
-        return QString("%1-%2").arg(timeSlots[startSlot-1]).arg(timeSlots[endSlot-1]);
+        return QString("%1-%2").arg(timeSlots[startSlot-1],timeSlots[endSlot-1]);
     }
 
     return "";
