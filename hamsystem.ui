@@ -166,7 +166,7 @@ border: 0;</string>
        </size>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="home">
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -3259,14 +3259,9 @@ QFrame#frame_2 {
     border: 1px solid rgba(230, 230, 230, 0.5);   /* 半透明的边框 */
     border-radius: 15px;
     /* 添加玻璃模糊效果的阴影 */
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
-/* 如果需要毛玻璃效果，可以添加以下样式 */
-QFrame#frame_2 {
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-}</string>
+</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::Shape::StyledPanel</enum>
